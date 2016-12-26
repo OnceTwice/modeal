@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 public class MainController {
 	
 	@ResponseBody
-	@RequestMapping("/hello")
+	@RequestMapping("")
 	public String hello() {
 		return "안녕 jRevel";
 	}
