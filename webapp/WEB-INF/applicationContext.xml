@@ -20,7 +20,7 @@
 	
 	<context:annotation-config />
 
-	<context:component-scan	base-package="com.ff.modeal.*">
+	<context:component-scan	base-package="com.ff.modeal.repository, com.ff.modeal.service, com.ff.modeal.exception">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
@@ -29,8 +29,8 @@
 	<!-- oracle datasource -->
 	<bean id="dataSource" class="oracle.jdbc.pool.OracleDataSource"	destroy-method="close">
 		<property name="URL" value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<property name="user" value="ff" />				<!-- 데이터베이스 아이디 비밀번호 설정 -->
-		<property name="password" value="ff" />
+		<property name="user" value="modeal" />				<!-- 데이터베이스 아이디 비밀번호 설정 -->
+		<property name="password" value="modeal" />
 		<property name="connectionCachingEnabled" value="true" />
 		<qualifier value="main-db" />
 	</bean>

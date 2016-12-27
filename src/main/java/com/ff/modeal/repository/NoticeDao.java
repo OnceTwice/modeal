@@ -1,19 +1,15 @@
 package com.ff.modeal.repository;
 
-import java.util.*;
-
-import org.apache.ibatis.session.*;
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.stereotype.*;
-
-import com.ff.modeal.vo.*;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class NoticeDao {
 
+	/*
 	@Autowired
 	private SqlSession sqlSession;
-	
 	
 	public void insert(NoticeVo vo) {
 		
@@ -31,5 +27,5 @@ public class NoticeDao {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		return sqlSession.selectList("notice.getList", map);
-	}
+	}*/
 }
