@@ -16,7 +16,7 @@
         http://www.springframework.org/schema/task/spring-task-3.0.xsd">
 
 	<!-- auto poxy -->
-	<aop:aspectj-autoproxy />
+	<!--<aop:aspectj-autoproxy /> -->
 	
 	<context:annotation-config />
 

@@ -6,7 +6,7 @@
 
 <ul>
 	<c:choose>
-		<c:when test="${empty authUser }">
+		<c:when test="${empty adminUser }">
 			<li><a href="${pageContext.request.contextPath }/login">로그인</a></li>
 		</c:when>
 		<c:otherwise>

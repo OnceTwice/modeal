@@ -34,7 +34,7 @@
 			</c:when>
 			<c:otherwise>
 				<li><a href="">공지사항</a></li>
-				<li><a href="">사용자 리스트</a></li>
+				<li><a href="${pageContext.request.contextPath}/user">사용자 리스트</a></li>
 				<li><a href="">매장 리스트</a></li>
 				<li><a href="">고객센터</a></li>
 			</c:otherwise>

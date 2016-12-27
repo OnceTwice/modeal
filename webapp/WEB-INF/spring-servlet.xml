@@ -9,8 +9,8 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc">
 
 	<!-- auto poxy -->
-	<aop:aspectj-autoproxy />
-	
+	<!--<aop:aspectj-autoproxy /> -->
+
 	<!-- validator, conversionService, messageConverter를 자동으로 등록 -->
 	<mvc:annotation-driven>
 		<!-- Message Converters -->
@@ -23,7 +23,8 @@
 				</property>
 			</bean>
 
-			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+			<bean
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 				<property name="supportedMediaTypes">
 					<list>
 						<value>application/json; charset=UTF-8</value>
@@ -33,19 +34,39 @@
 		</mvc:message-converters>
 
 		<!-- argument resolver -->
-		<mvc:argument-resolvers>
-			<!-- <bean class="com.bit2016.security.AuthUserHandlerMethodArgumentResolver" /> -->
-		</mvc:argument-resolvers>
-		
+		<!--<mvc:argument-resolvers>
+			<bean class="com.ff.modeal.security.AdminUserHandlerMethodArgumentResolver" />
+		</mvc:argument-resolvers>-->
+
 	</mvc:annotation-driven>
 
 	<!-- 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 -->
 	<mvc:default-servlet-handler />
 
-	<!-- annotation 설정을 하겠다. -->
-	<context:annotation-config>
+	<!-- Interceptors -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/loginresult" />
+			<bean class="com.ff.modeal.security.AdminLoginInterceptor" />
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/logout" />
+			<bean class="com.ff.modeal.security.AdminLogoutInterceptor" />
+		</mvc:interceptor>
+		
 
-	</context:annotation-config>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/loginresult" />
+			<mvc:exclude-mapping path="/logout" />
+			<mvc:exclude-mapping path="/assets/**" />
+			<bean class="com.ff.modeal.security.AdminInterceptor" />
+		</mvc:interceptor>
+
+	</mvc:interceptors>
+	<!-- annotation 설정을 하겠다. -->
+	<context:annotation-config />
 
 	<!-- 패키지 (com.bit2016.emaillist.controller) 밑에 있는 클래스 중에 @Controller를 달고 
 		있는 클래스의 객체를 생성하겠다. -->
@@ -61,37 +82,16 @@
 		<property name="order" value="1" />
 	</bean>
 
-	<!-- Interceptors -->
-<!--
-	 <mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/user/login" />
-			<bean class="com.bit2016.security.AuthLoginInterceptor" />
-		</mvc:interceptor>
-	
-		<mvc:interceptor>
-			<mvc:mapping path="/user/logout" />
-			<bean class="com.bit2016.security.AuthLogoutInterceptor" />
-		</mvc:interceptor>
-	
-		<mvc:interceptor>
-			<mvc:mapping path="/**" />
-			<mvc:exclude-mapping path="/user/login" />
-			<mvc:exclude-mapping path="/user/logout" />
-			<mvc:exclude-mapping path="/assets/**" />
-			<bean class="com.bit2016.security.AuthInterceptor" />
-		</mvc:interceptor>
-		
-	</mvc:interceptors>
--->
+
 	<!-- 6. MessageSource -->
-	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-	   <property name="defaultEncoding" value="utf-8"/>
-	   <property name="basenames" >
-	      <list>
-		<value>messages/messages_ko</value>
-	      </list>
-	   </property>
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="defaultEncoding" value="utf-8" />
+		<property name="basenames">
+			<list>
+				<value>messages/messages_ko</value>
+			</list>
+		</property>
 	</bean>
 
 </beans>

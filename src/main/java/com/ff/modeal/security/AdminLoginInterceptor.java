@@ -19,7 +19,7 @@ public class AdminLoginInterceptor extends HandlerInterceptorAdapter {
 
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
-
+		
 		// Web Application Context 받아오기
 		ApplicationContext ac = WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
 
@@ -35,7 +35,7 @@ public class AdminLoginInterceptor extends HandlerInterceptorAdapter {
 			return false;
 		}
 		
-		if(adminVo.getManagerIdentified() != 0){
+		if(adminVo.getManager_Identified() != 0){
 			return false;
 		}
 		

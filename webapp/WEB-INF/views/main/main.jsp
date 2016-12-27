@@ -14,7 +14,7 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><img src="${pageContext.request.contextPath}/assets/images/jh.png" width="100px">준킨스</h1>
+			<h1><img src="${pageContext.request.contextPath}/assets/images/jh.png" width="100px">Junkins</h1>
 			<c:import url="/WEB-INF/views/includes/header.jsp" />
 		</div>
 		<div id="wrapper">

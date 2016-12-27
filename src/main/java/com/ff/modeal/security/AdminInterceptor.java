@@ -30,17 +30,17 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 		
 		if (session == null) {
-			response.sendRedirect(request.getContextPath() + "/adminlogin");
+			response.sendRedirect(request.getContextPath() + "/login");
 			return false;
 		}
 
 		UserVo adminUser = (UserVo) session.getAttribute("adminUser");
 		if (adminUser == null) {
-			response.sendRedirect(request.getContextPath() + "/adminlogin");
+			response.sendRedirect(request.getContextPath() + "/login");
 			return false;
 		}
 		
-		if(adminUser.getManagerIdentified() != 0){
+		if(adminUser.getManager_Identified() != 0){
 			return false;
 		}
 		
