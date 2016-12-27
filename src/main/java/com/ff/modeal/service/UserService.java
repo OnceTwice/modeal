@@ -17,5 +17,9 @@ public class UserService {
 	public List<UserVo> getUserList(){
 		return userDao.getUserList();
 	}
+	
+	public UserVo login(String id, String password){
+		return null;
+	}
 
 }

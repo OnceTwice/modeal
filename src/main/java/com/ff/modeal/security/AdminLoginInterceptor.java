@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.ff.modeal.service.UsersService;
+import com.ff.modeal.service.UserService;
 import com.ff.modeal.vo.UserVo;
 
 public class AdminLoginInterceptor extends HandlerInterceptorAdapter {
@@ -24,7 +24,7 @@ public class AdminLoginInterceptor extends HandlerInterceptorAdapter {
 		ApplicationContext ac = WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
 
 		// Container 안에 있는 UsersService Bean(객체) 받아오기
-		UsersService usersService = ac.getBean(UsersService.class);
+		UserService usersService = ac.getBean(UserService.class);
 
 		// 데이터베이스에서 해당 UsersVo 받아오기
 		UserVo adminVo = usersService.login(id, password);
