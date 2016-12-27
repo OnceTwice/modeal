@@ -15,4 +15,9 @@ public class MainController {
 	public String login() {
 		return "main/loginform";
 	}
+	
+	@RequestMapping("/loginsuccess")
+	public String loginSuccess(){
+		return "main/loginsuccess";
+	}
 }

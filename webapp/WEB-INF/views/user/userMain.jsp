@@ -20,13 +20,13 @@
 		<div id="wrapper">
 
 			<div id="navigation">
-				<c:import url="/WEB-INF/views/includes/navigation.jsp" >
-				<c:param name="menu" value="notify"/>
+				<c:import url="/WEB-INF/views/includes/navigation.jsp">
+				<c:param name="menu" value="user"/>
 				</c:import>
 			</div>
 		</div>
 		<div id="content">
-			<p>준킨스 공지사항 창</p>
+			<p>준킨스 유저리스트 창</p>
 		</div>
 	</div>
 

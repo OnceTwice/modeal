@@ -25,7 +25,7 @@ public class UserController {
 		List<UserVo> list = userService.getUserList();
 		model.addAttribute("list", list);
 		*/
-		return "user/usersMain";
+		return "user/userMain";
 	}
 	
 	

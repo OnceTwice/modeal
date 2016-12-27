@@ -12,7 +12,7 @@
 				<li><a href="">고객센터</a></li>
 			</c:when>
 
-			<c:when test="${param.menu == 'users' }">
+			<c:when test="${param.menu == 'user' }">
 				<li><a href="">공지사항</a></li>
 				<li class="selected"><a href="">사용자 리스트</a></li>
 				<li><a href="">매장 리스트</a></li>

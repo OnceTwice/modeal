@@ -43,7 +43,7 @@ public class AdminLoginInterceptor extends HandlerInterceptorAdapter {
 		// 인증 처리
 		HttpSession session = request.getSession(true);
 		session.setAttribute("adminUser", adminVo);
-		response.sendRedirect(request.getContextPath());
+		response.sendRedirect(request.getContextPath()+"/loginsuccess");
 
 		return false;
 	}

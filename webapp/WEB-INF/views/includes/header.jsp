@@ -10,7 +10,7 @@
 			<li><a href="${pageContext.request.contextPath }/login">로그인</a></li>
 		</c:when>
 		<c:otherwise>
-			<li><a href="${pageContext.request.contextPath }/logout">로그아웃</a></li>
+			<li style="color: #fff"> 관리자님 반갑습니다.&nbsp;&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath }/logout">로그아웃</a></li>
 		</c:otherwise>
 	</c:choose>
 </ul>
