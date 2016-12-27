@@ -40,10 +40,10 @@
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>tomcat-maven-plugin</artifactId>
 						<configuration>
-							<url>http://localhost:8088/manager/text</url>
+							<url>http://192.168.1.16:8090/manager/text</url>
 							<path>/modeal</path>
-							<username>tomcat</username>
-							<password>tomcat</password>
+							<username>5f</username>
+							<password>5f</password>
 						</configuration>
 					</plugin>
 					
