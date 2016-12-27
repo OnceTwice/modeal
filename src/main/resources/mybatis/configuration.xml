@@ -2,10 +2,10 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<!-- <typeAlias alias="uservo" type="com.bit2016.mysite.vo.UserVo"/> -->
+		<typeAlias alias="usersvo" type="com.ff.modeal.vo.UsersVo" />
 	</typeAliases>
-	
+
 	<mappers>
-		<!-- <mapper resource="mybatis/mappers/user.xml" /> -->
+		<mapper resource="mybatis/mappers/users.xml" />
 	</mappers>
 </configuration>
