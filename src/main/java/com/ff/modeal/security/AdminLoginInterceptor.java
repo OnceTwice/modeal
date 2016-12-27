@@ -9,7 +9,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.ff.modeal.service.UsersService;
-import com.ff.modeal.vo.UsersVo;
+import com.ff.modeal.vo.UserVo;
 
 public class AdminLoginInterceptor extends HandlerInterceptorAdapter {
 
@@ -27,7 +27,7 @@ public class AdminLoginInterceptor extends HandlerInterceptorAdapter {
 		UsersService usersService = ac.getBean(UsersService.class);
 
 		// 데이터베이스에서 해당 UsersVo 받아오기
-		UsersVo adminVo = usersService.login(id, password);
+		UserVo adminVo = usersService.login(id, password);
 
 		// 이메일과 패쓰워드가 일치하지 않는 경우
 		if (adminVo == null) {

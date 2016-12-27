@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.ff.modeal.vo.UsersVo;
+import com.ff.modeal.vo.UserVo;
 
 public class AdminInterceptor extends HandlerInterceptorAdapter {
 
@@ -34,7 +34,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 			return false;
 		}
 
-		UsersVo adminUser = (UsersVo) session.getAttribute("adminUser");
+		UserVo adminUser = (UserVo) session.getAttribute("adminUser");
 		if (adminUser == null) {
 			response.sendRedirect(request.getContextPath() + "/adminlogin");
 			return false;
