@@ -11,7 +11,7 @@
 			order by managerIdentified
 		]]>
 	</select>
-
+	<!-- 싱크로 테스트 -->
 	<!-- 총 가입자 수 조회 -->
 	<select id="userConut" resultType="long">
 		<![CDATA[
