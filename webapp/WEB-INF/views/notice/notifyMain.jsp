@@ -17,6 +17,7 @@
 			<h1><img src="${pageContext.request.contextPath}/assets/images/jh.png" width="100px"><a href="${pageContext.request.contextPath }" style="color: #fff;text-decoration: none">Junkins</a></h1>
 			<c:import url="/WEB-INF/views/includes/header.jsp" />
 		</div>
+		
 		<div id="wrapper">
 
 			<div id="navigation">
@@ -24,10 +25,14 @@
 				<c:param name="menu" value="notify"/>
 				</c:import>
 			</div>
+			
 		</div>
+		
 		<div id="content">
 			<p>준킨스 공지사항 창</p>
 		</div>
+		
+		
 	</div>
 
 

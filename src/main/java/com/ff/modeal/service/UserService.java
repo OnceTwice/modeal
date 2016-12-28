@@ -14,8 +14,14 @@ public class UserService {
 	@Autowired
 	private UserDao userDao;
 
-	public List<UserVo> getUserList() {
-		return userDao.getUserList();
+	//사용자 리스트
+	public List<UserVo> getListUser() {
+		return userDao.getList();
+	}
+	
+	// 총 사용자
+	public long userSum(){
+		return userDao.userCount();
 	}
 
 	// 로그인 정보 가져오기(김영조)

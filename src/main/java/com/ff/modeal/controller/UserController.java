@@ -21,12 +21,22 @@ public class UserController {
 	@Admin
 	@RequestMapping("")
 	public String userIndex(Model model){		
-		/*
-		List<UserVo> list = userService.getUserList();
+		
+		//사용자 리스트 
+		List<UserVo> list = userService.getListUser();
 		model.addAttribute("list", list);
-		*/
+		
+		//총 가입자수 
+		Long usercount=userService.userSum();
+		model.addAttribute("usercount",usercount);
+		
 		return "user/userMain";
 	}
 	
+	@RequestMapping("/{userno}")
+	public String usereach(){
+		
+		return "user/each";
+	}
 	
 }
