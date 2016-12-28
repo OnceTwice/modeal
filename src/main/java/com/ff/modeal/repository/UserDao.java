@@ -16,8 +16,13 @@ public class UserDao {
 	@Autowired
 	private SqlSession sqlSession;
 
-	public List<UserVo> getUserList() {
+	//사용자리스트
+	public List<UserVo> getList() {
 		return sqlSession.selectList("user.getUserList");
+	}
+	
+	public long userCount(){
+		return sqlSession.selectOne("user.userConut");
 	}
 
 	// 로그인 정보 가져오기(김영조)
