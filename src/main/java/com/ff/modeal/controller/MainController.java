@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MainController {
 	
-	@RequestMapping("")
+	@RequestMapping("")  //메인 연결
 	public String hello() {
 		return "main/main";
 	}
