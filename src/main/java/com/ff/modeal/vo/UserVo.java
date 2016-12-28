@@ -1,10 +1,5 @@
 package com.ff.modeal.vo;
 
-/**
- * 
- * @author cho
- *
- */
 public class UserVo {
 
 	private Long no;
