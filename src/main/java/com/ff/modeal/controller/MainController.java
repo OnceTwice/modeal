@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MainController {
-	
-	@RequestMapping("")  //메인 연결입니다.
+
+	@RequestMapping("") // 메인 연결입니다.
 	public String hello() {
 		return "main/main";
 	}
@@ -15,26 +15,9 @@ public class MainController {
 	public String login() {
 		return "main/loginform";
 	}
-	
+
 	@RequestMapping("/loginsuccess")
-	public String loginSuccess(){
+	public String loginSuccess() {
 		return "main/loginsuccess";
 	}
-	
-	public String loginSuccess1(){
-		return "main/loginsuccess";
-	}
-
-	public String loginSuccess2(){
-		return "main/loginsuccess";
-	}
-
-	public String loginSuccess3(){
-		return "main/loginsuccess";
-	}
-
-	public String loginSuccess4(){
-		return "main/loginsuccess";
-	}
-
 }
