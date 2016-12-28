@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 	
 	@RequestMapping("")  //메인 연결입니다.
-	public String hello22() {
+	public String hello() {
 		return "main/main";
 	}
 
@@ -20,4 +20,21 @@ public class MainController {
 	public String loginSuccess(){
 		return "main/loginsuccess";
 	}
+	
+	public String loginSuccess1(){
+		return "main/loginsuccess";
+	}
+
+	public String loginSuccess2(){
+		return "main/loginsuccess";
+	}
+
+	public String loginSuccess3(){
+		return "main/loginsuccess";
+	}
+
+	public String loginSuccess4(){
+		return "main/loginsuccess";
+	}
+
 }
