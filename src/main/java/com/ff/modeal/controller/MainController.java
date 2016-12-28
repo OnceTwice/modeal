@@ -20,4 +20,5 @@ public class MainController {
 	public String loginSuccess(){
 		return "main/loginsuccess";
 	}
+
 }
