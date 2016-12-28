@@ -28,7 +28,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 
 		// 3. 접근 제어
 		HttpSession session = request.getSession();
-		
+
 		if (session == null) {
 			response.sendRedirect(request.getContextPath() + "/login");
 			return false;
@@ -39,11 +39,10 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 			response.sendRedirect(request.getContextPath() + "/login");
 			return false;
 		}
-		
-		if(adminUser.getManager_Identified() != 0){
+
+		if (adminUser.getManagerIdentified() != 0) {
 			return false;
 		}
-		
 
 		// 4. 인증된 사용자
 		return true;

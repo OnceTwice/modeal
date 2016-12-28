@@ -19,7 +19,7 @@ public class AdminLoginInterceptor extends HandlerInterceptorAdapter {
 
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
-		
+
 		// Web Application Context 받아오기
 		ApplicationContext ac = WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
 
@@ -34,16 +34,15 @@ public class AdminLoginInterceptor extends HandlerInterceptorAdapter {
 			response.sendRedirect(request.getContextPath() + "/login?result=fail");
 			return false;
 		}
-		
-		if(adminVo.getManager_Identified() != 0){
+
+		if (adminVo.getManagerIdentified() != 0) {
 			return false;
 		}
-		
 
 		// 인증 처리
 		HttpSession session = request.getSession(true);
 		session.setAttribute("adminUser", adminVo);
-		response.sendRedirect(request.getContextPath()+"/loginsuccess");
+		response.sendRedirect(request.getContextPath() + "/loginsuccess");
 
 		return false;
 	}
