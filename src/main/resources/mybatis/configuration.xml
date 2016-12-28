@@ -3,9 +3,11 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="uservo" type="com.ff.modeal.vo.UserVo" />
+		<typeAlias alias="noticevo" type="com.ff.modeal.vo.NoticeVo" />
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="mybatis/mappers/user.xml" />
+		<!-- <mapper resource="mybatis/mappers/notice.xml" /> -->
 	</mappers>
 </configuration>

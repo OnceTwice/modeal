@@ -1,0 +1,8 @@
+@CHARSET "UTF-8";
+
+.tbl-ex		{
+	width:100%;
+	margin:10px auto; 
+	border-collapse:collapse;
+	border-bottom:2px solid #333;
+}
