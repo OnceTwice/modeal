@@ -15,5 +15,4 @@ public class ShopDao {
 	public List<ShopDao> list() {
 		return sqlSession.selectList("shop.list");
 	}
-
 }

@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+#content {
+	background-color: #fff;
+}
+
+#content .pic img { 
+	width: 100px;
+	height: 80px;
+}
+
+.table th.short{
+	width:50px;
+}
+
+.table th.middle{
+	width:100px;
+}
+
+.table th.long{
+	width:250px;
+}

@@ -7,6 +7,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <Link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css"> 
+<Link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/shop.css?ver=1" type="text/css">
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <title>매장리스트</title>
 </head>
 <body>
@@ -27,12 +30,35 @@
 			</div>
 		</div>
 		<div id="content">
-			<c:forEach items="${list }" var="list" varStatus="no">
-				<div>
-					<div>${no.count }</div>
-					<div></div>
-				</div>	
-			</c:forEach>
+			<div>
+				<!-- 부트스트랩에서 가져온 테이블폼 -->
+				<table class="table table-striped table-hover ">
+					 <thead>
+					    <tr>
+					     <th class="short">#</th>
+					     <th class="middle">Picture</th>
+					     <th class="middle">Name</th>
+					     <th class="long">Address</th>
+					     <th class="middle">Contact</th>
+					     <th class="long">Introduce</th>
+					   </tr>
+					 </thead>
+					 <!-- DB에서 매장 리스트 가져오기!!! -->
+					 <!-- controller에서는 list로 받아와서 list2로 이름을 변경 후 사용중-->
+					 <c:forEach items="${list }" var="list2" varStatus="no">
+					 <tbody>
+					   <tr>
+					     <td>${no.count }</td> <!-- forEach 태그의 속성으로 ${status.count} <=1부터의 순서 -->
+					     <td class="pic"><img src="${pageContext.request.contextPath }/gallery/assets/${list2.picture }"/></td>
+					     <td>${list2.name }</td>
+					     <td>${list2.address }</td>
+					     <td>${list2.phone }</td>
+					     <td>${list2.introduce }</td>
+					   </tr>
+					 </tbody>
+					 </c:forEach>
+				</table>
+			</div>	
 		</div>
 	</div>
 	<div id="footer">
