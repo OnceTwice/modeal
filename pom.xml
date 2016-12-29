@@ -75,13 +75,13 @@
 			<artifactId>spring-context</artifactId>
 			<version>${org.springframework-version}</version>
 
-			<!-- JCL 제외 -->
+			<!-- JCL 제외 
 			<exclusions>
 				<exclusion>
 					<groupId>commons-logging</groupId>
 					<artifactId>commons-logging</artifactId>
 				</exclusion>
-			</exclusions>
+			</exclusions>-->
 		</dependency>
 
 		<!-- spring web -->
@@ -159,7 +159,7 @@
 			<version>4.2.0.Final</version>
 		</dependency>
 
-		<!-- Logback -->
+		<!-- Logback
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
@@ -170,7 +170,7 @@
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<version>${logback.version}</version>
-		</dependency>
+		</dependency> -->
 
 	</dependencies>
 

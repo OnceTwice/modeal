@@ -12,8 +12,7 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<img src="${pageContext.request.contextPath}/assets/images/jh.png" width="100px">
-			<a href="${pageContext.request.contextPath }" style="color:#fff; text-decoration:none">Junkins</a>
+			<h1><img src="${pageContext.request.contextPath}/assets/images/adminlogo.gif" width="50px"><a href="${pageContext.request.contextPath }" style="color:#fff; text-decoration:none">Modeal</a></h1>
 			<c:import url="/WEB-INF/views/includes/header.jsp" />
 		</div>
 		

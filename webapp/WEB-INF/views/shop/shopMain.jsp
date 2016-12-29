@@ -15,7 +15,7 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><img src="${pageContext.request.contextPath}/assets/images/jh.png" width="100px"><a href="${pageContext.request.contextPath }" style="color: #fff;text-decoration: none">Junkins</a></h1> <!-- 로고와 이름(이름에는 메인으로 가는 링크 연결) -->
+			<h1><img src="${pageContext.request.contextPath}/assets/images/adminlogo.gif" width="50px"><a href="${pageContext.request.contextPath }" style="color: #fff;text-decoration: none">Modeal</a></h1> <!-- 로고와 이름(이름에는 메인으로 가는 링크 연결) -->
 			<!-- header import -->
 			<c:import url="/WEB-INF/views/includes/header.jsp" />
 		</div>
