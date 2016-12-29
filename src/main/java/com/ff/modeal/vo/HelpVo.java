@@ -5,7 +5,7 @@ public class HelpVo {
 	private Long no;
 	private String title;
 	private String complain;
-	private Long userNo;
+	private Long usersNo;
 	
 	public Long getNo() {
 		return no;
@@ -25,16 +25,16 @@ public class HelpVo {
 	public void setComplain(String complain) {
 		this.complain = complain;
 	}
-	public Long getUserNo() {
-		return userNo;
+	public Long getUsersNo() {
+		return usersNo;
 	}
-	public void setUserNo(Long userNo) {
-		this.userNo = userNo;
+	public void setUsersNo(Long usersNo) {
+		this.usersNo = usersNo;
 	}
 	
 	@Override
 	public String toString() {
-		return "HelpVo [no=" + no + ", title=" + title + ", complain=" + complain + ", userNo=" + userNo + "]";
+		return "HelpVo [no=" + no + ", title=" + title + ", complain=" + complain + ", usersNo=" + usersNo + "]";
 	}
-	
+
 }
