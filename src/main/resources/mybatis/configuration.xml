@@ -4,10 +4,12 @@
 	<typeAliases>
 		<typeAlias alias="uservo" type="com.ff.modeal.vo.UserVo" />
 		<typeAlias alias="noticevo" type="com.ff.modeal.vo.NoticeVo" />
+		<typeAlias alias="shopvo" type="com.ff.modeal.vo.ShopVo" />
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="mybatis/mappers/user.xml" />
 		<!-- <mapper resource="mybatis/mappers/notice.xml" /> -->
+		<mapper resource="mybatis/mappers/shop.xml" />
 	</mappers>
 </configuration>

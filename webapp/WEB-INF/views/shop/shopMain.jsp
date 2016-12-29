@@ -27,7 +27,12 @@
 			</div>
 		</div>
 		<div id="content">
-			<p>!!!!!!!!!!!!</p> 
+			<c:forEach items="${list }" var="list" varStatus="no">
+				<div>
+					<div>${no.count }</div>
+					<div></div>
+				</div>	
+			</c:forEach>
 		</div>
 	</div>
 	<div id="footer">
