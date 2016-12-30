@@ -4,5 +4,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <p>
-	<strong>조잡스 엔터테이먼트</strong> is supported by 폭충이 (c)2016
+	<strong>모딜 (Mobility Deal)</strong> Copyright ⓒ 5Factorial All Rights Reserved
 </p>

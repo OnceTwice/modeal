@@ -7,34 +7,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<Link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/main.css">
-<title>준킨스 입니다</title>
-<style>
-div {
-	position: relative;
-}
 
-.hc {
-	width: 200px;
-	left: 0;
-	right: 0;
-	margin-left: auto;
-	margin-right: auto;
-} /* 가로 중앙 정렬 */
-.vc {
-	height: 400px;
-	top: 0;
-	bottom: 0;
-	margin-top: auto;
-	margin-bottom: auto;
-} /* 세로 중앙 정렬 */
-</style>
+<Link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/main.css">
+
+<title>관리자페이지</title>
 </head>
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><img src="${pageContext.request.contextPath}/assets/images/adminlogo.gif" width="50px"><a href="${pageContext.request.contextPath }" style="color: #fff;text-decoration: none">Modeal</a></h1>
 			<c:import url="/WEB-INF/views/includes/header.jsp" />
 		</div>
 		<div id="wrapper">
@@ -44,13 +24,11 @@ div {
 			</div>
 		</div>
 		<div id="content">
-			<div class="hc vc">
-				<img src="${pageContext.request.contextPath}/assets/images/main2.png" style="height: 300px;" />
-				<h1>Hello, 5!</h1>
-				<p>
-					안녕하세요, 관리자님.
-				</p>
-			</div>
+			<img src="${pageContext.request.contextPath}/assets/images/main2.png" />
+			<h1>Hello, 5!</h1>
+			<p>
+				안녕하세요, 관리자님.
+			</p>
 		</div>
 	</div>
 

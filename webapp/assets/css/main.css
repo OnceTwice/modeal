@@ -2,20 +2,21 @@
 
 /* reset */
 *				{ margin:0; padding:0 }
-body			{ font:0.75em "맑은 고딕", 돋움, 굴림; text-align:center }
+body			{ font:0.75em "맑은 고딕", 돋움, 굴림; text-align:center}
 ul, ol			{ list-style-type: none }
 
 /* layout */
-div#container	{ text-align:left; margin:0; background-color:#000 }
-div#content		{ float:left; width:60%; margin-left:120px }
+div#container	{ text-align:left; margin:0; background-color:#000; height: 100px; }
+div#content		{ float:left; width:60%; margin-left:120px}
 div#navigation	{ float:left; width:120px;  }
-div#footer		{ clear:both; width:100% }
+div#footer		{ clear:both; width:100%; position: absolute; bottom: 0}
 
 /* header */
-div#header	h1				{width:40px height:70px; line-height:70px; margin:0; padding-left:10px; color:#FFFFFF ; }
+div#header img				{margin:20px 0px 0px 20px ;height: 50px}
+div#header	h1				{ height:70px; line-height:70px; margin:0; padding-left:10px; font-size: 50px}
 div#header	ul				{ height:20px; margin:0 20px 10px 0;} 
 div#header	li				{ float:right; }
-div#header	li a 			{ color:#fff; font-weight:bold; margin-left:10px; text-decoration:none; }
+div#header	a 				{ color:#fff; font-weight:bold; margin-left:10px; text-decoration:none; }
 
 
 /* navigation */

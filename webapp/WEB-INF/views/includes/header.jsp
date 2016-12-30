@@ -3,7 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<h1>
+<a href="${pageContext.request.contextPath }"><img src="${pageContext.request.contextPath}/assets/images/adminlogo.gif">Modeal</a>
+</h1>
 <ul>
 	<c:choose>
 		<c:when test="${empty adminUser }">
