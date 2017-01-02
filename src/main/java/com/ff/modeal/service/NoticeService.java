@@ -10,16 +10,15 @@ import com.ff.modeal.vo.*;
 
 @Service
 public class NoticeService {
-	private static final int LIST_SIZE = 5;		// 리스팅되는 게시물의 수
 
 	@Autowired
 	private NoticeDao noticeDao;
 	
-	public Map<String, Object> getMessageList(int page, String keyword) {
-		List<NoticeVo> list = noticeDao.getList(keyword, page, LIST_SIZE);
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		
-		return map;
+	public List<NoticeVo> getMessageList() {		// 리스트 단순 출력
+		return noticeDao.getList();
+	}
+	
+	public int writeMessage(NoticeVo noticeVo) {	// 글쓰기
+		return noticeDao.insert(noticeVo);
 	}
 }

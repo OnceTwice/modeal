@@ -6,7 +6,8 @@ public class NoticeVo {
 	private String content;
 	private String regDate;
 	private Long categoryNo;
-
+	private String category;
+	
 	public Long getNo() {
 		return no;
 	}
@@ -37,9 +38,16 @@ public class NoticeVo {
 	public void setCategoryNo(Long categoryNo) {
 		this.categoryNo = categoryNo;
 	}
-	
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
 	@Override
 	public String toString() {
-		return "NoticeVo [no=" + no + ", title=" + title + ", content=" + content + ", regDate=" + regDate + ", categoryNo=" + categoryNo + "]";
+		return "NoticeVo [no=" + no + ", title=" + title + ", content=" + content + ", regDate=" + regDate
+				+ ", categoryNo=" + categoryNo + ", category=" + category + "]";
 	}
 }

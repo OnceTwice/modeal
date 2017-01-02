@@ -8,6 +8,7 @@
 	<title> 공지사항 페이지 </title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
+	<link href="${pageContext.request.contextPath }/assets/css/notice.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div id="container">
@@ -23,7 +24,10 @@
 			</div>
 		</div>
 		
+		
 		<div id="content">
+			<a id="new-book" href="${pageContext.request.contextPath }/notice/write">글쓰기</a>
+			
 			<table class="tbl-ex">
 				<tr>
 					<th>No</th>
@@ -31,18 +35,26 @@
 					<th>Title</th>
 					<th>Date</th>
 					<th>Del</th>
-					<th>&nbsp;</th>
 				</tr>
-				
-				<!-- 출력 빈거임 -->
-				<c:forEach items="${map.list }" var="vo" varStatus="status">
-					<td>${vo.no }</td>
-					<td>${vo.categoryNo }</td>
-					<td>${vo.title }</td>
-					<td>${vo.regDate }</td>
+			
+				<c:forEach items="${list }" var="vo" varStatus="status">
+					<tr>
+						<td>${vo.no }</td>
+						<td>${vo.category }</td>
+						<td>${vo.title }</td>
+						<td>${vo.regDate }</td>
+						<td><a class="del" href="${pageContext.request.contextPath }/notice/delete">삭제</a></td>
+					</tr>
 				</c:forEach>
 			</table>
 			
+			<div class="pager">
+				
+			</div>
+			
+			<c:forEach items="${list }" var="vo" varStatus="status">
+				${list }
+			</c:forEach>
 			
 		</div>
 	</div>

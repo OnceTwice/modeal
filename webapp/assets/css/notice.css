@@ -2,7 +2,24 @@
 
 .tbl-ex		{
 	width:100%;
-	margin:10px auto; 
+	margin:30px auto; 
 	border-collapse:collapse;
-	border-bottom:2px solid #333;
+	border-bottom:3px solid #333;
+}
+
+a.del	{
+	display:block;
+	width:20px;
+	height:20px; 
+	background:url("/modeal/assets/images/recycle.png") no-repeat 0 0;
+	font-size:0;
+}
+
+a#new-book	 { 
+	float:right; 
+	padding:10px 20px 10px 20px ; 
+	border:1px solid #555; 
+	font-weight:bold; 
+	background-color:#E8ECF6; 
+	color:#111 
 }
