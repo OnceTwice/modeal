@@ -33,4 +33,10 @@ public class UserDao {
 		map.put("password", password);
 		return sqlSession.selectOne("user.getUserInfo", map);
 	}
+	
+	//사용자ID 출력
+	public UserVo getUserID(Long no){
+		
+		return sqlSession.selectOne("user.userID", no);
+	}
 }

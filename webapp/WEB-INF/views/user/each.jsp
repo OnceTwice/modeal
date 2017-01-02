@@ -7,8 +7,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<Link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/main.css">
+<Link rel="stylesheet" 	href="${pageContext.request.contextPath}/assets/css/main.css">
+<Link rel="stylesheet" 	href="${pageContext.request.contextPath}/assets/css/user.css" >
 <title>User List</title>
 </head>
 <body>

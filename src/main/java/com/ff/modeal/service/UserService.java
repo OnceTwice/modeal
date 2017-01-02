@@ -28,5 +28,10 @@ public class UserService {
 	public UserVo login(String id, String password) {
 		return userDao.getUserInfo(id, password);
 	}
+	
+	//userID
+	public UserVo userID(Long no){
+		return userDao.getUserID(no);
+	}
 
 }

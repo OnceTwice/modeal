@@ -7,8 +7,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<Link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/main.css">
+<Link rel="stylesheet" 	href="${pageContext.request.contextPath}/assets/css/main.css">
+<Link rel="stylesheet" 	href="${pageContext.request.contextPath}/assets/css/user.css" >
 <title>User List</title>
 </head>
 <body>
@@ -26,31 +26,43 @@
 		</div>
 		<div id="content">
 
-		<h2>총 가입자 : ${usercount } </h2><br>
-		
-		<table class="usertable">
-			<tr>
-				<th>아이디</th>
-				<th>성별</th>
-				<th>거주지역</th>
-				<th>생년월일</th>
-				<th>관리자유무</th>
-				<th>매장번호</th>
-			</tr>
-			<tr>
-				<c:forEach items="${list }" var="vo">
-					<td><a href="${pageContext.request.contextPath }/user/{userno}">${vo.id }</a></td>
-					<td>${vo.gender }</td>
-					<td>${vo.location }</td>
-					<td>${vo.birth }</td>
-					<td>${vo.managerIdentified }</td>
-					<td>${vo.shopNo }</td>
-				</c:forEach>
-			</tr>
+			<h2>총 가입자 : <fmt:formatNumber value="${usercount }" pattern="###,###,###"/>명 </h2><br>
 			
-		
-		</table>
-		
+			<table class="usertable table">
+				<thead>
+					<tr>
+						<th>아이디</th>
+						<th>성별</th>
+						<th>거주지역</th>
+						<th>생년월일</th>
+						<th>관리자유무</th>
+						<th>매장번호</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${list }" var="vo">
+						<tr height="20" onclick="location.href='${pageContext.request.contextPath }/user/view?no=${vo.no}'">
+								<td width="100">${vo.id }</td>
+								<td width="100">${vo.gender }</td>
+								<td width="400">${vo.location }</td>
+								<td width="100">${vo.birth }</td>
+								<td width="100">${vo.managerIdentified }</td>
+								<td width="100">${vo.shopNo }</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+			
+			<div  class="dropdown">
+	  			<form id="search_form" action="" method="get" class="navbar-search">
+	  			<select name="filterCheck" onChange="redirect(this.options.selectedIndex)" class="search-query">
+				  <option value="1">전체</option>
+				  <option value="2">ID</option>
+				  <option value="3">거주지역</option>
+				</select>  
+				<input type="text" id="kwd" name="kwd" value="" placeholder="검색" class="search-query" >
+				</form>
+			</div>
 		</div>
 	</div>
 

@@ -1,4 +1,5 @@
 INSERT INTO USERS VALUES(users_seq.nextval, 'admin', 'admin', 'man', 'none', 'none', 0, null);
+INSERT INTO USERS VALUES(users_seq.nextval, 'sun', 'sun', 'woman', 'none', 'none', 1, null);
 commit;
 
 SELECT * FROM USERS u;

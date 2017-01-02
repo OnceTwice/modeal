@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ff.modeal.security.Admin;
 import com.ff.modeal.service.UserService;
@@ -33,8 +34,17 @@ public class UserController {
 		return "user/userMain";
 	}
 	
-	@RequestMapping("/{userno}")
-	public String usereach(){
+	@Admin
+	@RequestMapping("/view")
+	public String usereach(
+			@RequestParam(value="no",required=true) Long no,
+			Model model){
+
+		//사용자 ID 출력
+		
+		
+		//사용자 댓글 작성 리스트
+		
 		
 		return "user/each";
 	}
