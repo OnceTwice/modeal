@@ -6,6 +6,7 @@
 		<typeAlias alias="noticevo" type="com.ff.modeal.vo.NoticeVo" />
 		<typeAlias alias="shopvo" type="com.ff.modeal.vo.ShopVo" />
 		<typeAlias alias="helpvo" type="com.ff.modeal.vo.HelpVo" />
+		<typeAlias alias="commentvo" type="com.ff.modeal.vo.CommentVo" />
 	</typeAliases>
 
 	<mappers>

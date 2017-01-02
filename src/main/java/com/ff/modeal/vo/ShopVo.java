@@ -1,5 +1,7 @@
 package com.ff.modeal.vo;
 
+import java.util.List;
+
 public class ShopVo {
 	private Long no;
 	private String address;
@@ -7,7 +9,21 @@ public class ShopVo {
 	private String phone;
 	private String picture;
 	private String introduce;
+	private List<CommentVo> comment; // resultMap을 쓰기 위해서 commentvo를 객체로...
+	private List<UserVo> users; // resultMap을 쓰기 위해서 uservo를 객체로...
 	
+	public List<UserVo> getUsers() {
+		return users;
+	}
+	public void setUsers(List<UserVo> users) {
+		this.users = users;
+	}
+	public List<CommentVo> getComment() {
+		return comment;
+	}
+	public void setComment(List<CommentVo> comment) {
+		this.comment = comment;
+	}
 	public Long getNo() {
 		return no;
 	}
@@ -48,6 +64,6 @@ public class ShopVo {
 	@Override
 	public String toString() {
 		return "ShopVo [no=" + no + ", address=" + address + ", name=" + name + ", phone=" + phone + ", picture="
-				+ picture + ", introduce=" + introduce + "]";
+				+ picture + ", introduce=" + introduce + ", comment=" + comment + ", users=" + users + "]";
 	}
 }

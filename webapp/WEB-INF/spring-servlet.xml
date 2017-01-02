@@ -94,8 +94,8 @@
 		</property>
 	</bean>
 	
-	<!-- 12.29(상욱추가) 사진 불러올때 (사진저장은 c:/upload에 되고 불러올때는 /gallery/assets/** 으로 불러온다)-->
+	<!-- [수정]12.31(상욱추가) 사진 불러올때 (사진저장은 c:/upload에 되고 불러올때는 /shop/images/** 으로 불러온다)-->
 	<!-- the mvc resources tag does the magic -->
-	<mvc:resources mapping="/gallery/assets/**" location="file:/upload/" />
+	<mvc:resources mapping="/shop/images/**" location="file:/upload/" />
 
 </beans>

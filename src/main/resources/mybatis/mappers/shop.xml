@@ -2,9 +2,85 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="shop">
-	<select id="list" resultType="shopvo">
+
+<!-- resultMap =================================================================================== -->
+
+	<!-- 매장과 댓글(평가), 사용자를 조인한 값을 한번에 가져오기 위해서 resultMap을 만들어서 사용 -->
+	<!-- ShopVo에도 CommentVo와 UserVo를 변수로 추가했음  -->
+	<resultMap type="shopvo" id="shop">  
+        <id column="no" property="no" />
+        <result column="address" property="address" />  
+        <result column="name" property="name" />  
+        <result column="phone" property="phone" />  
+        <result column="picture" property="picture" />  
+        <result column="introduce" property="introduce" />  
+        <!-- 컬럼은 테이블 이름 / 프로퍼티는 vo에 있는 변수값 이름 -->
+        <collection property="comment" resultMap="comment" javaType="ArrayList"/>  
+        <collection property="users" resultMap="users" javaType="ArrayList"/>
+        <!-- property값은 ShopVo에 만든 변수 이름 / resultMap값은 아래 resultMap의 id값 / javaType은 타입 -->
+    </resultMap>
+    
+    <!-- 이곳에 추가한 컬럼만 표시 되고 추가하지 않은 컬럼은 null값이 뜬다 -->
+    <!-- 필요로 하는 컬럼만 추가해서 사용!!! -->
+    <!-- parent key는 필수로 적어줘야 한다 -->
+    <resultMap type="commentvo" id="comment">
+    	<id column="no" property="no" />
+    	<result column="content" property="content" />
+    	<result column="rank" property="rank" />
+    	<result column="shopno" property="shopNo" />
+    	<result column="usersno" property="usersNo" />
+    </resultMap>
+    
+    <!-- 3개의 테이블을 조인 했으므로 조인할 테이블을 적어야 함 -->
+    <resultMap type="uservo" id="users">
+    	<id column="no" property="no" />
+    	<result column="id" property="id" />
+    </resultMap>
+    
+<!-- resultMap =================================================================================== -->
+    
+    <!-- 사업자 목록 띄우기 -->
+	<select id="list" resultType="shopvo" parameterType="map"> 
 		<![CDATA[
-			select * from shop
+			select * 
+			from (select s.*, rownum rn
+		 			from shop s 
+		 ]]>
+		<!-- 검색어 입력시 추가 되는 쿼리문 -->
+		<!-- 대소문자 무시를 위한 upper추가(lower를 해도 됨) -->
+		<if test="keyword != null or keyword != '' "> 
+			<![CDATA[
+				where (upper(name) like '%' || upper('${keyword }') || '%' or lower(address) like '%' || lower('${keyword }') || '%')
+			]]> 
+		</if>
+		<![CDATA[
+					order by no desc) 
+			where rn > (${page } - 1) * ${list_size } 
+			and rn <= ${page } * ${list_size }
+			order by rn asc
 		]]>
 	</select>
+	
+	
+	<!-- 총 게시물 개수(검색어 있을때는 검색어 포함한 게시물 개수) -->
+	<select id="total" resultType="int" parameterType="string">
+		<![CDATA[
+			select count(*) from shop
+		]]>
+		<if test="value != null or value != ''"> <!-- 검색어 입력시 추가 되는 쿼리문 -->
+			<![CDATA[
+				where upper(name) like '%' || upper('${value }') || '%' or lower(address) like '%' || lower('${value }') || '%'
+			]]> <!-- 대소문자 무시를 위한 upper추가(lower를 해도 됨) -->
+		</if>
+	</select>
+    
+    
+    <!-- 매장 누르면 매장페이지로 이동해서 보이는 목록들 -->
+    <select id="view" resultMap="shop" parameterType="long">
+    	<![CDATA[
+    		select c.*, s.*, u.id from shop s, comments c, users u where s.no = c.shopNo and u.no = c.usersNo and s.no = #{no } 
+    	]]>
+    </select>
+    
+    
 </mapper>
