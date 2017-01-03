@@ -14,8 +14,14 @@ public class HelpService {
 	@Autowired
 	private HelpDao helpDao;
 
-	public List<HelpVo> list(){
-		return helpDao.list();
+	// 고객센터 목록
+	public List<HelpVo> getList(){
+		return helpDao.getList();
 	}
+//	
+//	// 고객센터 총 게시물 수
+//	public long helpSum(){
+//		return helpDao.helpCount();
+//	}
 	
 }

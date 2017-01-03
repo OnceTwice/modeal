@@ -14,9 +14,15 @@ public class HelpDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<HelpVo> list(){
-		
-		return sqlSession.selectList("help.list");
-
+	// 고객센터 목록
+	public List<HelpVo> getList(){	
+		return sqlSession.selectList("help.getList");
 	}
+	
+//	// 고객센터 총 게시물 수
+//	public long helpCount(){
+//		return sqlSession.selectOne("help.helpCount");
+//	}
+	
+	
 }

@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <Link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
 <Link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/help.css">
-<title>고객센터</title>
+<title>고객센터 게시물 상세 페이지</title>
 </head>
 <body>
 	<div id="container">
@@ -26,34 +26,27 @@
 		</div>
 		
 		<div id="content">
-			<br>
-			<h2>총 게시물 : <fmt:formatNumber value="${helpCount }" pattern="###,###,###"/>건 </h2><br>
-			
-			<!-- 게시판 테이블 설정 -->
-			<table class="helptable table">
-				<thead>
-					<tr>
-						<th align="center">번   호</th>
-						<th align="center">제   목</th>
-						<th align="center">등록일</th>
-						<th align="center">작성자</th>
-					</tr>
-				</thead>
 				
+			<table class="helptable table">
+		
+			<tr>
+				<th align="center">번   호</th>
+				<th align="center">제   목</th>
+				<th align="center">내   용</th>
+				<th align="center">등록일</th>
+				<th align="center">작성자</th>
+			</tr>
+			<tr>
 				<c:forEach items="${list }" var="list2">
-					<tbody onclick="location.href='${pageContext.request.contextPath }/help/view?no=${list2.no }'">
-						<tr>
-						<td align="center" width="100">${list2.no}</td>
-						<td align="center" width="400">${list2.title }</td>
-						<td align="center" width="100">${list2.complain }</td>
-						<td align="center" width="100">${list2.usersNo }</td>
-						</tr>
-					</tbody>
+					<td align="center">${list2.no}</td>
+					<td align="center">${list2.title }</td>
+					<td align="center">${list2.complain }</td>
+					<td align="center">${list2.regDate }</td>
+					<td align="center">${list2.usersNo }</td>
 				</c:forEach>
-
-			</table>
-			<br><br>
-		</div>
+			</tr>
+			</table>	
+		</div>	
 	</div>
 	
 	<div id="footer">

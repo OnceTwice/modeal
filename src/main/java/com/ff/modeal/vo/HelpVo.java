@@ -5,6 +5,7 @@ public class HelpVo {
 	private Long no;
 	private String title;
 	private String complain;
+	private String regDate;
 	private Long usersNo;
 	
 	public Long getNo() {
@@ -25,6 +26,12 @@ public class HelpVo {
 	public void setComplain(String complain) {
 		this.complain = complain;
 	}
+	public String getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
 	public Long getUsersNo() {
 		return usersNo;
 	}
@@ -34,7 +41,8 @@ public class HelpVo {
 	
 	@Override
 	public String toString() {
-		return "HelpVo [no=" + no + ", title=" + title + ", complain=" + complain + ", usersNo=" + usersNo + "]";
+		return "HelpVo [no=" + no + ", title=" + title + ", complain=" + complain + ", regDate=" + regDate
+				+ ", usersNo=" + usersNo + "]";
 	}
 
 }
