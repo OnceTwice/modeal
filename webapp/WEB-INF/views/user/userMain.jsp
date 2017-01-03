@@ -28,7 +28,7 @@
 
 			<h2>총 가입자 : <fmt:formatNumber value="${usercount }" pattern="###,###,###"/>명 </h2><br>
 			
-			<table class="usertable table">
+			<table class="table">
 				<thead>
 					<tr>
 						<th>아이디</th>
@@ -40,8 +40,8 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${list }" var="vo">
-						<tr height="20" onclick="location.href='${pageContext.request.contextPath }/user/view?no=${vo.no}'">
+					<c:forEach items="${map.list }" var="vo">
+						<tr class="usertable" height="20" onclick="location.href='${pageContext.request.contextPath }/user/view?no=${vo.no}'">
 								<td width="100">${vo.id }</td>
 								<td width="100">${vo.gender }</td>
 								<td width="400">${vo.location }</td>

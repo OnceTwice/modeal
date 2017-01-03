@@ -17,8 +17,11 @@ public class UserDao {
 	private SqlSession sqlSession;
 
 	//사용자리스트
-	public List<UserVo> getList() {
-		return sqlSession.selectList("user.getUserList");
+	public List<UserVo> getList(String keyword, String filterCheck) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("keyword", keyword);
+		map.put("filterCheck", filterCheck);
+		return sqlSession.selectList("user.getUserList",map);
 	}
 	
 	public long userCount(){
@@ -35,7 +38,7 @@ public class UserDao {
 	}
 	
 	//사용자ID 출력
-	public UserVo getUserID(Long no){
+	public String getUserID(Long no){
 		
 		return sqlSession.selectOne("user.userID", no);
 	}

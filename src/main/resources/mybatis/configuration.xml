@@ -14,5 +14,6 @@
 		<mapper resource="mybatis/mappers/notice.xml" />
 		<mapper resource="mybatis/mappers/shop.xml" />
 		<mapper resource="mybatis/mappers/help.xml" />
+		<mapper resource="mybatis/mappers/comment.xml" />
 	</mappers>
 </configuration>

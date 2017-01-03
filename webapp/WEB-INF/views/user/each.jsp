@@ -27,23 +27,25 @@
 		<div id="content">
 
 		<h2>사용자 ID : ${userID } </h2><br>
-		
-		<table class="usertable">
+
+		<table class=" table" >
 			<tr>
-				<th>매장명</th>
-				<th>댓글내용</th>
-				<th>평점</th>
+				<th width="200">매장명</th>
+				<th width="700">댓글내용</th>
+				<th width="100">평점</th>
 			</tr>
 			<tr>
-				<c:forEach items="${list }" var="vo">
-					<td>${vo.birth }</td>
-					<td>${vo.managerIdentified }</td>
-					<td>${vo.shopNo }</td>
+				<c:forEach items="${list }" var="vo" varStatus="index">
+					<td >${vo.NAME }</td>
+					<td >${vo.CONTENT}</td>
+					<td >${vo.RANK }</td>
 				</c:forEach>
 			</tr>
 			
 		
 		</table>
+		
+		
 		
 		</div>
 	</div>

@@ -4,12 +4,40 @@
 <mapper namespace="user">
 
 	<!-- 가입자 조회 -->
-	<select id="getUserList" resultType="uservo">
-		<![CDATA[
-			select no, id, gender, location, birth, managerIdentified, shopNo 
-			from users 
-			order by managerIdentified
-		]]>
+	<select id="getUserList" parameterType="map" resultType="uservo">
+		<choose>
+			<when test="keyword != null and filterCheck==1">
+				<![CDATA[
+					select no, id, gender, location, birth, managerIdentified, shopNo 
+					from users 
+					where id like '%${keyword }%' or location like '%${keyword }%'
+					order by managerIdentified
+				]]>
+			</when>
+			<when test="keyword != null and filterCheck==2">
+				<![CDATA[
+					select no, id, gender, location, birth, managerIdentified, shopNo 
+					from users 
+					where id like '%${keyword }%'
+					order by managerIdentified
+				]]>
+			</when>
+			<when test="keyword != null and filterCheck==3">
+				<![CDATA[
+					select no, id, gender, location, birth, managerIdentified, shopNo 
+					from users 
+					where location like '%${keyword }%'
+					order by managerIdentified
+				]]>
+			</when>
+			<otherwise>
+				<![CDATA[
+					select no, id, gender, location, birth, managerIdentified, shopNo 
+					from users 
+					order by managerIdentified
+				]]>
+			</otherwise>
+		</choose>
 	</select>
 
 	<!-- 총 가입자 수 조회 -->
@@ -21,14 +49,13 @@
 	</select>
 	
 	<!-- 사용자 ID 출력 -->
-	<select id="userID" parameterType="long" resultType="uservo">
+	<select id="userID" parameterType="long" resultType="string">
 		<![CDATA[
-			select id, no  
+			select id  
 			from users 
 			where no=#{no}
 		]]>
 	</select>
-	
 	
 	 
 	 <!-- 로그인 정보 가져오기(김영조) -->

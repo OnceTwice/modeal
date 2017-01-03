@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="comment">
+
+	<!-- 사용자별 댓글 조회 -->
+	<select id="commentsByID" parameterType="long" resultType="hashmap">
+		<![CDATA[
+			select c.no , c.content, c.rank, s.name
+			from comments c, shop s
+			where c.usersNo=#{usersNo } 
+		]]>
+	</select>
+	
+</mapper>
