@@ -21,6 +21,11 @@
 	width:250px;
 }
 
+/* 커서 모양 변경 */
+.my_cursor{
+    cursor:pointer;
+}
+
 .table{
 	width:100%;max-width:100%;margin-bottom:20px;
     table-layout:fixed;
@@ -74,7 +79,7 @@ div .avg {
 	margin:20px;
 }
 
--- 검색창 css인데 부트스트랩만 추가하면 바로 되는건데 ㅠㅠ 부트스트랩을 가져오면 다른것이 깨지므로... 수동으로 가져오는중 --
+/* 검색창 css인데 부트스트랩만 추가하면 바로 되는건데 ㅠㅠ 부트스트랩을 가져오면 다른것이 깨지므로... 수동으로 가져오는중 */
 input[type="text"] {
     display: inline-block;
     height: 20px;
@@ -97,16 +102,15 @@ input[type="text"] {
     -o-transition: border linear 0.2s, box-shadow linear 0.2s;
     transition: border linear 0.2s, box-shadow linear 0.2s;
 }
-
 .navbar-search .search-query {
     padding: 4px 14px;
+    margin: 10px 5px;
     font-family: NanumGothic, 나눔고딕, "Malgun Gothic", "맑은 고딕", sans-serif;
     font-size: 13px;
     font-weight: normal;
     line-height: 1;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
-    position: relative;
-    left: 40%;
+}
+
+.dropdown{
+	text-align:center;
 }

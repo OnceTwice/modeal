@@ -1,6 +1,7 @@
 package com.ff.modeal.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,19 +16,19 @@ public class ShopService {
 	@Autowired
 	private ShopDao shopDao;
 	
-	public List<ShopDao> list(Integer page, String keyword) {
-		int total = shopDao.total(keyword); // 총 게시물 갯수 (검색어 있을시 검색어를 포함하는 총 게시물 갯수)
+	public List<Map<String, Object>> list(Integer page, String keyword, Integer option) {
+		int total = shopDao.totalKeyword(keyword, option); // 총 게시물 갯수 (검색어 있을시 검색어를 포함하는 총 게시물 갯수)
 		int current_page = page; // 현재 페이지
 		int total_page = (int)Math.ceil((double)total / LIST_SIZE); // 총 페이지수 (총 게시물 수/한페이지의 게시물 수)
 		int current_block = (int)Math.ceil((double)current_page / PAGE_SIZE); // 현재 블럭(◀ 1 2 3 4 5▶ ←여기서 1 2 3 4 5를 말함)
 		int total_block = (int)Math.ceil((double)total_page / PAGE_SIZE);
 		
-		return shopDao.list(page, keyword, LIST_SIZE); 
+		return shopDao.list(page, keyword, option, LIST_SIZE); 
 	}
 	
-	// 총 게시물 갯수 (검색어 있을시 검색어를 포함하는 총 게시물 갯수)
-	public int total(String keyword) {
-		return shopDao.total(keyword);
+	// 총 게시물 개수 (검색어 있을시 검색어를 포함하는 총 게시물 갯수)
+	public int total() {
+		return shopDao.total();
 	}
 		
 	// 해당 번호 매장 상세 보기

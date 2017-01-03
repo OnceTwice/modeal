@@ -14,17 +14,26 @@ public class ShopDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<ShopDao> list(Integer page, String keyword, int list_size) {
+	public List<Map<String, Object>> list(Integer page, String keyword, Integer option, int list_size) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("page", page);
 		map.put("keyword", keyword);
+		map.put("option", option);
 		map.put("list_size", list_size);
 		return sqlSession.selectList("shop.list", map);
 	}
 	
-	// 총 게시물 갯수 (검색어 있을시 검색어를 포함하는 총 게시물 갯수)
-	public int total(String keyword) {
-		return sqlSession.selectOne("shop.total", keyword);
+	// 총 게시물 개수
+	public int total() {
+		return sqlSession.selectOne("shop.total");
+	}
+	
+	// 검색 결과 개수
+	public int totalKeyword(String keyword, Integer option) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("keyword", keyword);
+		map.put("option", option);
+		return sqlSession.selectOne("shop.totalKeyword", map);
 	}
 	
 	// 해당 번호 매장 상세 보기

@@ -1,7 +1,5 @@
 package com.ff.modeal.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,9 +19,10 @@ public class ShopController {
 //	@Admin
 	@RequestMapping("")
 	public String index(@RequestParam(value="keyword", required=false, defaultValue="") String keyword, // jsp가 넘겨주는 검색어를 RequestParam으로 받는다
+								@RequestParam(value="filterCheck", required=false, defaultValue="1") Integer option,
 								@RequestParam(value="page", required=false, defaultValue="1") Integer page, Model model) { // jsp가 넘겨주는 페이지를 RequestParam으로 받는다 
-		model.addAttribute("list", shopService.list(page, keyword));
-		model.addAttribute("total", shopService.total(keyword));
+		model.addAttribute("list", shopService.list(page, keyword, option));
+		model.addAttribute("total", shopService.total());
 		return "shop/shopMain";
 	}
 	

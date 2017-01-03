@@ -31,7 +31,7 @@
 			<h2>총 매장 : <fmt:formatNumber value="${total }" pattern="###,###,###" /></h2><br> <!-- 총 매장의 수 fmt을 이용해서 패턴을 추가했음 백만자리일시 1,000,000 이렇게 됨?! -->
 			<div>
 				<!-- 부트스트랩에서 가져온 테이블폼 -->
-				<table class="table table-striped">
+				<table class="table">
 					 <thead>
 					    <tr>
 					     <th class="short">#</th>
@@ -45,20 +45,29 @@
 					 <!-- controller에서는 list로 받아와서 list2로 이름을 변경 후 사용중-->
 					 <!-- 테이블에 링크 걸기 onclick="location.href... " -->
 					 <c:forEach items="${list }" var="list2" varStatus="no">
-					 <tbody onclick="location.href='${pageContext.request.contextPath }/shop/${list2.no }'">
-					   <tr>
-					     <td>${list2.no }</td> <!-- forEach 태그의 속성으로 ${status.count} <=1부터의 순서 -->
-					     <td>${list2.name }</td>
-					     <td>${list2.address }</td>
-					     <td>${list2.phone }</td>
-					     <td>${list2.comment[0] }</td>
+					 <tbody onclick="location.href='${pageContext.request.contextPath }/shop/${list2.NO }'">
+					   <tr class="my_cursor">
+					     <td>${list2.NO }</td> <!-- forEach 태그의 속성으로 ${status.count} <=1부터의 순서 -->
+					     <td>${list2.NAME }</td>
+					     <td>${list2.ADDRESS }</td>
+					     <td>${list2.PHONE }</td>
+					     <td>${list2.RANK }</td>
 					   </tr>
 					 </tbody>
 					 </c:forEach>
 				</table>
 				<!-- 부트스트랩에서 가져온 검색창 -->
 				<form class="navbar-search" action="${pageContext.request.contextPath }/shop" method="get">
-					<input type="text" class="search-query" placeholder="검색" name="keyword">
+					<div  class="dropdown">
+			  			<form action="" method="get" class="navbar-search">
+			  			<select name="filterCheck" onChange="redirect(this.options.selectedIndex)" class="search-query">
+						  <option value="1">전체</option>
+						  <option value="2">매장명</option>
+						  <option value="3">평점</option>
+						</select>  
+						<input type="text" name="keyword" value="" placeholder="검색" class="search-query" >
+						</form>
+					</div>
 				</form>
 				◀ 1 2 3 4 5 ▶
 			</div>	
