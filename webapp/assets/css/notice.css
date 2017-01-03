@@ -1,13 +1,16 @@
 @CHARSET "UTF-8";
 
-.tbl-ex		{
+
+#notice { margin:20px auto;	width:550px; }		/* id의 값이 notice */
+
+.tbl-ex		{		/* class의 값이 tbl-ex */
 	width:100%;
 	margin:30px auto; 
 	border-collapse:collapse;
 	border-bottom:3px solid #333;
 }
 
-a.del	{
+a.del	{			/* anchor태그의 class값이 del */
 	display:block;
 	width:20px;
 	height:20px; 
@@ -15,11 +18,17 @@ a.del	{
 	font-size:0;
 }
 
-a#new-book	 { 
+a#new-book	 { 		/* anchor태그의 id값이 new-book */
 	float:right; 
 	padding:10px 20px 10px 20px ; 
 	border:1px solid #555; 
 	font-weight:bold; 
 	background-color:#E8ECF6; 
 	color:#111 
+}
+
+.board-form .tbl-ex {		/* class의 값이 board-form, tbl-ex과 td태그의 class값이 label(총3개 적용) */
+	text-align:right;
+	font-weight:bold;
+	width:60px; 
 }

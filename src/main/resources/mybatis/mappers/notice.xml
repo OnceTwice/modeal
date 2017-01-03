@@ -8,6 +8,7 @@
 			from (	select n.no, c.category, n.title, to_char(n.regDate, 'yyyy-mm-dd hh:mi:ss') as regDate
 					from categoryno c, notice n
 					where c.no=n.categoryno)
+			order by no desc
 		]]>
 	</select>
 	
@@ -15,7 +16,23 @@
 		<![CDATA[
 			insert
 			into notice
-			values (board_seq.nextval, #{title}, #{content}, sysdate, #{categoryNo})
+			values (notice_seq.nextval, #{title}, #{content}, sysdate, #{categoryNo})
 		]]>
 	</insert>
+	
+	<delete id="delete" parameterType="noticevo">
+		<![CDATA[
+			delete
+			from notice
+			where no=#{no}
+		]]>
+	</delete>
+	
+	<select id="getByNo" parameterType="long" resultType="noticevo">
+		<![CDATA[
+			select no, title, content
+			from notice
+			where no=#{no}
+		]]>
+	</select>
 </mapper>

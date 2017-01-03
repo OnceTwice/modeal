@@ -71,3 +71,21 @@ select no, category, title, regDate
 from (	select n.no, c.category, n.title, to_char(n.regDate, 'yyyy-mm-dd hh:mi:ss') as regDate
 		from categoryno c, notice n
 		where c.no=n.categoryno);
+		
+-- insert로 만든 categoryno 테이블에 있는 mock data 수정
+select *
+from categoryno;
+
+update categoryno
+set category='Total Notify'
+where no=1;
+
+update categoryno
+set category='User Notify'
+where no=2;
+
+update categoryno
+set category='Shop Notify'
+where no=3;
+
+commit;

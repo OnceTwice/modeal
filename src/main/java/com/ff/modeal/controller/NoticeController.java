@@ -28,14 +28,32 @@ public class NoticeController {
 	}
 	
 //	@Admin
-	@RequestMapping("/write")
+	@RequestMapping("/write")		// index.jsp 삭제 버튼 default값=GET방식, RequestMapping에서의 default값=Get방식
 	public String write() {
 		return "notice/write";
 	}
 	
 //	@Admin
-	@RequestMapping("delete")
-	public String delete() {
-		return "notice/delete";
+	@RequestMapping(value="/write", method=RequestMethod.POST)		// write.jsp에서 form태그 method값=POST
+	public String write(@ModelAttribute NoticeVo vo) {
+		noticeService.writeMessage(vo);
+		
+		return "redirect:/notice";
+	}
+	
+//	@Admin
+	@RequestMapping("/delete")
+	public String delete(@ModelAttribute NoticeVo vo) {
+		noticeService.deleteMessage(vo);
+		
+		return "redirect:/notice";
+	}
+	
+	@RequestMapping("/view")
+	public String view(@RequestParam(value="no", required=true) Long no, Model model) {
+		NoticeVo noticeVo = noticeService.getMessage(no);
+		model.addAttribute("noticeVo", noticeVo);		// view.jsp에 보내주는 변수 noticeVo
+		
+		return "notice/view";
 	}
 }

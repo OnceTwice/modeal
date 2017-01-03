@@ -21,4 +21,14 @@ public class NoticeService {
 	public int writeMessage(NoticeVo noticeVo) {	// 글쓰기
 		return noticeDao.insert(noticeVo);
 	}
+	
+	public int deleteMessage(NoticeVo noticeVo) {
+		return noticeDao.delete(noticeVo);
+	}
+	
+	public NoticeVo getMessage(Long no) {
+		NoticeVo noticeVo = noticeDao.get(no);
+		
+		return noticeVo;
+	}
 }

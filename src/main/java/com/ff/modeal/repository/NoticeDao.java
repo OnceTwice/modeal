@@ -21,4 +21,12 @@ public class NoticeDao {
 	public int insert(NoticeVo noticeVo) {	// 글쓰기
 		return sqlSession.insert("notice.insert", noticeVo);
 	}
+	
+	public int delete(NoticeVo noticeVo) {
+		return sqlSession.delete("notice.delete", noticeVo);
+	}
+	
+	public NoticeVo get(Long no) {
+		return sqlSession.selectOne("notice.getByNo", no);
+	}
 }
