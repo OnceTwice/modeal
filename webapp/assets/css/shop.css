@@ -1,5 +1,40 @@
 @CHARSET "UTF-8";
 
+/* 페이징용 css */
+ul.my_ul {  
+    text-align:center;  
+}  
+ul.my_ul li {  
+    display:inline;  
+    vertical-align:middle;  
+}  
+ul.my_ul li a {  
+    display:-moz-inline-stack;  /*FF2*/  
+    display:inline-block;  
+    vertical-align:top;  
+    padding:4px;  
+    margin-right:3px;  
+    width:15px !important;  
+    color:#000;  
+    font:bold 12px tahoma;  
+    border:1px solid #eee;  
+    text-align:center;  
+    text-decoration:none;  
+    width /**/:26px;    /*IE 5.5*/  
+}  
+ul.my_ul li a.now {  
+    color:#fff;  
+    background-color:#f40;  
+    border:1px solid #f40;  
+}  
+ul.my_ul li a:hover, ul.my_ul li a:focus {  
+    color:#fff;  
+    border:1px solid #f40;  
+    background-color:#f40;  
+}
+
+/* ============================= */
+
 #content {
 	background-color: #fff;
 }
@@ -26,6 +61,8 @@
     cursor:pointer;
 }
 
+/* ============================= */
+
 .table{
 	width:100%;max-width:100%;margin-bottom:20px;
     table-layout:fixed;
@@ -51,7 +88,7 @@ table {
     word-wrap:break-word;
 }
 
-.my_table td{
+.my_table td {
 	width:400px;
 }
 
@@ -114,3 +151,5 @@ input[type="text"] {
 .dropdown{
 	text-align:center;
 }
+
+/* ============================= */

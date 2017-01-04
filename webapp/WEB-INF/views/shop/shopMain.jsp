@@ -44,7 +44,7 @@
 					 <!-- DB에서 매장 리스트 가져오기!!! -->
 					 <!-- controller에서는 list로 받아와서 list2로 이름을 변경 후 사용중-->
 					 <!-- 테이블에 링크 걸기 onclick="location.href... " -->
-					 <c:forEach items="${list }" var="list2" varStatus="no">
+					 <c:forEach items="${map.list }" var="list2" varStatus="no">
 					 <tbody onclick="location.href='${pageContext.request.contextPath }/shop/${list2.NO }'">
 					   <tr class="my_cursor">
 					     <td>${list2.NO }</td> <!-- forEach 태그의 속성으로 ${status.count} <=1부터의 순서 -->
@@ -59,17 +59,31 @@
 				<!-- 부트스트랩에서 가져온 검색창 -->
 				<form class="navbar-search" action="${pageContext.request.contextPath }/shop" method="get">
 					<div  class="dropdown">
-			  			<form action="" method="get" class="navbar-search">
 			  			<select name="filterCheck" onChange="redirect(this.options.selectedIndex)" class="search-query">
 						  <option value="1">전체</option>
 						  <option value="2">매장명</option>
 						  <option value="3">평점</option>
 						</select>  
 						<input type="text" name="keyword" value="" placeholder="검색" class="search-query" >
-						</form>
 					</div>
 				</form>
-				◀ 1 2 3 4 5 ▶
+				<ul class="my_ul">
+					<c:if test="${map.current_block gt 1}">
+						<li>
+						<a href="${pageContext.request.contextPath }/shop?page=${map.before_block }&keyword=${map.kwd }">◀</a>
+						</li>
+					</c:if>
+					<c:forEach begin="${map.begin_block}" end="${map.end_block }" varStatus="no">
+						<li>
+						<a href="${pageContext.request.contextPath }/shop?page=${no.index }&keyword=${map.kwd }">${no.index }</a>
+						<li>
+					</c:forEach>
+					<c:if test="${map.current_block lt map.total_block}">
+						<li>
+							<a href="${pageContext.request.contextPath }/shop?page=${map.after_block }&keyword=${map.kwd }">▶</a>
+						</li>
+					</c:if>
+				</ul>
 			</div>	
 		</div>
 	</div>
