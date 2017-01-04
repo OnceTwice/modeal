@@ -29,4 +29,8 @@ public class NoticeDao {
 	public NoticeVo get(Long no) {
 		return sqlSession.selectOne("notice.getByNo", no);
 	}
+	
+	public int update(NoticeVo noticeVo) {
+		return sqlSession.update("notice.update", noticeVo);
+	}
 }

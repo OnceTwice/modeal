@@ -35,4 +35,12 @@
 			where no=#{no}
 		]]>
 	</select>
+	
+	<update id="update" parameterType="noticevo">
+		<![CDATA[
+			update notice
+			set title=#{title}, content=#{content}
+			where no=#{no}
+		]]>
+	</update>
 </mapper>

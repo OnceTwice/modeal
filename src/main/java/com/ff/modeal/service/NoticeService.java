@@ -1,15 +1,19 @@
 package com.ff.modeal.service;
 
+import java.io.*;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
+import org.springframework.web.multipart.*;
 
 import com.ff.modeal.repository.*;
 import com.ff.modeal.vo.*;
 
 @Service
 public class NoticeService {
+	private static final String SAVE_PATH = "/cho/upload";
+	private static final String URL = "/notice/images/";
 
 	@Autowired
 	private NoticeDao noticeDao;
@@ -31,4 +35,9 @@ public class NoticeService {
 		
 		return noticeVo;
 	}
+	
+	public int updateMessage(NoticeVo noticeVo) {
+		return noticeDao.update(noticeVo);
+	}
+	
 }

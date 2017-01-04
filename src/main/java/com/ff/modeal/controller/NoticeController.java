@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.*;
 
-import com.ff.modeal.security.*;
 import com.ff.modeal.service.*;
 import com.ff.modeal.vo.*;
 
@@ -55,5 +55,22 @@ public class NoticeController {
 		model.addAttribute("noticeVo", noticeVo);		// view.jsp에 보내주는 변수 noticeVo
 		
 		return "notice/view";
+	}
+	
+//	@Admin
+	@RequestMapping("/modify")
+	public String modify(@RequestParam(value="no", required=true) Long no, Model model) {
+		NoticeVo noticeVo = noticeService.getMessage(no);		// 데이터를 가지고 옴
+		model.addAttribute("noticeVo", noticeVo);		// modify.jsp에 보내주는 변수 noticeVo
+		
+		return "notice/modify";
+	}
+	
+//	@Admin
+	@RequestMapping(value="/modify", method=RequestMethod.POST)
+	public String modify(@ModelAttribute NoticeVo vo) {
+		noticeService.updateMessage(vo);
+		
+		return "redirect:/notice";
 	}
 }
