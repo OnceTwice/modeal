@@ -25,6 +25,17 @@
 		</div>
 		
 		<div id="content">
+			
+			<form action="${pageContext.request.contextPath }/notice" method="get">
+				<select name="categoryNo">
+					<option value="1">Total Notify</option>
+					<option value="2">User Notify</option>
+					<option value="3">Shop Notify</option>
+				</select>
+				<input type="text" name="kwd" value="${map.keyword }">
+				<input type="submit" value="찾기">
+			</form>
+			
 			<a id="new-book" href="${pageContext.request.contextPath }/notice/write">글쓰기</a>
 			
 			<table class="tbl-ex">
@@ -36,7 +47,7 @@
 					<th>Del</th>
 				</tr>
 			
-				<c:forEach items="${list }" var="vo" varStatus="status">
+				<c:forEach items="${map.list }" var="vo" varStatus="status">
 					<tr>
 						<td>${vo.no }</td>
 						<td>${vo.category }</td>
@@ -46,9 +57,11 @@
 					</tr>
 				</c:forEach>
 			</table>
-			
-			<div class="pager">
+			<form action="${pageContext.request.contextPath }/notice" method="get">
 				
+			</form>
+			<div class="pager">
+				1
 			</div>
 			
 			<c:forEach items="${list }" var="vo" varStatus="status">

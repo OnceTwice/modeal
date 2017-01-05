@@ -2,14 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="notice">
-	<select id="getList" resultType="noticevo">
-		<![CDATA[
-			select no, category, title, regDate
-			from (	select n.no, c.category, n.title, to_char(n.regDate, 'yyyy-mm-dd hh:mi:ss') as regDate
-					from categoryno c, notice n
-					where c.no=n.categoryno)
-			order by no desc
-		]]>
+	<select id="getList" parameterType="string" resultType="noticevo">
+		<choose>
+			<when test="value != null">
+				<![CDATA[
+					select no, category, title, regDate
+					from (	select n.no, c.category, n.title, to_char(n.regDate, 'yyyy-mm-dd hh:mi:ss') as regDate
+							from categoryno c, notice n
+							where c.no=n.categoryno and (n.title like '%${value}%' or n.content like '%${value}%') )
+					order by no desc
+				]]>
+			</when>
+			<otherwise>
+				<![CDATA[
+					select no, category, title, regDate
+					from (	select n.no, c.category, n.title, to_char(n.regDate, 'yyyy-mm-dd hh:mi:ss') as regDate
+							from categoryno c, notice n
+							where c.no=n.categoryno)
+					order by no desc
+				]]>
+			</otherwise>
+		</choose>
+		
 	</select>
 	
 	<insert id="insert" parameterType="noticevo">
