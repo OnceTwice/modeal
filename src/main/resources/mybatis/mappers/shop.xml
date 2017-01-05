@@ -94,10 +94,10 @@
 	<select id="totalKeyword" resultType="int" parameterType="map">
 		<![CDATA[
 			select count(*) 
-			from(select s.name, nvl(avg(rank), 0) rank 
+			from(select s.no, nvl(avg(rank), 0) rank 
 					from shop s left outer join comments c 
 					on s.no = c.shopNo 
-					group by s.name) 
+					group by s.no) 
 		]]>
 		<!-- 검색어 입력시 추가 되는 쿼리문 -->
 		<!-- 대소문자 무시를 위한 upper추가(lower를 해도 됨) -->
