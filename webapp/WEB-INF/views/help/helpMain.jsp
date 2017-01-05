@@ -31,28 +31,38 @@
 			
 			<!-- 게시판 테이블 설정 -->
 			<table class="helptable table">
-				<thead>
 					<tr>
 						<th align="center">번   호</th>
 						<th align="center">제   목</th>
-						<th align="center">등록일</th>
-						<th align="center">작성자</th>
+						<th align="center">작성일</th>
+						<th align="center">글쓴이</th>
 					</tr>
-				</thead>
 				
-				<c:forEach items="${list }" var="list2">
+				<c:forEach items="${list }" var="list2" varStatus="status">
 					<tbody onclick="location.href='${pageContext.request.contextPath }/help/view?no=${list2.no }'">
 						<tr>
 						<td align="center" width="100">${list2.no}</td>
 						<td align="center" width="400">${list2.title }</td>
-						<td align="center" width="100">${list2.complain }</td>
+						<td align="center" width="100">${list2.regDate}</td>
 						<td align="center" width="100">${list2.usersNo }</td>
 						</tr>
 					</tbody>
 				</c:forEach>
-
 			</table>
-			<br><br>
+			
+			<!-- 카테고리 & 검색창 -->
+			<div class="dropdown">
+				<form id="search_form" action="" method="get" class="navbar-search">
+					<select name="filterCheck" onChange="redirect(this.options.selectedIndex)" class="search-query">
+						<option value="1">전체</option>
+						<option value="2">제목</option>
+						<option value="3">내용</option>
+					</select>				
+					<input type="text" id="kwd" name="kwd" value="" placeholder="검색" class="search-query" >
+					<input type="submit" value="검색" class="bottom">			
+				</form>
+			</div>
+			<br>
 		</div>
 	</div>
 	
