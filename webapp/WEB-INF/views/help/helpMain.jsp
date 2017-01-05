@@ -39,6 +39,7 @@
 					</tr>
 				
 				<c:forEach items="${list }" var="list2" varStatus="status">
+					<!-- 주소창에 ?뒤에 값이 붙어오면 get방식 -->
 					<tbody onclick="location.href='${pageContext.request.contextPath }/help/view?no=${list2.no }'">
 						<tr>
 						<td align="center" width="100">${list2.no}</td>

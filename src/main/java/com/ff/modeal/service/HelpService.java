@@ -1,6 +1,7 @@
 package com.ff.modeal.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,13 @@ public class HelpService {
 	public List<HelpVo> getList(){
 		return helpDao.getList();
 	}
-//	
-//	// 고객센터 총 게시물 수
+	
+	// 고객센터 상세페이지
+	public Map<String, Object> getView(Long no){
+		return helpDao.getView(no);
+	}
+
+//	고객센터 총 게시물 수
 //	public long helpSum(){
 //		return helpDao.helpCount();
 //	}

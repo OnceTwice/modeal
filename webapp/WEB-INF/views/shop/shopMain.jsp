@@ -56,17 +56,7 @@
 					 </tbody>
 					 </c:forEach>
 				</table>
-				<!-- 부트스트랩에서 가져온 검색창 -->
-				<form class="navbar-search" action="${pageContext.request.contextPath }/shop" method="get">
-					<div  class="dropdown">
-			  			<select name="filterCheck" onChange="redirect(this.options.selectedIndex)" class="search-query">
-						  <option value="1">전체</option>
-						  <option value="2">매장명</option>
-						  <option value="3">평점</option>
-						</select>  
-						<input type="text" name="keyword" value="" placeholder="검색" class="search-query" >
-					</div>
-				</form>
+				<!-- 페이징 -->
 				<ul class="my_ul">
 					<c:if test="${map.current_block gt 1}">
 						<li>
@@ -84,6 +74,17 @@
 						</li>
 					</c:if>
 				</ul>
+				<!-- 부트스트랩에서 가져온 검색창 -->
+				<form class="navbar-search" action="${pageContext.request.contextPath }/shop" method="get">
+					<div  class="dropdown">
+			  			<select name="filterCheck" onChange="redirect(this.options.selectedIndex)" class="search-query">
+						  <option value="1">전체</option>
+						  <option value="2">매장명</option>
+						  <option value="3">평점</option>
+						</select>  
+						<input type="text" name="keyword" value="" placeholder="검색" class="search-query" >
+					</div>
+				</form>
 			</div>	
 		</div>
 	</div>

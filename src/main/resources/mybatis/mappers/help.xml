@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+<!-- ★ xml은 Type은 소문자로 작성할것 -->
 <mapper namespace="help">
 	
 	<!-- 고객센터 목록 조회 -->
@@ -11,6 +11,20 @@
 			order by no desc
 		]]>
 	</select>
+	
+	<!-- 고객센터 상세페이지 -->
+	<!-- #{no } = '${no }' ← (#{no}는 ''포함되어있음)-->
+	<!-- resultType :jsp로 보냄, parameterType :jsp에서 받아옴 -->
+	<!-- map을 사용하는 이유 : 여러테이블의 데이터값을 한번에 받아오기 위해서 -->
+	<select id="getView" resultType="map" parameterType="long"> 
+		<![CDATA[
+			select u.ID, h.* 
+			from help h, users u 
+			where h.USERSNO = u.NO 
+			and h.NO = #{no }
+		]]>
+	</select>
+
 	
 	<!-- 총 게시물 수 조회 
 	<select id="helpCount" resultType="long">

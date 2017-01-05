@@ -29,19 +29,24 @@
 		<div id="content">
 			
 			<table class="helptable table">
-				<tr>
-					<th align="left"> 작성자 <input type="text" name="writer" style="width: 200px"></th>				
+				<tr> <!-- 행 나누기 -->
+					<th class="short" align="center"> 작성자 </th>	<!-- th : 필드명 -->
+					<td class="middle" align="left">${view.ID }</td> <!-- td : 데이터(값) -->
+				</tr>	
+				<tr>			
+					<th class="short" align="center"> 등록일 </th>
+					<td class="middle" align="left">${view.REGDATE }</td>	
 				</tr>
 				<tr>
-					<th align="left"> 등록일 </th>
+					<th class="short" align="center"> 제목 </th>
+					<td align="left">${view.TITLE }</td>	
 				</tr>
 				<tr>
-					<th align="left"> 제목 <input type="text" name="title" style="width: 450px"></th>
+					<th class="short" align="center"> 내용</th>
+					<td align="left">${view.COMPLAIN }</td>	
 				</tr>
 				<tr>
-					<th align="left"> 내용 <textarea name="content" style="width: 450px"></textarea></th>
-				</tr>
-				<tr>
+					<!-- c:forEach문(자바의 for문과 같음)으로 돌려준다. -->
 					<c:forEach items="${list }" var="list2" varStatus="status">
 						<td align="center">${list2.no}</td>
 						<td align="center">${list2.title }</td>
