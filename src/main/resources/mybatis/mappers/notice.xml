@@ -13,11 +13,22 @@
 	</select>
 	
 	<insert id="insert" parameterType="noticevo">
-		<![CDATA[
-			insert
-			into notice
-			values (notice_seq.nextval, #{title}, #{content}, sysdate, #{categoryNo})
-		]]>
+		<choose>
+			<when test="saveFileName == null">
+				<![CDATA[
+					insert
+					into notice
+					values (notice_seq.nextval, #{title}, #{content}, sysdate, 0, #{categoryNo})
+				]]>
+			</when>
+			<otherwise>
+				<![CDATA[
+					insert
+					into notice
+					values (notice_seq.nextval, #{title}, #{content}, sysdate, #{saveFileName}, #{categoryNo})
+				]]>
+			</otherwise>
+		</choose>
 	</insert>
 	
 	<delete id="delete" parameterType="noticevo">

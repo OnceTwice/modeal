@@ -5,6 +5,7 @@ public class NoticeVo {
 	private String title;
 	private String content;
 	private String regDate;
+	private String saveFileName;
 	private Long categoryNo;
 	private String category;
 	
@@ -32,6 +33,12 @@ public class NoticeVo {
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
+	public String getSaveFileName() {
+		return saveFileName;
+	}
+	public void setSaveFileName(String saveFileName) {
+		this.saveFileName = saveFileName;
+	}
 	public Long getCategoryNo() {
 		return categoryNo;
 	}
@@ -48,6 +55,6 @@ public class NoticeVo {
 	@Override
 	public String toString() {
 		return "NoticeVo [no=" + no + ", title=" + title + ", content=" + content + ", regDate=" + regDate
-				+ ", categoryNo=" + categoryNo + ", category=" + category + "]";
+				+ ", saveFileName=" + saveFileName + ", categoryNo=" + categoryNo + ", category=" + category + "]";
 	}
 }

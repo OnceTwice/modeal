@@ -73,4 +73,11 @@ public class NoticeController {
 		
 		return "redirect:/notice";
 	}
+	
+	@RequestMapping(value="/upload", method=RequestMethod.POST)
+	public String upload(@ModelAttribute NoticeVo noticeVo, @RequestParam("file") MultipartFile multipartFile) {
+		noticeService.restore(noticeVo, multipartFile);
+		
+		return "redirect:/notice";
+	}
 }

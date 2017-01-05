@@ -9,16 +9,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
 	<link href="${pageContext.request.contextPath }/assets/css/notice.css" rel="stylesheet" type="text/css">
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	
-	<script type="text/javascript">
-		$(function() {
-			$("#upload-image").click(function(event) {
-				event.preventDefault();
-				dialogUpload.dialog("open");
-			});
-		});
-	</script>
 </head>
 <body>
 	<div id="container">
@@ -37,7 +27,7 @@
 		<div id="content">
 			<div id="notice">
 			
-				<form class="notice-form" method="post" action="">
+				<form class="notice-form" enctype="multipart/form-data" method="post" action="upload">
 					<table class="tbl-ex">
 						<tr>
 							<th colspan="2">글쓰기</th>
@@ -64,8 +54,7 @@
 					</table>
 
 					<div class="bottom">
-						<a id="upload-image" href="">이미지 올리기</a>
-						<input type="file">
+						<input type="file" name="file">
 						<a href="${pageContext.request.contextPath }/notice">Calcel</a>
 						<input type="submit" value="Submit">
 					</div>

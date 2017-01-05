@@ -97,5 +97,15 @@
 	<!-- [수정]12.31(상욱추가) 사진 불러올때 (사진저장은 c:/upload에 되고 불러올때는 /shop/images/** 으로 불러온다)-->
 	<!-- the mvc resources tag does the magic -->
 	<mvc:resources mapping="/shop/images/**" location="file:/upload/" />
-
+	
+	<!-- 멀티파트 리졸버 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 최대업로드 가능한 바이트크기 -->
+		<property name="maxUploadSize" value="52428800" />
+		<!-- 디스크에 임시 파일을 생성하기 전에 메모리에 보관할수있는 최대 바이트 크기 -->
+		<!-- property name="maxInMemorySize" value="52428800" / -->
+		<!-- defaultEncoding -->
+		<property name="defaultEncoding" value="utf-8" />
+	</bean>
 </beans>

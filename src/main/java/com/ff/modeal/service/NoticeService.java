@@ -13,7 +13,7 @@ import com.ff.modeal.vo.*;
 @Service
 public class NoticeService {
 	private static final String SAVE_PATH = "/cho/upload";
-	private static final String URL = "/notice/images/";
+//	private static final String URL = "/notice/images/";
 
 	@Autowired
 	private NoticeDao noticeDao;
@@ -40,4 +40,53 @@ public class NoticeService {
 		return noticeDao.update(noticeVo);
 	}
 	
+	public void restore(NoticeVo noticeVo, MultipartFile multipartFile) {
+			
+		try {
+			String orgFileName = multipartFile.getOriginalFilename();
+			String fileExtName = orgFileName.substring(orgFileName.lastIndexOf('.')+1, orgFileName.length());
+			String saveFileName = generateSaveFileName(fileExtName);
+			
+			if(multipartFile.isEmpty() == true) {
+				// DB에 저장
+				noticeVo.setSaveFileName("");
+			} else {
+				// 파일 저장
+				writeFile(multipartFile, saveFileName);
+				
+				// DB에 저장
+				noticeVo.setSaveFileName(saveFileName);
+			}
+			
+			noticeDao.insert(noticeVo);
+			
+		} catch(IOException ex) {
+			// throw new UploadFileException("write file");
+			// log남기기
+			throw new RuntimeException("upload file");
+		}
+	}
+	
+	private void writeFile(MultipartFile multipartFile, String saveFileName) throws IOException {
+		byte[] fileData = multipartFile.getBytes();
+		FileOutputStream fos = new FileOutputStream(SAVE_PATH + "/" + saveFileName);
+		fos.write(fileData);
+		fos.close();
+	}
+	
+	private String generateSaveFileName(String extName) {
+		String fileName = "";
+		Calendar calendar = Calendar.getInstance();
+
+		fileName += calendar.get(Calendar.YEAR);
+		fileName += calendar.get(Calendar.MONTH);
+		fileName += calendar.get(Calendar.DATE);
+		fileName += calendar.get(Calendar.HOUR);
+		fileName += calendar.get(Calendar.MINUTE);
+		fileName += calendar.get(Calendar.SECOND);
+		fileName += calendar.get(Calendar.MILLISECOND);
+		fileName += ("." + extName);
+
+		return fileName;
+	}
 }
