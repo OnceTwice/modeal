@@ -33,9 +33,9 @@ public class ShopService {
 		List<Map<String, Object>> list = shopDao.list(page, keyword, option, LIST_SIZE);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("total", total);
-		map.put("current_page", current_page);
-		map.put("total_page", total_page);
+//		map.put("total", total);
+//		map.put("current_page", current_page);
+//		map.put("total_page", total_page);
 		map.put("current_block", current_block);
 		map.put("total_block", total_block);
 		map.put("before_block", before_block);
