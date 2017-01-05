@@ -32,6 +32,11 @@
 					<option value="2">User Notify</option>
 					<option value="3">Shop Notify</option>
 				</select>
+				<select name="searchNo">
+					<option value="1">All</option>
+					<option value="2">Title</option>
+					<option value="3">Content</option>
+				</select>
 				<input type="text" name="kwd" value="${map.keyword }">
 				<input type="submit" value="찾기">
 			</form>
@@ -57,15 +62,13 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<form action="${pageContext.request.contextPath }/notice" method="get">
-				
-			</form>
+			
 			<div class="pager">
 				1
 			</div>
 			
-			<c:forEach items="${list }" var="vo" varStatus="status">
-				${list }
+			<c:forEach items="${map.list }" var="vo" varStatus="status">
+				${vo }
 			</c:forEach>
 			
 		</div>

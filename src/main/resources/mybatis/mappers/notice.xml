@@ -2,15 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="notice">
-	<select id="getList" parameterType="string" resultType="noticevo">
+	<select id="getList" parameterType="map" resultType="noticevo">
 		<choose>
-			<when test="value != null">
+			<when test="keyword != null and keyword != ''">
 				<![CDATA[
 					select no, category, title, regDate
 					from (	select n.no, c.category, n.title, to_char(n.regDate, 'yyyy-mm-dd hh:mi:ss') as regDate
 							from categoryno c, notice n
-							where c.no=n.categoryno and (n.title like '%${value}%' or n.content like '%${value}%') )
-					order by no desc
+							where c.no=n.categoryno and
+								  c.no=${categoryNo} and
+				]]>
+				<if test="searchNo == 1">
+					<![CDATA[
+						(n.title like '%${keyword}%' or n.content like '%${keyword}%')
+					]]>
+				</if>
+				<if test="searchNo == 2">
+					<![CDATA[
+						(n.title like '%${keyword}%')
+					]]>
+				</if>
+				<if test="searchNo == 3">
+					<![CDATA[
+						(n.content like '%${keyword}%')
+					]]>
+				</if>
+				<![CDATA[
+							order by no desc )
 				]]>
 			</when>
 			<otherwise>
@@ -18,8 +36,8 @@
 					select no, category, title, regDate
 					from (	select n.no, c.category, n.title, to_char(n.regDate, 'yyyy-mm-dd hh:mi:ss') as regDate
 							from categoryno c, notice n
-							where c.no=n.categoryno)
-					order by no desc
+							where c.no=n.categoryno
+							order by no desc )
 				]]>
 			</otherwise>
 		</choose>

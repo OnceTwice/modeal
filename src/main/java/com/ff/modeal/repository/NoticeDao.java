@@ -18,8 +18,13 @@ public class NoticeDao {
 //		return sqlSession.selectList("notice.getList");
 //	}
 	
-	public List<NoticeVo> getList(String keyword) {		// 키워드를 포함한 리스트 출력
-		return sqlSession.selectList("notice.getList", keyword);
+	public List<NoticeVo> getList(String keyword, int categoryNo, int searchNo) {		// 카테고리, 키워드를 포함한 리스트 출력
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("categoryNo", categoryNo);
+		map.put("keyword", keyword);
+		map.put("searchNo", searchNo);
+		
+		return sqlSession.selectList("notice.getList", map);
 	}
 	
 	public int insert(NoticeVo noticeVo) {	// 글쓰기

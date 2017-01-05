@@ -22,14 +22,16 @@ public class NoticeService {
 //		return noticeDao.getList();
 //	}
 	
-	public Map<String, Object> getMessageList(String keyword) {
+	public Map<String, Object> getMessageList(String keyword, int categoryNo, int searchNo) {
 		// 리스트 가져오기
-		List<NoticeVo> list = noticeDao.getList(keyword);
+		List<NoticeVo> list = noticeDao.getList(keyword, categoryNo, searchNo);
 		
 		// 리스트 정보를 맵에 저장
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("list", list);
+		map.put("categoryNo", categoryNo);
 		map.put("keyword", keyword);
+		map.put("searchNo", searchNo);
 		
 		return map;
 	}
