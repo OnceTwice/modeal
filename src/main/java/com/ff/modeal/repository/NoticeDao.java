@@ -14,8 +14,12 @@ public class NoticeDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<NoticeVo> getList() {		// 리스트 단순 출력
-		return sqlSession.selectList("notice.getList");
+//	public List<NoticeVo> getList() {		// 리스트 단순 출력
+//		return sqlSession.selectList("notice.getList");
+//	}
+	
+	public List<NoticeVo> getList(String keyword) {		// 키워드를 포함한 리스트 출력
+		return sqlSession.selectList("notice.getList", keyword);
 	}
 	
 	public int insert(NoticeVo noticeVo) {	// 글쓰기

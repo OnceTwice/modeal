@@ -12,14 +12,26 @@ import com.ff.modeal.vo.*;
 
 @Service
 public class NoticeService {
-	private static final String SAVE_PATH = "/cho/upload";
+	private static final String SAVE_PATH = "/upload";
 //	private static final String URL = "/notice/images/";
 
 	@Autowired
 	private NoticeDao noticeDao;
 	
-	public List<NoticeVo> getMessageList() {		// 리스트 단순 출력
-		return noticeDao.getList();
+//	public List<NoticeVo> getMessageList() {		// 리스트 단순 출력
+//		return noticeDao.getList();
+//	}
+	
+	public Map<String, Object> getMessageList(String keyword) {
+		// 리스트 가져오기
+		List<NoticeVo> list = noticeDao.getList(keyword);
+		
+		// 리스트 정보를 맵에 저장
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		map.put("keyword", keyword);
+		
+		return map;
 	}
 	
 	public int writeMessage(NoticeVo noticeVo) {	// 글쓰기
