@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ff.modeal.vo.ShopVo;
+
 @Repository
 public class ShopDao {
 	
@@ -39,5 +41,14 @@ public class ShopDao {
 	// 해당 번호 매장 상세 보기
 	public List<Object> view(Long no) {
 		return sqlSession.selectList("shop.view", no);
+	}
+	
+	//범위에 맞는 매장 리스트 가져오기
+	public List<ShopVo> maplist(Long range, Long myX, long myY){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("range", range);
+		map.put("myX", myX);
+		map.put("myY", myY);
+		return sqlSession.selectList("shop.maplist", map);
 	}
 }

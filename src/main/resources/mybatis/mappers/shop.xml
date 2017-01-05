@@ -94,10 +94,11 @@
 	<select id="totalKeyword" resultType="int" parameterType="map">
 		<![CDATA[
 			select count(*) 
-			from(select s.no, nvl(avg(rank), 0) rank 
-					from shop s left outer join comments c 
-					on s.no = c.shopNo 
-					group by s.no) 
+			from shop s, (select s.no, nvl(avg(rank), 0) rank 
+							from shop s left outer join comments c 
+							on s.no = c.shopNo
+							group by s.no) c
+			where s.no = c.no 
 		]]>
 		<!-- 검색어 입력시 추가 되는 쿼리문 -->
 		<!-- 대소문자 무시를 위한 upper추가(lower를 해도 됨) -->
@@ -105,17 +106,17 @@
 			<choose>
 				<when test="option == 1">
 					<![CDATA[
-						where (upper(name) like '%' || upper('${keyword }') || '%' or lower(rank) like '%' || lower('${keyword }') || '%')
+						and (upper(name) like '%' || upper('${keyword }') || '%' or lower(rank) like '%' || lower('${keyword }') || '%')
 					]]> 
 				</when>
 				<when test="option == 2">
 					<![CDATA[
-						where (upper(name) like '%' || upper('${keyword }') || '%')
+						and (upper(name) like '%' || upper('${keyword }') || '%')
 					]]> 
 				</when>
 				<when test="option == 3">
 					<![CDATA[
-						where (lower(rank) like '%' || lower('${keyword }') || '%')
+						and (lower(rank) like '%' || lower('${keyword }') || '%')
 					]]> 
 				</when>
 			</choose>
@@ -129,6 +130,14 @@
     		select c.*, s.*, u.id from shop s left outer join comments c on s.no = c.shopno left outer join users u on u.no = c.usersno where s.no = #{no } 
     	]]>
     </select>
+    
+        <!-- 범위에 따른 매장 선택 후 리스트로 output -->
+    <select id="maplist" parameterType="map" resultType="shopvo">
+    <![CDATA[
+    	SELECT *
+  	 	  FROM shop
+ 		 WHERE #{range} > SQRT (POWER ( (#{myX} - coodix), 2) + POWER ( (#{myY} - coodiy), 2))
+    ]]></select>
     
     
 </mapper>
