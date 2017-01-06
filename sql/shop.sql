@@ -1,16 +1,19 @@
 /* 매장 목록 보기*/
 
-SELECT * FROM shop;
+SELECT count(*) FROM shop;
 
 /* 매장 생성 */
 
 INSERT INTO shop
      VALUES (shop_seq.NEXTVAL,
-             '주소',
+             '지번주소',
+             '도로명주소',
              '매장명',
-             '매장번호',
+			 '매장전화번호',
              '매장사진',
-             '매장소개');
+             '매장소개',
+			 27,
+			 140);
 
 /* 매장 삭제 */
 

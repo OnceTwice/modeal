@@ -11,8 +11,8 @@ import com.ff.modeal.repository.ShopDao;
 
 @Service
 public class ShopService {
-	private static final int LIST_SIZE = 2; // 한페이지에 뜨는 게시물 수
-	private static final int PAGE_SIZE = 2; // 한번에 보이는 페이지 수 (◀ 1 2 3 4 5▶ ←이걸 말함)
+	private static final int LIST_SIZE = 3; // 한페이지에 뜨는 게시물 수
+	private static final int PAGE_SIZE = 3; // 한번에 보이는 페이지 수 (◀ 1 2 3 4 5▶ ←이걸 말함)
 	
 	@Autowired
 	private ShopDao shopDao;
