@@ -16,8 +16,8 @@ public class HelpService {
 	private HelpDao helpDao;
 
 	// 고객센터 목록
-	public List<HelpVo> getList(){
-		return helpDao.getList();
+	public List<HelpVo> getList(int searchCondition, String searchKeyword){
+		return helpDao.getList(searchCondition, searchKeyword);
 	}
 	
 	// 고객센터 상세페이지
@@ -25,9 +25,9 @@ public class HelpService {
 		return helpDao.getView(no);
 	}
 
-//	고객센터 총 게시물 수
+	// 고객센터 총 게시물 수
 //	public long helpSum(){
-//		return helpDao.helpCount();
+//		return helpDao.listCount();
 //	}
 	
 }

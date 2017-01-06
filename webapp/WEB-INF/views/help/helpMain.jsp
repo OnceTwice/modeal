@@ -14,12 +14,12 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<c:import url="/WEB-INF/views/includes/header.jsp" />
+			<c:import url="/WEB-INF/views/includes/header.jsp"/>
 		</div>
+		
 		<div id="wrapper">
-
 			<div id="navigation">
-				<c:import url="/WEB-INF/views/includes/navigation.jsp" >
+				<c:import url="/WEB-INF/views/includes/navigation.jsp">
 				<c:param name="menu" value="help"/>
 				</c:import>
 			</div>
@@ -27,7 +27,7 @@
 		
 		<div id="content">
 			<br>
-			<h2>총 게시물 : <fmt:formatNumber value="${helpCount }" pattern="###,###,###"/>건 </h2><br>
+			<h2 align="right">총 게시물 : <fmt:formatNumber value="${helpListCount }" pattern="###,###,###"/>건 </h2><br>
 			
 			<!-- 게시판 테이블 설정 -->
 			<table class="helptable table">
@@ -53,22 +53,22 @@
 			
 			<!-- 카테고리 & 검색창 -->
 			<div class="dropdown">
-				<form id="search_form" action="" method="get" class="navbar-search">
-					<select name="filterCheck" onChange="redirect(this.options.selectedIndex)" class="search-query">
+				<form id="search_form" action="${pageContext.request.contextPath }/help" method="get" class="navbar-search">
+					<select name="searchCondition" onChange="redirect(this.options.selectedIndex)" class="search-query">
 						<option value="1">전체</option>
 						<option value="2">제목</option>
 						<option value="3">내용</option>
-					</select>				
-					<input type="text" id="kwd" name="kwd" value="" placeholder="검색" class="search-query" >
-					<input type="submit" value="검색" class="bottom">			
+					</select>
+					<input type="text" id="kwd" name="searchKeyword" value="" placeholder="검색" class="search-query">
+					<input type="submit" value="검색"/>
 				</form>
 			</div>
-			<br>
+			<br>							
 		</div>
 	</div>
 	
 	<div id="footer">
-		<c:import url="/WEB-INF/views/includes/footer.jsp" />
+		<c:import url="/WEB-INF/views/includes/footer.jsp"/>
 	</div>
 	
 </body>

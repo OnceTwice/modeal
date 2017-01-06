@@ -3,13 +3,42 @@
 <!-- ★ xml은 Type은 소문자로 작성할것 -->
 <mapper namespace="help">
 	
-	<!-- 고객센터 목록 조회 -->
-	<select id="getList" resultType="helpvo">
+	<!-- 고객센터 목록  -->
+	<select id="getList" resultType="helpvo" parameterType="map">
 		<![CDATA[
 			select * 
-			from help 
-			order by no desc
+			from help
 		]]>
+		
+		<if test="searchKeyword != null and searchKeyword != ''">
+		<!-- searchKeyword가 있을 때 -->
+		<!-- when을 쓰기 위해 choose를 사용 -->
+		<choose>			
+			<!-- when은 if문과 같음, test 안에 조건식 적기 -->
+			<when test="searchCondition == 1">
+				<![CDATA[	
+					where title like '%${searchKeyword}%' or complain like '%${searchKeyword}%'
+				]]>
+			</when>
+			
+			<when test="searchCondition == 2">
+				<![CDATA[	
+					where title like '%${searchKeyword}%'
+				]]>
+			</when>
+			
+			<!-- when 조건을 제외한 나머지 -->
+			<otherwise>
+				<![CDATA[	
+					where complain like '%${searchKeyword}%'
+				]]>
+			</otherwise>
+		</choose>
+		</if>
+			<![CDATA[
+				order by no desc
+			]]>
+			
 	</select>
 	
 	<!-- 고객센터 상세페이지 -->
@@ -26,7 +55,7 @@
 	</select>
 
 	
-	<!-- 총 게시물 수 조회 
+	<!-- 고객센터 총 게시물 수 조회 
 	<select id="helpCount" resultType="long">
 		<![CDATA[
 			select count(*) 
