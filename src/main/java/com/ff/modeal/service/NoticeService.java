@@ -14,6 +14,8 @@ import com.ff.modeal.vo.*;
 public class NoticeService {
 	private static final String SAVE_PATH = "/upload";
 //	private static final String URL = "/notice/images/";
+	private static final int LIST_SIZE = 5; // 한 페이지당 게시물 수
+	private static final int PAGE_SIZE = 5; //페이지 리스트의 페이지 수
 
 	@Autowired
 	private NoticeDao noticeDao;
@@ -22,16 +24,48 @@ public class NoticeService {
 //		return noticeDao.getList();
 //	}
 	
-	public Map<String, Object> getMessageList(String keyword, int categoryNo, int searchNo) {
+	public Map<String, Object> getMessageList(String keyword, int categoryNo, int searchNo, int currentPage) {
+		// 페이징을 위한 기본 데이터 계산(총 글수, 총 페이지수, 페이지블록갯수, 현재머물고있는페이지)
+		int totalCount = noticeDao.getTotalCount(keyword, categoryNo, searchNo);		// 총 글의 갯수
+		int pageCount = (int)Math.ceil((double) totalCount / LIST_SIZE);				// 페이지 숫자 총 갯수
+		
+		int blockCount = (int)Math.ceil((double) pageCount / PAGE_SIZE);				// 페이지 숫자를 블록화했을 때의 총 갯수
+		int currentBlock = (int)Math.ceil((double) currentPage / PAGE_SIZE);			// 현재 머무르고 있는 블록 순서
+		System.out.println(totalCount + ", " + pageCount + ", " + blockCount + ", " + currentBlock);
+		
+		// 파라미터 page값 검증
+		if(currentPage < 1) {
+			currentPage = 1;
+			currentBlock = 1;
+		} else if(currentPage > pageCount) {		// 모르겠다...
+			currentPage = pageCount;
+			currentBlock = (int)Math.ceil((double) currentPage / PAGE_SIZE);
+		}
+		
+		// index.jsp에서 페이지 리스트를 랜더링하기 위한 데이터값 계산
+		int beginPage = (currentBlock == 0) ? 1 : ((currentBlock - 1) * PAGE_SIZE + 1);
+		int prevPage = (currentBlock > 1) ? ((currentBlock - 1) * PAGE_SIZE) : 0;
+		int nextPage = (currentBlock < blockCount) ? (currentBlock * PAGE_SIZE + 1) : 0;
+		int endPage = (nextPage > 0) ? ((beginPage - 1) + LIST_SIZE) : pageCount;
+		
 		// 리스트 가져오기
-		List<NoticeVo> list = noticeDao.getList(keyword, categoryNo, searchNo);
+		List<NoticeVo> list = noticeDao.getList(keyword, categoryNo, searchNo, currentPage, LIST_SIZE);
 		
 		// 리스트 정보를 맵에 저장
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("list", list);
-		map.put("categoryNo", categoryNo);
 		map.put("keyword", keyword);
+		map.put("categoryNo", categoryNo);
 		map.put("searchNo", searchNo);
+		
+		map.put("totalCount", totalCount);			// 총 게시글 수
+		map.put("listSize", LIST_SIZE);				// 한 페이지당 게시물 수
+		map.put("currentPage", currentPage);		// 현재 머무르고 있는 페이지
+		
+		map.put("beginPage", beginPage);
+		map.put("prevPage", prevPage);
+		map.put("nextPage", nextPage);
+		map.put("endPage", endPage);
 		
 		return map;
 	}

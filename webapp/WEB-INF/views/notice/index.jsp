@@ -54,7 +54,7 @@
 			
 				<c:forEach items="${map.list }" var="vo" varStatus="status">
 					<tr>
-						<td>${vo.no }</td>
+						<td>${map.totalCount - (map.currentPage - 1)*map.listSize - status.index }</td>
 						<td>${vo.category }</td>
 						<td><a href="${pageContext.request.contextPath }/notice/view?no=${vo.no}">${vo.title }</a></td>
 						<td>${vo.regDate }</td>
@@ -64,7 +64,29 @@
 			</table>
 			
 			<div class="pager">
-				1
+				<ul>
+					<c:if test="${map.prevPage > 0 }" >
+						<li><a href="${pageContext.request.contextPath }/notice?p=${map.prevPage }&kwd=${map.keyword }">◀</a></li>
+					</c:if>
+					
+					<c:forEach begin="${map.beginPage }" end="${map.beginPage + map.listSize - 1 }" var="page">
+						<c:choose>
+							<c:when test="${map.endPage < page }">
+								<li>${page }</li>
+							</c:when> 
+							<c:when test="${map.currentPage == page }">
+								<li class="selected">${page }</li>
+							</c:when>
+							<c:otherwise> 
+								<li><a href="${pageContext.request.contextPath }/notice?p=${page }&kwd=${map.keyword }">${page }</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					
+					<c:if test="${map.nextPage > 0 }" >
+						<li><a href="${pageContext.request.contextPath }/notice?p=${map.nextPage }&kwd=${map.keyword }">▶</a></li>
+					</c:if>	
+				</ul>
 			</div>
 			
 			<c:forEach items="${map.list }" var="vo" varStatus="status">

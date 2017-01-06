@@ -22,9 +22,11 @@ public class NoticeController {
 	@RequestMapping("")
 	public String list(@RequestParam(value="kwd", required=true, defaultValue="") String keyword,
 						@RequestParam(value="categoryNo", required=true, defaultValue="1") int categoryNo,
-						@RequestParam(value="searchNo", required=true, defaultValue="1") int searchNo, Model model) {
+						@RequestParam(value="searchNo", required=true, defaultValue="1") int searchNo,
+						@RequestParam(value="p", required=true, defaultValue="1") int page,
+						Model model) {
 		// List<NoticeVo> list = noticeService.getMessageList();
-		Map<String, Object> map = noticeService.getMessageList(keyword, categoryNo, searchNo);
+		Map<String, Object> map = noticeService.getMessageList(keyword, categoryNo, searchNo, page);
 		
 		model.addAttribute("map", map);
 		

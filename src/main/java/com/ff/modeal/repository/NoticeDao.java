@@ -18,11 +18,14 @@ public class NoticeDao {
 //		return sqlSession.selectList("notice.getList");
 //	}
 	
-	public List<NoticeVo> getList(String keyword, int categoryNo, int searchNo) {		// 카테고리, 키워드를 포함한 리스트 출력
+	public List<NoticeVo> getList(String keyword, int categoryNo, int searchNo, int page, int size) {		// 카테고리, 키워드를 포함한 리스트(글) 출력
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("categoryNo", categoryNo);
 		map.put("keyword", keyword);
 		map.put("searchNo", searchNo);
+		
+		map.put("page", page);
+		map.put("size", size);
 		
 		return sqlSession.selectList("notice.getList", map);
 	}
@@ -41,5 +44,15 @@ public class NoticeDao {
 	
 	public int update(NoticeVo noticeVo) {
 		return sqlSession.update("notice.update", noticeVo);
+	}
+	
+	public int getTotalCount(String keyword, int categoryNo, int searchNo) {		// 페이징을 하기 위한 총 글 갯수
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("keyword", keyword);
+		map.put("categoryNo", categoryNo);
+		map.put("searchNo", searchNo);
+		
+		return sqlSession.selectOne("notice.getTotalCount", map);
+		
 	}
 }

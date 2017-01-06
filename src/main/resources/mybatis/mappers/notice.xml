@@ -6,38 +6,42 @@
 		<choose>
 			<when test="keyword != null and keyword != ''">
 				<![CDATA[
-					select no, category, title, regDate
-					from (	select n.no, c.category, n.title, to_char(n.regDate, 'yyyy-mm-dd hh:mi:ss') as regDate
-							from categoryno c, notice n
-							where c.no=n.categoryno and
-								  c.no=${categoryNo} and
+					select *
+					from (	select no, category, title, regDate, rownum as rn
+							from (	select n.no, c.category, n.title, to_char(n.regDate, 'yyyy-mm-dd hh:mi:ss') as regDate
+									from categoryno c, notice n
+									where c.no=n.categoryno and
+										  c.no=${categoryNo} and
 				]]>
 				<if test="searchNo == 1">
 					<![CDATA[
-						(n.title like '%${keyword}%' or n.content like '%${keyword}%')
+										(n.title like '%${keyword}%' or n.content like '%${keyword}%')
 					]]>
 				</if>
 				<if test="searchNo == 2">
 					<![CDATA[
-						(n.title like '%${keyword}%')
+										(n.title like '%${keyword}%')
 					]]>
 				</if>
 				<if test="searchNo == 3">
 					<![CDATA[
-						(n.content like '%${keyword}%')
+										(n.content like '%${keyword}%')
 					]]>
 				</if>
 				<![CDATA[
-							order by no desc )
+									order by no desc ))
+					where (#{page }-1)*#{size }+1 <= rn and rn <= #{page }*#{size }
 				]]>
 			</when>
 			<otherwise>
 				<![CDATA[
-					select no, category, title, regDate
-					from (	select n.no, c.category, n.title, to_char(n.regDate, 'yyyy-mm-dd hh:mi:ss') as regDate
-							from categoryno c, notice n
-							where c.no=n.categoryno
-							order by no desc )
+					select *
+					from (select no, category, title, regDate, rownum as rn
+							from (	select n.no, c.category, n.title, to_char(n.regDate, 'yyyy-mm-dd hh:mi:ss') as regDate
+									from categoryno c, notice n
+									where c.no=n.categoryno
+									order by no desc ))
+					where (#{page }-1)*#{size }+1 <= rn and rn <= #{page }*#{size }
 				]]>
 			</otherwise>
 		</choose>
@@ -86,4 +90,28 @@
 			where no=#{no}
 		]]>
 	</update>
+	
+	<select id="getTotalCount" parameterType="map" resultType="int">
+		<![CDATA[
+			select count(*)
+			from notice
+		]]>
+		<if test="keyword != null and keyword !=''">
+			<if test="searchNo == 1">
+				<![CDATA[
+					where (n.title like '%${keyword}%' or n.content like '%${keyword}%')
+				]]>
+			</if>
+			<if test="searchNo == 2">
+				<![CDATA[
+					where (n.title like '%${keyword}%')
+				]]>
+			</if>
+			<if test="searchNo == 3">
+				<![CDATA[
+					where (n.content like '%${keyword}%')
+				]]>
+			</if>
+		</if>
+	</select>
 </mapper>
