@@ -26,8 +26,9 @@
 		
 		<div id="content">
 			
-			<form action="${pageContext.request.contextPath }/notice" method="get">
+			<form action="${pageContext.request.contextPath }/notice">
 				<select name="categoryNo">
+			 		<option value="4">All</option>
 					<option value="1">Total Notify</option>
 					<option value="2">User Notify</option>
 					<option value="3">Shop Notify</option>
@@ -66,7 +67,7 @@
 			<div class="pager">
 				<ul>
 					<c:if test="${map.prevPage > 0 }" >
-						<li><a href="${pageContext.request.contextPath }/notice?p=${map.prevPage }&kwd=${map.keyword }">◀</a></li>
+						<li><a href="${pageContext.request.contextPath }/notice?categoryNo=${map.categoryNo }&searchNo=${map.searchNo }&kwd=${map.keyword }&p=${map.prevPage }">◀</a></li>
 					</c:if>
 					
 					<c:forEach begin="${map.beginPage }" end="${map.beginPage + map.listSize - 1 }" var="page">
@@ -78,13 +79,13 @@
 								<li class="selected">${page }</li>
 							</c:when>
 							<c:otherwise> 
-								<li><a href="${pageContext.request.contextPath }/notice?p=${page }&kwd=${map.keyword }">${page }</a></li>
+								<li><a href="${pageContext.request.contextPath }/notice?categoryNo=${map.categoryNo }&searchNo=${map.searchNo }&kwd=${map.keyword }&p=${page }">${page }</a></li>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
 					
 					<c:if test="${map.nextPage > 0 }" >
-						<li><a href="${pageContext.request.contextPath }/notice?p=${map.nextPage }&kwd=${map.keyword }">▶</a></li>
+						<li><a href="${pageContext.request.contextPath }/notice?categoryNo=${map.categoryNo }&searchNo=${map.searchNo }&kwd=${map.keyword }&p=${map.nextPage }">▶</a></li>
 					</c:if>	
 				</ul>
 			</div>

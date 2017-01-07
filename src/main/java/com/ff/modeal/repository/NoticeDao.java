@@ -53,6 +53,5 @@ public class NoticeDao {
 		map.put("searchNo", searchNo);
 		
 		return sqlSession.selectOne("notice.getTotalCount", map);
-		
 	}
 }

@@ -18,6 +18,7 @@ select *
 from categoryno;
 
 delete from categoryno where no=4;
+delete from categoryno;
 
 select *
 from notice;

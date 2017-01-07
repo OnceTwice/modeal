@@ -1,34 +1,71 @@
 @CHARSET "UTF-8";
 
-
-#notice { margin:20px auto;	width:550px; }		/* id의 값이 notice */
-
-.tbl-ex		{		/* class의 값이 tbl-ex */
-	width:100%;
-	margin:30px auto; 
-	border-collapse:collapse;
-	border-bottom:3px solid #333;
+#notice {				/* id의 값이 notice */
+	margin: 20px auto;
+	width: 550px;
+}
+.tbl-ex {				/* class의 값이 tbl-ex */
+	width: 100%;
+	margin: 30px auto;
+	border-collapse: collapse;
+	border-bottom: 3px solid #333;
 }
 
-a.del	{			/* anchor태그의 class값이 del */
-	display:block;
-	width:20px;
-	height:20px; 
-	background:url("/modeal/assets/images/recycle.png") no-repeat 0 0;
-	font-size:0;
+a.del {					/* anchor태그의 class값이 del */
+	display: block;
+	width: 20px;
+	height: 20px;
+	background: url("/modeal/assets/images/recycle.png") no-repeat 0 0;
+	font-size: 0;
 }
 
-a#new-book	 { 		/* anchor태그의 id값이 new-book */
-	float:right; 
-	padding:10px 20px 10px 20px ; 
-	border:1px solid #555; 
-	font-weight:bold; 
-	background-color:#E8ECF6; 
-	color:#111 
+a#new-book { 			/* anchor태그의 id값이 new-book */
+	float: right;
+	padding: 10px 20px 10px 20px;
+	border: 1px solid #555;
+	font-weight: bold;
+	background-color: #E8ECF6;
+	color: #111
 }
 
-.board-form .tbl-ex {		/* class의 값이 board-form, tbl-ex과 td태그의 class값이 label(총3개 적용) */
-	text-align:right;
-	font-weight:bold;
-	width:60px; 
+.board-form .tbl-ex {	/* class의 값이 board-form, tbl-ex과 td태그의 class값이 label(총3개 적용) */
+	text-align: right;
+	font-weight: bold;
+	width: 60px;
+}
+
+/* 게시판 리스트 페이징 */
+div.pager {
+	width: 100%;
+	text-align: center;
+}
+
+div.pager  ul {
+	height: 20px;
+	margin: 10px auto;
+}
+
+div.pager  ul li {
+	color: #ddd;
+	display: inline-block;
+	margin: 5px 0;
+	width: 20px;
+	font-weight: bold;
+}
+
+div.pager  ul li.selected {
+	font-size: 16px;
+	text-decoration: underline;
+	color: #f40808
+}
+
+div.pager  ul li a, div.pager  ul li a:visited, div.pager  ul li a:link,
+	div.pager  ul li a:active {
+	text-decoration: none;
+	color: #555
+}
+
+div.pager  ul li a:hover {
+	text-decoration: none;
+	color: #f00
 }

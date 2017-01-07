@@ -11,8 +11,12 @@
 							from (	select n.no, c.category, n.title, to_char(n.regDate, 'yyyy-mm-dd hh:mi:ss') as regDate
 									from categoryno c, notice n
 									where c.no=n.categoryno and
-										  c.no=${categoryNo} and
 				]]>
+				<if test="(categoryNo == 1) or (categoryNo == 2) or (categoryNo == 3)">
+					<![CDATA[
+										c.no=${categoryNo} and
+					]]>
+				</if>
 				<if test="searchNo == 1">
 					<![CDATA[
 										(n.title like '%${keyword}%' or n.content like '%${keyword}%')
@@ -97,19 +101,27 @@
 			from notice
 		]]>
 		<if test="keyword != null and keyword !=''">
+			<![CDATA[
+				where 
+			]]>
+			<if test="(categoryNo == 1) or (categoryNo == 2) or (categoryNo == 3)">
+				<![CDATA[
+					categoryno=${categoryNo} and
+				]]>
+			</if>
 			<if test="searchNo == 1">
 				<![CDATA[
-					where (n.title like '%${keyword}%' or n.content like '%${keyword}%')
+					(title like '%${keyword}%' or content like '%${keyword}%')
 				]]>
 			</if>
 			<if test="searchNo == 2">
 				<![CDATA[
-					where (n.title like '%${keyword}%')
+					(title like '%${keyword}%')
 				]]>
 			</if>
 			<if test="searchNo == 3">
 				<![CDATA[
-					where (n.content like '%${keyword}%')
+					(content like '%${keyword}%')
 				]]>
 			</if>
 		</if>

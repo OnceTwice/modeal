@@ -31,7 +31,7 @@ public class NoticeService {
 		
 		int blockCount = (int)Math.ceil((double) pageCount / PAGE_SIZE);				// 페이지 숫자를 블록화했을 때의 총 갯수
 		int currentBlock = (int)Math.ceil((double) currentPage / PAGE_SIZE);			// 현재 머무르고 있는 블록 순서
-		System.out.println(totalCount + ", " + pageCount + ", " + blockCount + ", " + currentBlock);
+//		System.out.println(totalCount + ", " + pageCount + ", " + blockCount + ", " + currentBlock);
 		
 		// 파라미터 page값 검증
 		if(currentPage < 1) {

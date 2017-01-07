@@ -21,7 +21,7 @@ public class NoticeController {
 //	@Admin
 	@RequestMapping("")
 	public String list(@RequestParam(value="kwd", required=true, defaultValue="") String keyword,
-						@RequestParam(value="categoryNo", required=true, defaultValue="1") int categoryNo,
+						@RequestParam(value="categoryNo", required=true, defaultValue="4") int categoryNo,
 						@RequestParam(value="searchNo", required=true, defaultValue="1") int searchNo,
 						@RequestParam(value="p", required=true, defaultValue="1") int page,
 						Model model) {
