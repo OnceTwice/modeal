@@ -11,23 +11,22 @@ import com.ff.modeal.vo.HelpVo;
 
 @Service
 public class HelpService {
-	
+
 	@Autowired
 	private HelpDao helpDao;
 
-	// 고객센터 목록
-	public List<HelpVo> getList(int searchCondition, String searchKeyword){
-		return helpDao.getList(searchCondition, searchKeyword);
+	// 총 리스트 수
+	public long helpListCount() {
+		return helpDao.helpListCount();
 	}
 	
-	// 고객센터 상세페이지
-	public Map<String, Object> getView(Long no){
-		return helpDao.getView(no);
+	// 고객센터 리스트
+	public List<HelpVo> helpList(int searchCondition, String searchKeyword) {
+		return helpDao.helpList(searchCondition, searchKeyword);
 	}
-
-	// 고객센터 총 게시물 수
-//	public long helpSum(){
-//		return helpDao.listCount();
-//	}
 	
+	// 뷰 페이지
+	public Map<String, Object> helpView(Long no) {
+		return helpDao.helpView(no);
+	}
 }

@@ -1,51 +1,64 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- ★ xml은 Type은 소문자로 작성할것 -->
+<!-- xml에서 Type은 소문자로 작성할것 -->
 <mapper namespace="help">
-	
-	<!-- 고객센터 목록  -->
-	<select id="getList" resultType="helpvo" parameterType="map">
+
+	<!-- 총 리스트 수 -->
+	<select id="helpListCount" resultType="long">
 		<![CDATA[
-			select * 
+			select count(*) 
+			from help 
+		]]>
+	</select>
+
+	<!-- 고객센터 리스트 -->
+	<select id="helpList" resultType="helpVo" parameterType="map">
+		<![CDATA[
+			select *
 			from help
 		]]>
 		
+		<!-- h.userNo를 u.id로 바꾸려는 sql문 
+			select h.NO, h.TITLE, h.COMPLAIN, h.REGDATE, u.ID, u.NO
+			from help h, users u
+			where h.USERSNO = u.NO
+			and h.USERSNO = #{no }
+		-->
+		
 		<if test="searchKeyword != null and searchKeyword != ''">
-		<!-- searchKeyword가 있을 때 -->
-		<!-- when을 쓰기 위해 choose를 사용 -->
-		<choose>			
-			<!-- when은 if문과 같음, test 안에 조건식 적기 -->
-			<when test="searchCondition == 1">
+			<!-- when을 쓰기 위해 choose를 사용 -->
+			<choose>
+				<!-- when은 = if문 같음, test 안에 조건식 적기 -->
+				<when test="searchCondition == 1">
 				<![CDATA[	
 					where title like '%${searchKeyword}%' or complain like '%${searchKeyword}%'
 				]]>
-			</when>
-			
-			<when test="searchCondition == 2">
+				</when>
+
+				<when test="searchCondition == 2">
 				<![CDATA[	
 					where title like '%${searchKeyword}%'
 				]]>
-			</when>
-			
-			<!-- when 조건을 제외한 나머지 -->
-			<otherwise>
+				</when>
+
+				<!-- otherwise : when 조건을 제외한 나머지 -->
+				<otherwise>
 				<![CDATA[	
 					where complain like '%${searchKeyword}%'
 				]]>
-			</otherwise>
-		</choose>
+				</otherwise>
+			</choose>
 		</if>
-			<![CDATA[
-				order by no desc
-			]]>
-			
+				<![CDATA[
+					order by no desc
+				]]>
 	</select>
-	
-	<!-- 고객센터 상세페이지 -->
-	<!-- #{no } = '${no }' ← (#{no}는 ''포함되어있음)-->
+
+	<!-- 뷰 페이지 -->
+	<!-- #{no } = '${no }' ← (#{no}는 ''포함되어있음) -->
 	<!-- resultType :jsp로 보냄, parameterType :jsp에서 받아옴 -->
 	<!-- map을 사용하는 이유 : 여러테이블의 데이터값을 한번에 받아오기 위해서 -->
-	<select id="getView" resultType="map" parameterType="long"> 
+	<select id="helpView" resultType="map" parameterType="long"> 
 		<![CDATA[
 			select u.ID, h.* 
 			from help h, users u 
@@ -53,13 +66,4 @@
 			and h.NO = #{no }
 		]]>
 	</select>
-
-	
-	<!-- 고객센터 총 게시물 수 조회 
-	<select id="helpCount" resultType="long">
-		<![CDATA[
-			select count(*) 
-			from help 
-		]]>
-	</select> -->
 </mapper>

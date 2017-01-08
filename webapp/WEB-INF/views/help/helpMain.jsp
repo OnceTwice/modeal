@@ -14,62 +14,87 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<c:import url="/WEB-INF/views/includes/header.jsp"/>
+			<c:import url="/WEB-INF/views/includes/header.jsp" />
 		</div>
-		
+
 		<div id="wrapper">
 			<div id="navigation">
 				<c:import url="/WEB-INF/views/includes/navigation.jsp">
-				<c:param name="menu" value="help"/>
+					<c:param name="menu" value="help" />
 				</c:import>
 			</div>
 		</div>
-		
+
 		<div id="content">
 			<br>
-			<h2 align="right">총 게시물 : <fmt:formatNumber value="${helpListCount }" pattern="###,###,###"/>건 </h2><br>
-			
-			<!-- 게시판 테이블 설정 -->
+			<!-- 총 리스트 수 -->
+			<h2 align="right">
+				총 : <fmt:formatNumber value="${helpListCount }" pattern="###,###,###" /> 건
+			</h2>
+			<br>
+
+			<!-- 고객센터 리스트  -->
 			<table class="helptable table">
-					<tr>
-						<th align="center">번   호</th>
-						<th align="center">제   목</th>
-						<th align="center">작성일</th>
-						<th align="center">글쓴이</th>
-					</tr>
-				
-				<c:forEach items="${list }" var="list2" varStatus="status">
-					<!-- 주소창에 ?뒤에 값이 붙어오면 get방식 -->
-					<tbody onclick="location.href='${pageContext.request.contextPath }/help/view?no=${list2.no }'">
+				<tr>
+					<th align="center"> 번 호	</th>
+					<th align="center"> 제 목	</th>
+					<th align="center"> 작성일	</th>
+					<th align="center"> 글쓴이	</th>
+				</tr>
+
+				<c:forEach items="${list }" var="vo" varStatus="status">
+					<!-- 주소창 물음표(?)뒤에 값이 붙어오면 get방식 -->
+					<tbody onclick="location.href='${pageContext.request.contextPath }/help/view?no=${vo.no }'">
 						<tr>
-						<td align="center" width="100">${list2.no}</td>
-						<td align="center" width="400">${list2.title }</td>
-						<td align="center" width="100">${list2.regDate}</td>
-						<td align="center" width="100">${list2.usersNo }</td>
+							<td align="center" width="100"> ${vo.no}	 	</td>
+							<td align="center" width="400"> ${vo.title } 	</td>
+							<td align="center" width="100"> ${vo.regDate} 	</td>
+							<td align="center" width="100"> ${vo.usersNo }	</td>
 						</tr>
 					</tbody>
 				</c:forEach>
 			</table>
+
+			<!-- 페이지 구현하려면 필요한 거... -->
+			<!-- 12345(pageno) 첫페이지(firstpage), 마지막페이지(lastpage), 한페이지에10개씩(pagesize=5) 전체페이지(allpage)  -->
+			<div>
+			<h3 align="center"> ＜	1	2	3	4	5	＞ </h3>
 			
-			<!-- 카테고리 & 검색창 -->
+			<c:if test= "">
+			</c:if>
+			<c:forEach begin="" end="" >
+				<c:choose>
+					<c:when test="">
+					</c:when>
+					<c:otherwise>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			
+			<!-- JSTL에서 for문 사용법 
+			출처: http://kbill.tistory.com/entry/JSTL-core-cforEach-%EC%82%AC%EC%9A%A9%EB%B2%95%EA%B3%BC-varStatus-%EC%83%81%ED%83%9C%EA%B0%92 [김진리]
+			-->
+			</div>
+			<br>
+			<!-- 카테고리 ㆍ 검색 -->
 			<div class="dropdown">
 				<form id="search_form" action="${pageContext.request.contextPath }/help" method="get" class="navbar-search">
 					<select name="searchCondition" onChange="redirect(this.options.selectedIndex)" class="search-query">
-						<option value="1">전체</option>
-						<option value="2">제목</option>
-						<option value="3">내용</option>
-					</select>
-					<input type="text" id="kwd" name="searchKeyword" value="" placeholder="검색" class="search-query">
-					<input type="submit" value="검색"/>
+						<option value="1"> 전체 </option>
+						<option value="2"> 제목 </option>
+						<option value="3"> 내용 </option>
+					</select> 
+					<input type="text" id="kwd" name="searchKeyword" value="" placeholder="검색" class="search-query"> 
+					<input type="submit" value="검색" />
 				</form>
 			</div>
-			<br>							
+			<br>
 		</div>
 	</div>
-	
+
 	<div id="footer">
-		<c:import url="/WEB-INF/views/includes/footer.jsp"/>
+		<c:import url="/WEB-INF/views/includes/footer.jsp" />
 	</div>
-	
+
 </body>
 </html>

@@ -25,46 +25,45 @@
 		</div>
 		<div id="content">
 		<br>
-		<h2 align="right">고객센터 상세페이지</h2>
+		<h2 align="right"> 뷰 페이지 </h2>
 		<br>
-			<!-- 고객센터 상세페이지 -->
+			<!-- 뷰 페이지 -->
 			<table class="helptable table">
-				<tr>
-					<!-- tr : 행 나누기 -->
-					<th class="short" align="center">작성자</th>
-					<!-- th : 필드명 -->
-					<td class="middle" align="left">${view.ID }</td>
-					<!-- td : 데이터(값)-->
+				<tr>													<!-- tr : 행 나누기 -->
+					<th class="short"  align="center"> 작성자 </th>		<!-- th : 필드명(제목) -->
+					<td class="middle" align="left"> ${view.ID } </td>	<!-- td : 데이터(값)-->
 				</tr>
 				<tr>
-					<th class="short" align="center">등록일</th>
-					<td class="middle" align="left">${view.REGDATE }</td>
+					<th class="short" align="center"> 등록일 </th>
+					<td class="middle" align="left"> ${view.REGDATE } </td>
 				</tr>
 				<tr>
-					<th class="short" align="center">제목</th>
-					<td align="left">${view.TITLE }</td>
+					<th class="short" align="center"> 제목 </th>
+					<td class="middle" align="left"> ${view.TITLE } </td>
 				</tr>
 				<tr>
-					<th class="short" align="center">내용</th>
-					<td align="left">${view.COMPLAIN }</td>
+					<th class="short" align="center"> 내용 </th>
+					<td class="middle" align="left"> ${view.COMPLAIN } </td>
 				</tr>
 				<tr>
 					<!-- c:forEach문(자바의 for문과 같음)으로 돌려준다. -->
-					<c:forEach items="${list }" var="list2" varStatus="status">
-						<td align="center">${list2.no}</td>
-						<td align="center">${list2.title }</td>
-						<td align="center">${list2.complain }</td>
-						<td align="center">${list2.regDate }</td>
-						<td align="center">${list2.usersNo }</td>
+					<c:forEach items="${list }" var="vo" varStatus="status">
+						<td align="center"> ${vo.no}		</td>
+						<td align="center"> ${vo.title }	</td>
+						<td align="center"> ${vo.complain }	</td>
+						<td align="center"> ${vo.regDate }	</td>
+						<td align="center"> ${vo.usersNo }	</td>
 					</c:forEach>
 				</tr>
 			</table>
+			
 			<!-- 전체목록 버튼 -->
 			<form action="${pageContext.request.contextPath }/help" method="get">
 				<input type="submit" value="전체목록">
 			</form>
 		</div>
 	</div>
+	
 	<div id="footer">
 		<c:import url="/WEB-INF/views/includes/footer.jsp" />
 	</div>

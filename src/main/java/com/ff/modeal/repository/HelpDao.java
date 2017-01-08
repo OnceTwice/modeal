@@ -15,23 +15,22 @@ public class HelpDao {
 
 	@Autowired
 	private SqlSession sqlSession;
+
+	// 총 리스트 수
+	public long helpListCount() {
+		return sqlSession.selectOne("help.helpListCount");
+	}
 	
-	// 고객센터 목록 & 검색창
-	public List<HelpVo> getList(int searchCondition, String searchKeyword){	
+	// 고객센터 리스트ㆍ검색창
+	public List<HelpVo> helpList(int searchCondition, String searchKeyword) {
 		Map<String, Object> map = new HashMap<String, Object>();
 			map.put("searchCondition", searchCondition);
 			map.put("searchKeyword", searchKeyword);
-		return sqlSession.selectList("help.getList", map);
-	}
+		return sqlSession.selectList("help.helpList", map);
+	}	
 	
-	// 고객센터 상세페이지
-	public Map<String, Object> getView(Long no){	
-		return sqlSession.selectOne("help.getView", no);
+	// 뷰페이지
+	public Map<String, Object> helpView(Long no) {
+		return sqlSession.selectOne("help.helpView", no);
 	}
-	
-	// 고객센터 총 게시물 수
-//	public long listCount(){
-//		return sqlSession.selectOne("help.listCount");
-//	}
-		
 }
