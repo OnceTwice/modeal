@@ -26,12 +26,13 @@ public class UserController {
 	public String userIndex(
 			@RequestParam(value="kwd", required=true, defaultValue="") String keyword,
 			@RequestParam(value="filterCheck", required=true, defaultValue="1") String filterCheck,
+			@RequestParam(value="page", required=true, defaultValue="1") int page,
 			Model model){		
 		
 		//사용자 리스트 
 //		List<UserVo> list = userService.getListUser();
 //		model.addAttribute("list", list);
-		Map<String, Object> map = userService.getListUser(keyword, filterCheck);
+		Map<String, Object> map = userService.getListUser(keyword, filterCheck, page);
 		model.addAttribute("map", map);
 		
 		

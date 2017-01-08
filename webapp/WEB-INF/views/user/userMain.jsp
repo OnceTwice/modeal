@@ -54,6 +54,24 @@
 			</table>
 			
 			<div  class="dropdown">
+				<ul><li>
+					<c:if test="${map.pre_page>map.count_page}" >
+						<a href="${pageContext.request.contextPath }/user?page=${map.before_page}&kwd=${kwd }">◀</a>
+					</c:if>
+					<c:forEach begin="${map.pre_page }" end="${map.after_page }" var="page">
+						<c:choose>
+						<c:when test="${page > map.last_page}">
+						</c:when>
+						<c:otherwise>
+						<a href="${pageContext.request.contextPath }/user?page=${page}&kwd=${kwd }">${page}</a>
+						</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<c:if test="${map.after_page<map.last_page }" >
+						<a href="${pageContext.request.contextPath }/user?page=${map.next_page}&kwd=${kwd }">▶</a>
+					</c:if>
+					</li>
+				</ul>
 	  			<form id="search_form" action="" method="get" class="navbar-search">
 	  			<select name="filterCheck" onChange="redirect(this.options.selectedIndex)" class="search-query">
 				  <option value="1">전체</option>

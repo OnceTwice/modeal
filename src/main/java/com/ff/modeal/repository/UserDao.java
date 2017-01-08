@@ -17,15 +17,25 @@ public class UserDao {
 	private SqlSession sqlSession;
 
 	//사용자리스트
-	public List<UserVo> getList(String keyword, String filterCheck) {
+	public List<UserVo> getList(String keyword, String filterCheck,int page, int user_page) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("keyword", keyword);
 		map.put("filterCheck", filterCheck);
+		map.put("page", page);
+		map.put("user_page", user_page);
 		return sqlSession.selectList("user.getUserList",map);
 	}
 	
+	// 사용자수 조회
 	public long userCount(){
-		return sqlSession.selectOne("user.userConut");
+		return sqlSession.selectOne("user.userCount");
+	}
+	// 사용자 수 & 검색 수  조회
+	public long userByKeywordCount(String keyword, String filterCheck){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("keyword", keyword);
+		map.put("filterCheck", filterCheck);
+		return sqlSession.selectOne("user.userByKeywordCount",map);
 	}
 
 	// 로그인 정보 가져오기(김영조)

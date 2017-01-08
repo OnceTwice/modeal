@@ -8,40 +8,69 @@
 		<choose>
 			<when test="keyword != null and filterCheck==1">
 				<![CDATA[
-					select no, id, gender, location, birth, managerIdentified, shopNo 
-					from users 
-					where id like '%${keyword }%' or location like '%${keyword }%'
-					order by managerIdentified
+					select u.* from
+						(select rownum as rn, no, id, gender, location, birth, managerIdentified, shopNo 
+						from users 
+						where id like '%${keyword }%' or location like '%${keyword }%'
+						order by no desc ) u
+					where rn<=${page}*${user_page } and rn>(${page}-1)*${user_page }
 				]]>
 			</when>
 			<when test="keyword != null and filterCheck==2">
 				<![CDATA[
-					select no, id, gender, location, birth, managerIdentified, shopNo 
-					from users 
-					where id like '%${keyword }%'
-					order by managerIdentified
+					select u.* from
+						(select rownum as rn, no, id, gender, location, birth, managerIdentified, shopNo 
+						from users 
+						where id like '%${keyword }%'
+						order by no desc ) u
+					where rn<=${page}*${user_page } and rn>(${page}-1)*${user_page }
 				]]>
 			</when>
 			<when test="keyword != null and filterCheck==3">
 				<![CDATA[
-					select no, id, gender, location, birth, managerIdentified, shopNo 
-					from users 
-					where location like '%${keyword }%'
-					order by managerIdentified
+					select u.* from
+						(select rownum as rn, no, id, gender, location, birth, managerIdentified, shopNo 
+						from users 
+						where location like '%${keyword }%'
+						order by no desc) u
+					where rn<=${page}*${user_page } and rn>(${page}-1)*${user_page }
 				]]>
 			</when>
 			<otherwise>
 				<![CDATA[
-					select no, id, gender, location, birth, managerIdentified, shopNo 
-					from users 
-					order by managerIdentified
+					select u.* from
+						(select rownum as rn, no, id, gender, location, birth, managerIdentified, shopNo 
+						from users 
+						order by no desc) u
+					where rn<=${page}*${user_page } and rn>(${page}-1)*${user_page }
 				]]>
 			</otherwise>
 		</choose>
 	</select>
 
+	<!-- 가입자 수 & 검색 수 조회 -->
+	<select id="userByKeywordCount" parameterType="map" resultType="long">
+		<![CDATA[
+			select count(*) 
+			from users
+		]]>
+			<choose>
+			<when test="keyword != null and filterCheck==1">
+				where id like '%${keyword }%' or location like '%${keyword }%'
+			</when>
+			<when test="keyword != null and filterCheck==2">
+				where id like '%${keyword }%'
+			</when>
+			<when test="keyword != null and filterCheck==3">
+				where location like '%${keyword }%'
+			</when>
+			<otherwise>
+			</otherwise>
+			</choose>
+	</select>
+	
 	<!-- 총 가입자 수 조회 -->
-	<select id="userConut" resultType="long">
+	<select id="userCount" resultType="long">
 		<![CDATA[
 			select count(*) 
 			from users
