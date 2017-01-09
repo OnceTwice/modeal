@@ -54,7 +54,7 @@
 			</table>
 			
 			<div  class="dropdown">
-				<ul><li>
+				<ul class="my_ul"><li>
 					<c:if test="${map.pre_page>map.count_page}" >
 						<a href="${pageContext.request.contextPath }/user?page=${map.before_page}&kwd=${kwd }">◀</a>
 					</c:if>
