@@ -12,8 +12,8 @@ public class ShopVo {
 	private String introduce;
 	private List<CommentVo> comment; // resultMap을 쓰기 위해서 commentvo를 객체로...
 	private List<UserVo> users; // resultMap을 쓰기 위해서 uservo를 객체로...
-	private Double coodiX;
-	private Double coodiY;
+	private Double longitude;
+	private Double latitude;
 
 	public Long getNo() {
 		return no;
@@ -87,27 +87,26 @@ public class ShopVo {
 		this.users = users;
 	}
 
-	public Double getCoodiX() {
-		return coodiX;
+	public Double getLongitude() {
+		return longitude;
 	}
 
-	public void setCoodiX(Double coodiX) {
-		this.coodiX = coodiX;
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
 	}
 
-	public Double getCoodiY() {
-		return coodiY;
+	public Double getLatitude() {
+		return latitude;
 	}
 
-	public void setCoodiY(Double coodiY) {
-		this.coodiY = coodiY;
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
 	}
 
 	@Override
 	public String toString() {
 		return "ShopVo [no=" + no + ", address=" + address + ", newAddress=" + newAddress + ", name=" + name
 				+ ", phone=" + phone + ", picture=" + picture + ", introduce=" + introduce + ", comment=" + comment
-				+ ", users=" + users + ", coodiX=" + coodiX + ", coodiY=" + coodiY + "]";
+				+ ", users=" + users + ", longitude=" + longitude + ", latitude=" + latitude + "]";
 	}
-
 }
