@@ -21,16 +21,20 @@ public class MapsController {
 	private MapsService mapsService;
 
 	@ResponseBody
-	@RequestMapping(value = "list", method = RequestMethod.GET)
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public JSONResult maplist(@RequestParam(value = "range", required = true, defaultValue = "0") String range,
-			@RequestParam(value = "myx", required = true, defaultValue = "0") String myx,
-			@RequestParam(value = "myy", required = true, defaultValue = "0") String myy) {
-		range = "2";
-		myx = "3";
-		myy = "3";
-		List<ShopVo> list = mapsService.maplist(range, myx, myy);
-
+			@RequestParam(value = "longitude", required = true, defaultValue = "0") String longitude,
+			@RequestParam(value = "latitude", required = true, defaultValue = "0") String latitude) {
+		range = "0.2";
+		longitude ="37.49";
+		latitude = "127.02";
+		List<ShopVo> list = mapsService.maplist(range, longitude, latitude);
 		return JSONResult.success(list);
 	}
 
+	@ResponseBody
+	@RequestMapping("")
+	public String hello() {
+		return "hello23443";
+	}
 }

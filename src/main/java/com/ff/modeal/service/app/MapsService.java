@@ -13,13 +13,13 @@ public class MapsService {
 
 	@Autowired
 	private ShopDao shopDao;
-	
-	public List<ShopVo> maplist(String range, String myx, String myy){
-		Long longRange = Long.valueOf(range);
-		Long longMyX = Long.valueOf(myx);
-		Long longMyy = Long.valueOf(myy);
-		
-		List<ShopVo> list = shopDao.maplist(longRange, longMyX, longMyy);
+
+	public List<ShopVo> maplist(String range, String longitude, String latitude) {
+		Double doubleRange = Double.valueOf(range);
+		Double doubleLongitude = Double.valueOf(longitude);
+		Double doubleLatitude = Double.valueOf(latitude);
+
+		List<ShopVo> list = shopDao.maplist(doubleRange, doubleLongitude, doubleLatitude);
 		return list;
 	}
 }

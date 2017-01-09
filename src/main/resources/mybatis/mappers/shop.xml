@@ -136,7 +136,7 @@
     <![CDATA[
     	SELECT *
   	 	  FROM shop
- 		 WHERE #{range} > SQRT (POWER ( (#{myX} - coodix), 2) + POWER ( (#{myY} - coodiy), 2))
+ 		 WHERE #{range} > SQRT (POWER ( (#{longitude} - coodix), 2) + POWER ( (#{latitude} - coodiy), 2))
     ]]></select>
     
     
