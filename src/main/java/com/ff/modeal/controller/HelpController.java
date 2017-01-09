@@ -1,6 +1,6 @@
 package com.ff.modeal.controller;
 
-import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ff.modeal.service.HelpService;
-import com.ff.modeal.vo.HelpVo;
 
 @Controller
 @RequestMapping("/help")
@@ -30,8 +29,8 @@ public class HelpController {
 		model.addAttribute("helpListCount", helpListCount);
 		
 		// 고객센터 리스트
-		List<HelpVo> list = helpService.helpList(searchCondition, searchKeyword);
-		model.addAttribute("list", list);
+		Map<String, Object> map = helpService.helpList(searchCondition, searchKeyword);
+		model.addAttribute("map", map);
 		
 		return "help/helpMain";
 	}

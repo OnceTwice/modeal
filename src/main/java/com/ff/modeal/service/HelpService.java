@@ -1,5 +1,6 @@
 package com.ff.modeal.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,8 +22,14 @@ public class HelpService {
 	}
 	
 	// 고객센터 리스트
-	public List<HelpVo> helpList(int searchCondition, String searchKeyword) {
-		return helpDao.helpList(searchCondition, searchKeyword);
+	public Map<String, Object> helpList(int searchCondition, String searchKeyword) {
+		List<HelpVo> list = helpDao.helpList(searchCondition, searchKeyword);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		map.put("searchCondition", searchCondition);
+		map.put("searchKeyword", searchKeyword);
+		return map;
 	}
 	
 	// 뷰 페이지

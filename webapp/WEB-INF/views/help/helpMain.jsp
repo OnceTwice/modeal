@@ -42,14 +42,14 @@
 					<th align="center"> 글쓴이	</th>
 				</tr>
 
-				<c:forEach items="${list }" var="vo" varStatus="status">
+				<c:forEach items="${map.list }" var="vo">
 					<!-- 주소창 물음표(?)뒤에 값이 붙어오면 get방식 -->
-					<tbody onclick="location.href='${pageContext.request.contextPath }/help/view?no=${vo.no }'">
+					<tbody onclick="location.href='${pageContext.request.contextPath }/help/view?no=${vo.NO }'">
 						<tr>
-							<td align="center" width="100"> ${vo.no}	 	</td>
-							<td align="center" width="400"> ${vo.title } 	</td>
-							<td align="center" width="100"> ${vo.regDate} 	</td>
-							<td align="center" width="100"> ${vo.usersNo }	</td>
+							<td align="center" width="100"> ${vo.NO}	 	</td>
+							<td align="center" width="400"> ${vo.TITLE } 	</td>
+							<td align="center" width="100"> ${vo.REGDATE} 	</td>
+							<td align="center" width="100"> ${vo.ID }		</td>
 						</tr>
 					</tbody>
 				</c:forEach>

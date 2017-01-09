@@ -23,6 +23,7 @@ public class HelpDao {
 	
 	// 고객센터 리스트ㆍ검색창
 	public List<HelpVo> helpList(int searchCondition, String searchKeyword) {
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 			map.put("searchCondition", searchCondition);
 			map.put("searchKeyword", searchKeyword);
