@@ -30,7 +30,7 @@
 			<!-- 뷰 페이지 -->
 			<table class="helptable table">
 				<tr>													<!-- tr : 행 나누기 -->
-					<th class="short"  align="center"> 작성자 </th>		<!-- th : 필드명(제목) -->
+					<th class="short"  align="center"> 작성자 </th>			<!-- th : 필드명(제목) -->
 					<td class="middle" align="left"> ${view.ID } </td>	<!-- td : 데이터(값)-->
 				</tr>
 				<tr>

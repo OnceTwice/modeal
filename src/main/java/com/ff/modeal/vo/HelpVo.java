@@ -41,8 +41,6 @@ public class HelpVo {
 	
 	@Override
 	public String toString() {
-		return "HelpVo [no=" + no + ", title=" + title + ", complain=" + complain + ", regDate=" + regDate
-				+ ", usersNo=" + usersNo + "]";
+		return "HelpVo [no=" + no + ", title=" + title + ", complain=" + complain + ", regDate=" + regDate + ", usersNo=" + usersNo + "]";
 	}
-
 }
