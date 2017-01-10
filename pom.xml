@@ -112,12 +112,7 @@
 			<version>1.2</version>
 		</dependency>
 
-		<!-- oracle jdbc -->
-		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc6</artifactId>
-			<version>11.1.0.7.0</version>
-		</dependency>
+	
 
 		<!-- spring jdbc -->
 		<dependency>
@@ -171,6 +166,20 @@
 			<version>1.4</version>
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>5.1.40</version>
+		</dependency>
+		<!-- Common DBCP -->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+		
+		
 		<!-- Logback
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -186,13 +195,6 @@
 
 	</dependencies>
 
-	<repositories>
-		<repository>
-			<id>oracle</id>
-			<name>ORACLE JDBC Repository</name>
-			<url>http://maven.jahia.org/maven2</url>
-		</repository>
-	</repositories>
 
 	<build>
 		<plugins>
