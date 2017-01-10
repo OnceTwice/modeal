@@ -56,7 +56,7 @@
 			</table>
 
 			<!-- 페이지 구현하려면 필요한 거... -->
-			<!-- 12345(pageno) 첫페이지(firstpage), 마지막페이지(lastpage), 한페이지에10개씩(pagesize=5) 전체페이지(allpage)  -->
+			<!-- 12345(pageno) 첫페이지(firstpage), 마지막페이지(lastpage), 한페이지에10개씩(pagesize=5), 전체페이지(allpage), <이전페이지(beforepage), >다음페이지(nextpage) -->
 			<div>
 			<h3 align="center"> ＜	1	2	3	4	5	＞ </h3>
 			
@@ -71,9 +71,6 @@
 				</c:choose>
 			</c:forEach>
 			
-			<!-- JSTL에서 for문 사용법 
-			출처: http://kbill.tistory.com/entry/JSTL-core-cforEach-%EC%82%AC%EC%9A%A9%EB%B2%95%EA%B3%BC-varStatus-%EC%83%81%ED%83%9C%EA%B0%92 [김진리]
-			-->
 			</div>
 			<br>
 			<!-- 카테고리 ㆍ 검색 -->
