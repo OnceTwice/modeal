@@ -90,3 +90,35 @@ set category='Shop Notify'
 where no=3;
 
 commit;
+
+-- mySQL 시작
+-- 현재 날짜 검색
+select now();
+select sysdate();
+
+-- 현재 날짜 String 출력
+select date_format(now(), '%Y-%m-%d %H:%i:%s');
+
+-- insert
+insert into notice (title, content, `regDate`, `saveFileName`, `categoryNo`)
+VALUES('title', 'content', DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s' ), 'savefilename', 1);
+
+insert
+into categoryno
+values(1, 'Total Notify');
+
+-- table insert
+select *
+from notice;
+
+select *
+from categoryno;
+
+commit;
+-- 
+select *
+from (select no, category, title, regDate, FORMAT(@ROWNUM:=@ROWNUM+1,0) AS rn
+		from (	select n.no, c.category, n.title, DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s' ) as regDate
+				from categoryno c, notice n
+				where c.no=n.categoryno
+				order by no desc )k, (select @ROWNUM:=0) b )j;

@@ -7,8 +7,8 @@
 			<when test="keyword != null and keyword != ''">
 				<![CDATA[
 					select *
-					from (	select no, category, title, regDate, rownum as rn
-							from (	select n.no, c.category, n.title, to_char(n.regDate, 'yyyy-mm-dd hh:mi:ss') as regDate
+					from (	select no, category, title, regDate, FORMAT(@ROWNUM:=@ROWNUM+1,0) AS rn
+							from (	select n.no, c.category, n.title, DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s' ) as regDate
 									from categoryno c, notice n
 									where c.no=n.categoryno and
 				]]>
@@ -33,18 +33,18 @@
 					]]>
 				</if>
 				<![CDATA[
-									order by no desc ))
+									order by no desc )k, (select @ROWNUM:=0) b )j
 					where (#{page }-1)*#{size }+1 <= rn and rn <= #{page }*#{size }
 				]]>
 			</when>
 			<otherwise>
 				<![CDATA[
 					select *
-					from (select no, category, title, regDate, rownum as rn
-							from (	select n.no, c.category, n.title, to_char(n.regDate, 'yyyy-mm-dd hh:mi:ss') as regDate
+					from (select no, category, title, regDate, FORMAT(@ROWNUM:=@ROWNUM+1,0) AS rn
+							from (	select n.no, c.category, n.title, DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s' ) as regDate
 									from categoryno c, notice n
 									where c.no=n.categoryno
-									order by no desc ))
+									order by no desc )k, (select @ROWNUM:=0) b )j
 					where (#{page }-1)*#{size }+1 <= rn and rn <= #{page }*#{size }
 				]]>
 			</otherwise>
@@ -57,15 +57,15 @@
 			<when test="saveFileName == null">
 				<![CDATA[
 					insert
-					into notice
-					values (notice_seq.nextval, #{title}, #{content}, sysdate, 0, #{categoryNo})
+					into notice (title, content, `regDate`, `saveFileName`, `categoryNo`)
+					VALUES(#{title}, #{content}, DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s' ), 0, #{categoryNo})
 				]]>
 			</when>
 			<otherwise>
 				<![CDATA[
 					insert
-					into notice
-					values (notice_seq.nextval, #{title}, #{content}, sysdate, #{saveFileName}, #{categoryNo})
+					into notice (title, content, `regDate`, `saveFileName`, `categoryNo`)
+					VALUES(#{title}, #{content}, DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s' ), #{saveFileName}, #{categoryNo})
 				]]>
 			</otherwise>
 		</choose>
