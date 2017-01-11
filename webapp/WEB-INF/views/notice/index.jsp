@@ -25,7 +25,7 @@
 		</div>
 		
 		<div id="content">
-			<!-- 
+			
 			<form action="${pageContext.request.contextPath }/notice">
 				<select name="categoryNo">
 			 		<option value="4">All</option>
@@ -93,7 +93,7 @@
 			<c:forEach items="${map.list }" var="vo" varStatus="status">
 				${vo }
 			</c:forEach>
-			-->
+			
 		</div>
 	</div>
 
