@@ -19,7 +19,6 @@ public class NoticeController {
 	private NoticeService noticeService;
 
 	// @Admin
-	@ResponseBody
 	@RequestMapping("")
 	public String list(@RequestParam(value = "kwd", required = true, defaultValue = "") String keyword,
 			@RequestParam(value = "categoryNo", required = true, defaultValue = "4") int categoryNo,
@@ -34,7 +33,6 @@ public class NoticeController {
 	}
 
 	// @Admin
-	@ResponseBody
 	@RequestMapping("/write") // index.jsp 삭제 버튼 default값=GET방식,
 								// RequestMapping에서의 default값=Get방식
 	public String write() {
@@ -42,7 +40,6 @@ public class NoticeController {
 	}
 
 	// @Admin
-	@ResponseBody
 	@RequestMapping(value = "/write", method = RequestMethod.POST) // write.jsp에서
 																	// form태그
 																	// method값=POST
@@ -53,14 +50,13 @@ public class NoticeController {
 	}
 
 	// @Admin
-	@ResponseBody
 	@RequestMapping("/delete")
 	public String delete(@ModelAttribute NoticeVo vo) {
 		noticeService.deleteMessage(vo);
 
 		return "redirect:/notice";
 	}
-	@ResponseBody
+
 	@RequestMapping("/view")
 	public String view(@RequestParam(value = "no", required = true) Long no, Model model) {
 		NoticeVo noticeVo = noticeService.getMessage(no);
@@ -70,7 +66,6 @@ public class NoticeController {
 	}
 
 	// @Admin
-	@ResponseBody
 	@RequestMapping("/modify")
 	public String modify(@RequestParam(value = "no", required = true) Long no, Model model) {
 		NoticeVo noticeVo = noticeService.getMessage(no); // 데이터를 가지고 옴
@@ -81,14 +76,13 @@ public class NoticeController {
 	}
 
 	// @Admin
-	@ResponseBody
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String modify(@ModelAttribute NoticeVo vo) {
 		noticeService.updateMessage(vo);
 
 		return "redirect:/notice";
 	}
-	@ResponseBody
+
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public String upload(@ModelAttribute NoticeVo noticeVo, @RequestParam("file") MultipartFile multipartFile) {
 		noticeService.restore(noticeVo, multipartFile);
