@@ -22,14 +22,15 @@ public class HelpController {
 	// int타입은 defaultValue에 값을 넣어줘야 사용가능함 ↓↓↓
 	public String helpIndex(
 			@RequestParam(value = "searchCondition", required = true, defaultValue = "1") int searchCondition,
-			@RequestParam(value = "searchKeyword", required = true, defaultValue = "") String searchKeyword, Model model) {
+			@RequestParam(value = "searchKeyword", required = true, defaultValue = "") String searchKeyword, 
+			/*@RequestParam(value = "p" , required = true, defaultValue = "1") int page, */Model model) { 
 
 		// 총 리스트 수
 		Long helpListCount = helpService.helpListCount();
 		model.addAttribute("helpListCount", helpListCount);
 		
 		// 고객센터 리스트
-		Map<String, Object> map = helpService.helpList(searchCondition, searchKeyword);
+		Map<String, Object> map = helpService.helpList(searchCondition, searchKeyword/*, page*/); 
 		model.addAttribute("map", map);
 		
 		return "help/helpMain";
