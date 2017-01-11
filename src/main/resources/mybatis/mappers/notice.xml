@@ -14,7 +14,7 @@
 				]]>
 				<if test="(categoryNo == 1) or (categoryNo == 2) or (categoryNo == 3)">
 					<![CDATA[
-										c.no=${categoryNo} and
+										c.no=#{categoryNo} and
 					]]>
 				</if>
 				<if test="searchNo == 1">
@@ -106,7 +106,7 @@
 			]]>
 			<if test="(categoryNo == 1) or (categoryNo == 2) or (categoryNo == 3)">
 				<![CDATA[
-					categoryno=${categoryNo} and
+					categoryno=#{categoryNo} and
 				]]>
 			</if>
 			<if test="searchNo == 1">
