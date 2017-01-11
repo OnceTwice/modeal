@@ -52,14 +52,14 @@ table {
 	border-collapse: collapse;
 	border-bottom: 3px solid #333;
 }
-/*
-a.del {					 anchor태그의 class값이 del
+
+a.del {					/* anchor태그의 class값이 del */
 	display: block;
 	width: 20px;
 	height: 20px;
 	background: url("/modeal/assets/images/recycle.png") no-repeat 0 0;
 	font-size: 0;
-} */
+}
 
 a#new-book { 			/* anchor태그의 id값이 new-book */
 	float: right;
