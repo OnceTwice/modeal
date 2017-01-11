@@ -9,8 +9,8 @@
 					select *
 					from (	select no, category, title, regDate, FORMAT(@ROWNUM:=@ROWNUM+1,0) AS rn
 							from (	select n.no, c.category, n.title, DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s' ) as regDate
-									from categoryno c, notice n
-									where c.no=n.categoryno and
+									from categoryNo c, notice n
+									where c.no=n.categoryNo and
 				]]>
 				<if test="(categoryNo == 1) or (categoryNo == 2) or (categoryNo == 3)">
 					<![CDATA[
@@ -42,8 +42,8 @@
 					select *
 					from (select no, category, title, regDate, FORMAT(@ROWNUM:=@ROWNUM+1,0) AS rn
 							from (	select n.no, c.category, n.title, DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s' ) as regDate
-									from categoryno c, notice n
-									where c.no=n.categoryno
+									from categoryNo c, notice n
+									where c.no=n.categoryNo
 									order by no desc )k, (select @ROWNUM:=0) b )j
 					where (#{page }-1)*#{size }+1 <= rn and rn <= #{page }*#{size }
 				]]>
@@ -106,7 +106,7 @@
 			]]>
 			<if test="(categoryNo == 1) or (categoryNo == 2) or (categoryNo == 3)">
 				<![CDATA[
-					categoryno=#{categoryNo} and
+					categoryNo=#{categoryNo} and
 				]]>
 			</if>
 			<if test="searchNo == 1">
