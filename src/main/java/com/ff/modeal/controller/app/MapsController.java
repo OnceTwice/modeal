@@ -14,7 +14,7 @@ import com.ff.modeal.service.app.MapsService;
 import com.ff.modeal.vo.ShopVo;
 
 @Controller
-@RequestMapping("map")
+@RequestMapping("/map")
 public class MapsController {
 
 	@Autowired
@@ -25,9 +25,9 @@ public class MapsController {
 	public JSONResult maplist(@RequestParam(value = "range", required = true, defaultValue = "0") String range,
 			@RequestParam(value = "longitude", required = true, defaultValue = "0") String longitude,
 			@RequestParam(value = "latitude", required = true, defaultValue = "0") String latitude) {
-		range = "0.2";
-		longitude ="37.49";
-		latitude = "127.02";
+		range = "0.002";
+		longitude ="127.0280215767454";
+		latitude = "37.49456429671521";
 		List<ShopVo> list = mapsService.maplist(range, longitude, latitude);
 		return JSONResult.success(list);
 	}

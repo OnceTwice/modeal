@@ -1,17 +1,115 @@
-SELECT * FROM SHOP s; 
+SELECT *
+  FROM SHOP s;
 
 DELETE FROM SHOP;
 
-INSERT INTO SHOP VALUES(shop_seq.nextval, '11', '11','11', '11', '11', '11', 37.29456429671521, 126.8280215767454);
-INSERT INTO SHOP VALUES(shop_seq.nextval, '11', '11','11', '11', '11', '11', 37.39456429671521, 126.9280215767454);
-INSERT INTO SHOP VALUES(shop_seq.nextval, '11', '11','11', '11', '11', '11', 37.49456429671521, 127.0280215767454);
-INSERT INTO SHOP VALUES(shop_seq.nextval, '11', '11','11', '11', '11', '11', 37.59456429671521, 127.1280215767454);
-INSERT INTO SHOP VALUES(shop_seq.nextval, '11', '11','11', '11', '11', '11', 37.69456429671521, 127.2280215767454);
-COMMIT ;
+INSERT INTO shop(address,
+                 newaddress,
+                 name,
+                 phone,
+                 picture,
+                 introduce,
+                 longitude,
+                 latitude)
+     VALUES ('11',
+             '11',
+             '11',
+             '11',
+             '11',
+             '11',
+             127.0260215767454,
+             37.49256429671521);
+			 
+			 INSERT INTO shop(address,
+                 newaddress,
+                 name,
+                 phone,
+                 picture,
+                 introduce,
+                 longitude,
+                 latitude)
+     VALUES ('11',
+             '11',
+             '11',
+             '11',
+             '11',
+             '11',
+             127.0270215767454,
+             37.49356429671521);
+			 
+INSERT INTO shop(address,
+                 newaddress,
+                 name,
+                 phone,
+                 picture,
+                 introduce,
+                 longitude,
+                 latitude)
+     VALUES ('11',
+             '11',
+             '11',
+             '11',
+             '11',
+             '11',
+             127.0280215767454,
+             37.49456429671521);
+			 
+INSERT INTO shop(address,
+                 newaddress,
+                 name,
+                 phone,
+                 picture,
+                 introduce,
+                 longitude,
+                 latitude)
+     VALUES ('11',
+             '11',
+             '11',
+             '11',
+             '11',
+             '11',
+             127.0290215767454,
+             37.49556429671521);
+			 
+			 INSERT INTO shop(address,
+                 newaddress,
+                 name,
+                 phone,
+                 picture,
+                 introduce,
+                 longitude,
+                 latitude)
+     VALUES ('11',
+             '11',
+             '11',
+             '11',
+             '11',
+             '11',
+             127.0300215767454,
+             37.49656429671521);
 
-INSERT INTO users (id, password, gender, location, birth, `managerIdentified`) VALUES('admin', 'admin', 'null', 'null', 'null', 0);
-commit;
-SELECT * FROM users WHERE id ='admin' AND password = 'admin';
+COMMIT;
+
+SELECT * FROM shop ;
+
+INSERT INTO users(id,
+                  password,
+                  gender,
+                  location,
+                  birth,
+                  `managerIdentified`)
+     VALUES ('admin',
+             'admin',
+             'null',
+             'null',
+             'null',
+             0);
+
+COMMIT;
+
+SELECT *
+  FROM users
+ WHERE id = 'admin' AND password = 'admin';
 
 select * 
 	  FROM users 
