@@ -5,45 +5,28 @@
 
 	<!-- 가입자 조회 -->
 	<select id="getUserList" parameterType="map" resultType="uservo">
+		<![CDATA[
+			select u.* from
+			(select FORMAT(@ROWNUM:=@ROWNUM+1,0) as ROWNUM, u.* 
+			from (select * from users order by no desc) u) u, (select @ROWNUM:=0) b
+		]]>
 		<choose>
 			<when test="keyword != null and filterCheck==1">
 				<![CDATA[
-					select u.* from
-						(select rownum as rn, no, id, gender, location, birth, managerIdentified, shopNo 
-						from users 
-						where id like '%${keyword }%' or location like '%${keyword }%'
-						order by no desc ) u
-					where rn<=${page}*${user_page } and rn>(${page}-1)*${user_page }
+					where ROWNUM<=${page}*${user_page } and ROWNUM>(${page}-1)*${user_page }
 				]]>
 			</when>
 			<when test="keyword != null and filterCheck==2">
 				<![CDATA[
-					select u.* from
-						(select rownum as rn, no, id, gender, location, birth, managerIdentified, shopNo 
-						from users 
-						where id like '%${keyword }%'
-						order by no desc ) u
-					where rn<=${page}*${user_page } and rn>(${page}-1)*${user_page }
+					where ROWNUM<=${page}*${user_page } and ROWNUM>(${page}-1)*${user_page }
 				]]>
 			</when>
 			<when test="keyword != null and filterCheck==3">
 				<![CDATA[
-					select u.* from
-						(select rownum as rn, no, id, gender, location, birth, managerIdentified, shopNo 
-						from users 
-						where location like '%${keyword }%'
-						order by no desc) u
-					where rn<=${page}*${user_page } and rn>(${page}-1)*${user_page }
+					where ROWNUM<=${page}*${user_page } and ROWNUM>(${page}-1)*${user_page }
 				]]>
 			</when>
 			<otherwise>
-				<![CDATA[
-					select u.* from
-						(select rownum as rn, no, id, gender, location, birth, managerIdentified, shopNo 
-						from users 
-						order by no desc) u
-					where rn<=${page}*${user_page } and rn>(${page}-1)*${user_page }
-				]]>
 			</otherwise>
 		</choose>
 	</select>

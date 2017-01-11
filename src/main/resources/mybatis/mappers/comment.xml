@@ -4,12 +4,12 @@
 <mapper namespace="comment">
 
 	<!-- 사용자별 댓글 조회 -->
-	<select id="commentsByID" parameterType="long" resultType="hashmap">
-		<![CDATA[
-			select c.no , c.content, c.rank, s.name
-			from comments c, shop s
+	<select id="commentsByID" parameterType="long" resultType="map">
+			<![CDATA[
+			select c.no , c.content, c.grade , s.name
+			from comments c  LEFT OUTER JOIN shop s on c.shopNo=s.no
 			where c.usersNo=#{usersNo } 
-		]]>
+			]]>
 	</select>
 	
 </mapper>

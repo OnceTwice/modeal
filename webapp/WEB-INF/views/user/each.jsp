@@ -36,9 +36,9 @@
 			</tr>
 			<tr>
 				<c:forEach items="${list }" var="vo" varStatus="index">
-					<td >${vo.NAME }</td>
-					<td >${vo.CONTENT}</td>
-					<td >${vo.RANK }</td>
+					<td >${vo.name }</td>
+					<td >${vo.content}</td>
+					<td >${vo.grade }</td>
 				</c:forEach>
 			</tr>
 			
