@@ -9,12 +9,12 @@
 					select *
 					from (	select no, category, title, regDate, FORMAT(@ROWNUM:=@ROWNUM+1,0) AS rn
 							from (	select n.no, c.category, n.title, DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s' ) as regDate
-									from categoryno c, notice n
-									where c.no=n.categoryno and
+									from categoryNo c, notice n
+									where c.no=n.categoryNo and
 				]]>
-				<if test="(categoryno == 1) or (categoryno == 2) or (categoryno == 3)">
+				<if test="(categoryNo == 1) or (categoryNo == 2) or (categoryNo == 3)">
 					<![CDATA[
-										c.no=#{categoryno} and
+										c.no=#{categoryNo} and
 					]]>
 				</if>
 				<if test="searchNo == 1">
@@ -42,8 +42,8 @@
 					select *
 					from (select no, category, title, regDate, FORMAT(@ROWNUM:=@ROWNUM+1,0) AS rn
 							from (	select n.no, c.category, n.title, DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s' ) as regDate
-									from categoryno c, notice n
-									where c.no=n.categoryno
+									from categoryNo c, notice n
+									where c.no=n.categoryNo
 									order by no desc )k, (select @ROWNUM:=0) b )j
 					where (#{page }-1)*#{size }+1 <= rn and rn <= #{page }*#{size }
 				]]>
@@ -57,15 +57,15 @@
 			<when test="saveFileName == null">
 				<![CDATA[
 					insert
-					into notice (title, content, `regDate`, `saveFileName`, `categoryno`)
-					VALUES(#{title}, #{content}, DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s' ), 0, #{categoryno})
+					into notice (title, content, `regDate`, `saveFileName`, `categoryNo`)
+					VALUES(#{title}, #{content}, DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s' ), 0, #{categoryNo})
 				]]>
 			</when>
 			<otherwise>
 				<![CDATA[
 					insert
-					into notice (title, content, `regDate`, `saveFileName`, `categoryno`)
-					VALUES(#{title}, #{content}, DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s' ), #{saveFileName}, #{categoryno})
+					into notice (title, content, `regDate`, `saveFileName`, `categoryNo`)
+					VALUES(#{title}, #{content}, DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s' ), #{saveFileName}, #{categoryNo})
 				]]>
 			</otherwise>
 		</choose>
@@ -104,9 +104,9 @@
 			<![CDATA[
 				where 
 			]]>
-			<if test="(categoryno == 1) or (categoryno == 2) or (categoryno == 3)">
+			<if test="(categoryNo == 1) or (categoryNo == 2) or (categoryNo == 3)">
 				<![CDATA[
-					categoryno=#{categoryno} and
+					categoryNo=#{categoryNo} and
 				]]>
 			</if>
 			<if test="searchNo == 1">
