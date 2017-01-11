@@ -15,7 +15,6 @@ public class CommentDao {
 	
 	// 각 사용자별 댓글 리스트 
 	public List<Map<String,Object>> commentByID(Long no){
-		System.out.println(sqlSession.selectList("comment.commentsByID",no));
 		return sqlSession.selectList("comment.commentsByID",no);
 	}
 	
