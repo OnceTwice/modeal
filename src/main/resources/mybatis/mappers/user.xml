@@ -8,7 +8,7 @@
 		<![CDATA[
 			select u.* from
 			(select FORMAT(@ROWNUM:=@ROWNUM+1,0) as ROWNUM, u.* 
-			from (select * from users order by no desc) u) u, (select @ROWNUM:=0) b
+			from (select * from users order by no desc) u, (select @ROWNUM:=0) b) u
 		]]>
 		<choose>
 			<when test="keyword != null and filterCheck==1">
