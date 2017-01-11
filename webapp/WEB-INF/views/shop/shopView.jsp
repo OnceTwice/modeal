@@ -58,7 +58,7 @@
 				<c:set var="sum" value="0" /> <!-- 평점들 리스트에서 평점을 가져와서 합계를 받을 변수 -->
 				<!-- for문을 돌면서 평점들을 sum에다가 더함 -->
 				<c:forEach items="${view }" var="view2">
-					<c:set var="sum" value="${sum + view2.comment[0].rank }" />
+					<c:set var="sum" value="${sum + view2.comment[0].grade }" />
 				</c:forEach>
 				<c:set var="avg" value="${sum/fn:length(view) }" /> <!-- 평점 총합계를 댓글 갯수로 나누어서 평균을 구함 -->
 				<div class="avg form">평균 평점 <b class="form2">${avg }</b></div>
@@ -67,8 +67,8 @@
 						<tr>
 							<th class="short">#</th>
 							<th class="short">ID</th>
-							<th class="short">rank</th>
-							<th class="long">content</th>
+							<th class="short">Grade</th>
+							<th class="long">Content</th>
 						</tr>
 					</thead>
 					<!-- DB에서 매장 리스트 가져오기!!! -->
@@ -79,7 +79,7 @@
 								<td>${no.count }</td>
 								<!-- forEach 태그의 속성으로 ${varStatus.count} <=1부터의 순서 -->
 								<td>${view2.users[0].id }</td>
-								<td>${view2.comment[0].rank }</td>
+								<td>${view2.comment[0].grade }</td>
 								<td>${view2.comment[0].content }</td>
 							</tr>
 						</tbody>

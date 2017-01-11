@@ -45,13 +45,13 @@
 					 <!-- controller에서는 list로 받아와서 list2로 이름을 변경 후 사용중-->
 					 <!-- 테이블에 링크 걸기 onclick="location.href... " -->
 					 <c:forEach items="${map.list }" var="list2" varStatus="no">
-					 <tbody onclick="location.href='${pageContext.request.contextPath }/shop/${list2.NO }'">
+					 <tbody onclick="location.href='${pageContext.request.contextPath }/shop/${list2.no }'">
 					   <tr class="my_cursor">
-					     <td>${list2.NO }</td> <!-- forEach 태그의 속성으로 ${status.count} <=1부터의 순서 -->
-					     <td>${list2.NAME }</td>
-					     <td>${list2.ADDRESS }</td>
-					     <td>${list2.PHONE }</td>
-					     <td>${list2.RANK }</td>
+					     <td>${list2.no }</td> <!-- forEach 태그의 속성으로 ${status.count} <=1부터의 순서 -->
+					     <td>${list2.name }</td>
+					     <td>${list2.address }</td>
+					     <td>${list2.phone }</td>
+					     <td>${list2.grade }</td>
 					   </tr>
 					 </tbody>
 					 </c:forEach>

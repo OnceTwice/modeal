@@ -4,7 +4,7 @@ public class CommentVo {
 	
 	private Long no;
 	private String content;
-	private Long rank;
+	private Long grade;
 	private Long shopNo;
 	private Long usersNo;
 	
@@ -20,11 +20,11 @@ public class CommentVo {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Long getRank() {
-		return rank;
+	public Long getGrade() {
+		return grade;
 	}
-	public void setRank(Long rank) {
-		this.rank = rank;
+	public void setGrade(Long grade) {
+		this.grade = grade;
 	}
 	public Long getShopNo() {
 		return shopNo;
@@ -38,10 +38,9 @@ public class CommentVo {
 	public void setUsersNo(Long usersNo) {
 		this.usersNo = usersNo;
 	}
-	
 	@Override
 	public String toString() {
-		return "CommentVo [no=" + no + ", content=" + content + ", rank=" + rank + ", shopNo=" + shopNo + ", usersNo="
+		return "CommentVo [no=" + no + ", content=" + content + ", grade=" + grade + ", shopNo=" + shopNo + ", usersNo="
 				+ usersNo + "]";
 	}
 }

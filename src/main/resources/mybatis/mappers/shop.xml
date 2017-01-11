@@ -26,7 +26,7 @@
     <resultMap type="commentvo" id="comment">
     	<id column="no" property="no" />
     	<result column="content" property="content" />
-    	<result column="rank" property="rank" />
+    	<result column="grade" property="grade" />
     	<result column="shopno" property="shopNo" />
     	<result column="usersno" property="usersNo" />
     </resultMap>
@@ -42,18 +42,19 @@
     <!-- 사업자 목록 띄우기 -->
     <!-- resultType을 hashmap(map)으로 하면 조인한 값들도 받아 올수 있으나, 컬럼명이 무조건 대문자가 된다 -->
     <!-- resultMap을 쓰면 컬럼명은 그대로이지만 vo도 건드려야하고 위쪽에 있는 resultMap라는 것도 만들어야 하므로 귀찮다... 고로 그냥 hashmap(map)을 추천한다 -->
-	<select id="list" resultType="hashmap" parameterType="map"> 
+	<select id="list" parameterType="map" resultType="map"> 
 		<![CDATA[
 			select *
-			from(select rownum rn, a.*					
-					from (select s.*, nvl(rank, 0) as rank
+			from(select FORMAT(@rownum:=@rownum + 1, 0) as rn, a.*					
+					from (select s.*, format(ifnull(grade, 0), 1) grade
 							from shop s left outer join
-									(select avg(rank) as rank, shopNo
+									(select avg(grade) as grade, shopNo
 										from comments
 									group by shopNo
 									order by shopNo) c 
 							on s.no = c.shopNo
-							order by no desc) a
+							order by no desc) a, 
+							(select @rownum:=0) b
 		 ]]>
 		<!-- 검색어 입력시 추가 되는 쿼리문 -->
 		<!-- 대소문자 무시를 위한 upper추가(lower를 해도 됨) -->
@@ -61,17 +62,17 @@
 			<choose>
 				<when test="option == 1">
 					<![CDATA[
-						where (upper(name) like '%' || upper('${keyword }') || '%' or lower(rank) like '%' || lower('${keyword }') || '%'))
+						where (upper(name) like '%' || upper('${keyword }') || '%' or lower(grade) like '%' || lower('${keyword }') || '%')) a
 					]]> 
 				</when>
 				<when test="option == 2">
 					<![CDATA[
-						where (upper(name) like '%' || upper('${keyword }') || '%'))
+						where (upper(name) like '%' || upper('${keyword }') || '%')) a
 					]]> 
 				</when>
 				<otherwise>
 					<![CDATA[
-						where (lower(rank) like '%' || lower('${keyword }') || '%'))
+						where (lower(grade) like '%' || lower('${keyword }') || '%')) a
 					]]> 
 				</otherwise>
 			</choose>
@@ -91,10 +92,10 @@
 	</select>
 	
 	<!-- 검색결과 개수 -->
-	<select id="totalKeyword" resultType="int" parameterType="map">
+	<select id="totalKeyword" parameterType="map" resultType="int">
 		<![CDATA[
 			select count(*) 
-			from shop s, (select s.no, nvl(avg(rank), 0) rank 
+			from shop s, (select s.no, ifnull(avg(grade), 0) grade 
 							from shop s left outer join comments c 
 							on s.no = c.shopNo
 							group by s.no) c
@@ -106,7 +107,7 @@
 			<choose>
 				<when test="option == 1">
 					<![CDATA[
-						and (upper(name) like '%' || upper('${keyword }') || '%' or lower(rank) like '%' || lower('${keyword }') || '%')
+						and (upper(name) like '%' || upper('${keyword }') || '%' or lower(grade) like '%' || lower('${keyword }') || '%')
 					]]> 
 				</when>
 				<when test="option == 2">
@@ -116,7 +117,7 @@
 				</when>
 				<when test="option == 3">
 					<![CDATA[
-						and (lower(rank) like '%' || lower('${keyword }') || '%')
+						and (lower(grade) like '%' || lower('${keyword }') || '%')
 					]]> 
 				</when>
 			</choose>
@@ -125,9 +126,14 @@
     
     
     <!-- 매장 누르면 매장페이지로 이동해서 보이는 목록들 -->
-    <select id="view" resultMap="shop" parameterType="long">
+    <select id="view" parameterType="long" resultMap="shop">
     	<![CDATA[
-    		select c.*, s.*, u.id from shop s left outer join comments c on s.no = c.shopno left outer join users u on u.no = c.usersno where s.no = #{no } 
+    		select c.*, s.*, u.id 
+    		from shop s left outer join comments c 
+    							on s.no = c.shopno 
+    						left outer join users u 
+    							on u.no = c.usersno 
+    		where s.no = #{no } 
     	]]>
     </select>
     
@@ -138,6 +144,5 @@
   	 	  FROM shop
  		 WHERE #{range} > SQRT (POWER ( (#{longitude} - longitude), 2) + POWER ( (#{latitude} - latitude), 2))
     ]]></select>
-    
     
 </mapper>
