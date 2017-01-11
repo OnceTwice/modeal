@@ -26,8 +26,16 @@
 		</div>
 		
 		<div id="content">
-			${noticeVo.title }									<br>
-			${fn:replace(noticeVo.content, newLine, "<br>") }
+			<table class="noticetable table">
+				<tr>
+					<th class="short"  align="center">제목</th>
+					<td class="middle" align="left">${noticeVo.title }</td>
+				</tr>
+				<tr>
+					<th class="short"  align="center">내용</th>
+					<td class="middle" align="left">${fn:replace(noticeVo.content, newLine, "<br>") }</td>
+				</tr>
+			</table>
 			
 			<a href="${pageContext.request.contextPath }/notice">Back to List</a>
 			<a href="${pageContext.request.contextPath }/notice/modify?no=${noticeVo.no }">Modify</a>
