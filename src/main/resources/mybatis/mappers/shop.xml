@@ -62,25 +62,25 @@
 			<choose>
 				<when test="option == 1">
 					<![CDATA[
-						where (upper(name) like '%' || upper('${keyword }') || '%' or lower(grade) like '%' || lower('${keyword }') || '%')) a
+						where (upper(name) like '%' || upper('${keyword }') || '%' or lower(grade) like '%' || lower('${keyword }') || '%')
 					]]> 
 				</when>
 				<when test="option == 2">
 					<![CDATA[
-						where (upper(name) like '%' || upper('${keyword }') || '%')) a
+						where (upper(name) like '%' || upper('${keyword }') || '%')
 					]]> 
 				</when>
 				<otherwise>
 					<![CDATA[
-						where (lower(grade) like '%' || lower('${keyword }') || '%')) a
+						where (lower(grade) like '%' || lower('${keyword }') || '%')
 					]]> 
 				</otherwise>
 			</choose>
 		</if>
 		<![CDATA[
+			) a
 			where rn > (${page } - 1) * ${list_size } 
 			and rn <= ${page } * ${list_size }
-			order by rn asc
 		]]>
 	</select>
 
