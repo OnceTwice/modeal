@@ -36,80 +36,51 @@
 			<!-- 고객센터 리스트  -->
 			<table class="helptable table">
 				<tr>
-					<th align="center"> 번 호		</th>
-					<th align="center"> 제 목		</th>
+					<th align="center"> 번 호	</th>
+					<th align="center"> 제 목	</th>
 					<th align="center"> 작성일	</th>
 					<th align="center"> 글쓴이	</th>
 				</tr>
 
 				<c:forEach items="${map.list }" var="vo">
 					<!-- 주소창 물음표(?)뒤에 값이 붙어오면 get방식 -->
-					<tbody onclick="location.href='${pageContext.request.contextPath }/help/view?no=${vo.NO }'">
+					<tbody onclick="location.href='${pageContext.request.contextPath }/help/view?no=${vo.no }'">
 						<tr>
-							<td align="center" width="100"> ${vo.NO}	 	</td>
-							<td align="center" width="400"> ${vo.TITLE } 	</td>
-							<td align="center" width="100"> ${vo.REGDATE} 	</td>
-							<td align="center" width="100"> ${vo.ID }		</td>
+							<td align="center" width="100"> ${vo.no}	 	</td>
+							<td align="center" width="400"> ${vo.title } 	</td>
+							<td align="center" width="100"> ${vo.regDate} 	</td>
+							<td align="center" width="100"> ${vo.id }		</td>
 						</tr>
 					</tbody>
 				</c:forEach>
 			</table>
-
-			<!-- 페이지 : 복붙했는데.. 안됨 ㅜㅜ
-				<div class="pager">
-					<ul>
-						<c:if test="${map.prevPage > 0 }" >
-							<li><a href="${pageContext.request.contextPath }/help?searchCondition=${map.searchCondition }&kwd=${map.searchKeyword }&p=${map.prevPage }">◀</a></li>
-						</c:if>
-						
-						<c:forEach begin="${map.beginPage }" end="${map.beginPage + map.listSize - 1 }" var="page">
-							<c:choose>
-								<c:when test="${map.endPage < page }">
-									<li>${page }</li>
-								</c:when> 
-								<c:when test="${map.currentPage == page }">
-									<li class="selected">${page }</li>
-								</c:when>
-								<c:otherwise> 
-									<li><a href="${pageContext.request.contextPath }/help?searchCondition=${map.searchCondition }&kwd=${map.searchKeyword }&p=${page }">${page }</a></li>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-						
-						<c:if test="${map.nextPage > 0 }" >
-							<li><a href="${pageContext.request.contextPath }/help?searchCondition=${map.searchCondition }&kwd=${map.searchKeyword }&p=${map.nextPage }">▶</a></li>
-						</c:if>	
-					</ul>
-				</div>
-			 -->
-			 
-			<!-- mysite4 페이지 구현부분
-				<div class="pager">
-					<ul>
-						<c:if test="${map.prevPage > 0 }" >
-							<li><a href="${pageContext.request.contextPath }/board?p=${map.prevPage }&kwd=${map.keyword }">◀</a></li>
-						</c:if>
-						
-						<c:forEach begin="${map.beginPage }" end="${map.beginPage + map.listSize - 1 }" var="page">
-							<c:choose>
-								<c:when test="${map.endPage < page }">
-									<li>${page }</li>
-								</c:when> 
-								<c:when test="${map.currentPage == page }">
-									<li class="selected">${page }</li>
-								</c:when>
-								<c:otherwise> 
-									<li><a href="${pageContext.request.contextPath }/board?p=${page }&kwd=${map.keyword }">${page }</a></li>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-						
-						<c:if test="${map.nextPage > 0 }" >
-							<li><a href="${pageContext.request.contextPath }/board?p=${map.nextPage }&kwd=${map.keyword }">▶</a></li>
-						</c:if>	
-					</ul>
-				</div> 
-			-->
+			
+			<!-- 페이지 -->
+			<div class="pager">
+				<ul>
+					<c:if test="${map.prevPage > 0 }" >
+						<li><a href="${pageContext.request.contextPath }/help?searchCondition=${map.searchCondition }&searchKeyword=${map.searchKeyword }&currentPage=${map.prevPage }">◀</a></li>
+					</c:if>
+					
+					<c:forEach begin="${map.beginPage }" end="${map.beginPage + map.listSize - 1 }" var="page">
+						<c:choose>
+							<c:when test="${map.endPage < page }">
+								<li>${page }</li>
+							</c:when> 
+							<c:when test="${map.currentPage == page }">
+								<li class="selected">${page }</li>
+							</c:when>
+							<c:otherwise> 
+								<li><a href="${pageContext.request.contextPath }/help?searchCondition=${map.searchCondition }&searchKeyword=${map.searchKeyword }&currentPage=${page }">${page }</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					
+					<c:if test="${map.nextPage > 0 }" >
+						<li><a href="${pageContext.request.contextPath }/help?searchCondition=${map.searchCondition }&searchKeyword=${map.searchKeyword }&currentPage=${map.nextPage }">▶</a></li>
+					</c:if>	
+				</ul>
+			</div>
 			
 			<br>
 			<!-- 카테고리 ㆍ 검색 -->

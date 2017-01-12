@@ -12,9 +12,11 @@ drop sequence help_seq;
 commit;
 
 -------------------------------------------------- mysql문
-
--- 현재 날짜 String 출력 --
-select date_format(now(), '%Y-%m-%d %H:%i:%s');
+-- user(admin) 가짜데이터 생성 --
+insert into users (id, password, gender, location, birth, `managerIdentified`, `shopNo`) 
+	 values('admin', 'admin', 'woman', 'seoul', sysdate(), 0, shopno);
+select * from users;
+commit;
 
 -- 리스트 생성 ( exerd : no, title, complain, regDate, usersNo(id) ) -- 
 INSERT INTO help (title, complain, `regDate`, `usersNo`) 
@@ -36,6 +38,7 @@ ROLLBACK;
 -- commit --
 COMMIT;
 
+
 -------------------------------------------------- 테스트해보기
 
 /* 글쓴이 번호를 아이디로 받아오기 */
@@ -43,6 +46,15 @@ select h.NO, h.TITLE, h.COMPLAIN, h.REGDATE, u.ID
 from help h, users u
 where h.USERSNO = u.NO
 and h.USERSNO = 2;
+
+
+select *
+	from (select * , FORMAT(@ROWNUM:=@ROWNUM+1,0) as ROWNUM
+			from ( select h.no, h.title, h.complain, h.regDate, u.id
+					from help h, users u
+					where u.no = h.usersNo 
+					order by h.no desc) as r, (select @ROWNUM:=0) as rn) rr
+	where (1-1)*3+1 <= ROWNUM and ROWNUM <= 1*3;
 
 -------------------------------------------------- oracle sql문
 /* seq 생성 */

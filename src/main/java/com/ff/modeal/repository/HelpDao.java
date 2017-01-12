@@ -21,25 +21,25 @@ public class HelpDao {
 		return sqlSession.selectOne("help.helpListCount");
 	}
 	
-	// 고객센터 리스트ㆍ검색창
-	public List<HelpVo> helpList(int searchCondition, String searchKeyword /*int page, int size*/) {
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-			map.put("searchCondition", searchCondition);
-			map.put("searchKeyword", searchKeyword);
-//			map.put("page", page); 
-//			map.put("size", size); 
-		return sqlSession.selectList("help.helpList", map);
-	}	
-
-	/* 페이지를 하기 위한 총 글 갯수
 	public int getTotalCount(int searchCondition, String searchKeyword) {
 		Map<String, Object> map = new HashMap<String, Object>();
 			map.put("searchCondition", searchCondition);
 			map.put("searchKeyword", searchKeyword);
 		return sqlSession.selectOne("help.getTotalCount", map);
-	} */
+	}
 	
+	// 고객센터 리스트ㆍ검색창
+	public List<Map<String, Object>> helpList(int searchCondition, String searchKeyword, int currentPage, int size) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+			map.put("searchCondition", searchCondition);
+			map.put("searchKeyword", searchKeyword);
+			map.put("currentPage", currentPage);
+			map.put("size", size);
+			
+		return sqlSession.selectList("help.helpList", map);
+	}	
+
 	// 뷰페이지
 	public Map<String, Object> helpView(Long no) {
 		return sqlSession.selectOne("help.helpView", no);

@@ -11,44 +11,79 @@
 		]]>
 	</select>
 
+	<!-- 검색 결과에 따른 리스트 수 -->
+	<select id="getTotalCount" parameterType="String" resultType="int">
+		<![CDATA[
+			select count(*) 
+			from help
+		]]>
+			<!-- choose : when을 사용하기 위해 씀 -->
+			<choose>
+				<!-- when은 = if문 같음, test 안에 조건식 적기 -->
+				<when test="searchCondition == 1">
+				<![CDATA[	
+					where title like '%${searchKeyword}%' or complain like '%${searchKeyword}%'
+				]]>
+				</when>
+
+				<when test="searchCondition == 2">
+				<![CDATA[	
+					where title like '%${searchKeyword}%'
+				]]>
+				</when>
+				<when test="searchCondition == 3">
+				<![CDATA[	
+					where complain like '%${searchKeyword}%'
+				]]>
+				</when>
+			</choose>
+		
+	</select>
+
+
 	<!-- 고객센터 리스트 -->
 	<!-- parameterType : sql문에서 받아오는 파라미터값이 no면 long이라고 쓰고 받아오는 파라미터값이 2개 이상이면 map을 사용, 
 			resultType : select에 있는 데이터타입이 해당 vo안에 있으면 helpvo라고 쓰고 다른테이블에 있는 속성도 함께 쓰려면 map을 사용. -->
+	
 	<select id="helpList" parameterType="map" resultType="map">
-
 		<!-- h.userNo를 u.id로 바꾸려는 sql문 --> 
+		<!-- FORMAT(@ROWNUM:=@ROWNUM+1,0) : 필드명 -->
 		<![CDATA[
-			select h.NO, h.TITLE, h.COMPLAIN, h.REGDATE, u.ID
-			from help h, users u
-			where h.USERSNO = u.NO
+			select * 
+			from (select * , FORMAT(@ROWNUM:=@ROWNUM+1,0) as rownum 
+					from ( select h.no, h.title, h.complain, h.regDate, u.id 
+							 from help h, users u 
+							 where u.no = h.usersNo
+							 order by h.no desc) as r, (select @ROWNUM:=0) as rn 
 		]]>
-
+		
+		<!-- 검색어가 있을 때 -->
 		<if test="searchKeyword != null and searchKeyword != ''">
 			<!-- when을 쓰기 위해 choose를 사용 -->
 			<choose>
 				<!-- when은 = if문 같음, test 안에 조건식 적기 -->
 				<when test="searchCondition == 1">
 				<![CDATA[	
-					and title like '%${searchKeyword}%' or complain like '%${searchKeyword}%'
+					where title like '%${searchKeyword}%' or complain like '%${searchKeyword}%'
 				]]>
 				</when>
 
 				<when test="searchCondition == 2">
 				<![CDATA[	
-					and title like '%${searchKeyword}%'
+					where title like '%${searchKeyword}%'
 				]]>
 				</when>
-
-				<!-- otherwise : when 조건을 제외한 나머지 -->
-				<otherwise>
+				<when test="searchCondition == 3">
 				<![CDATA[	
-					and complain like '%${searchKeyword}%'
+					where complain like '%${searchKeyword}%'
 				]]>
-				</otherwise>
+				</when>
 			</choose>
 		</if>
+				<!-- 페이징 & 정렬 -->
 				<![CDATA[
-					order by no desc
+					) as rr
+					where (#{currentPage }-1)*#{size }+1 <= rownum and rownum <= #{currentPage }*#{size }
 				]]>
 	</select>
 
@@ -58,10 +93,10 @@
 	<!-- map을 사용하는 이유 : 여러테이블의 데이터값을 한번에 받아오기 위해서 -->
 	<select id="helpView" parameterType="long" resultType="map"> 
 		<![CDATA[
-			select u.ID, h.* 
-			from help h, users u 
-			where h.USERSNO = u.NO 
-			and h.NO = #{no }
+			select u.id, h.* 
+			from help h LEFT JOIN users u  
+			on h.usersNo = u.no 
+			where h.no = #{no };
 		]]>
 	</select>
 </mapper>
