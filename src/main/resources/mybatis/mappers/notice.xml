@@ -8,7 +8,7 @@
 				<![CDATA[
 					select *
 					from (	select no, category, title, regDate, FORMAT(@ROWNUM:=@ROWNUM+1,0) AS rn
-							from (	select n.no, c.category, n.title, DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s' ) as regDate
+							from (	select n.no, c.category, n.title, DATE_FORMAT(n.regDate, '%Y-%m-%d %H:%i:%s' ) as regDate
 									from categoryNo c, notice n
 									where c.no=n.categoryNo and
 				]]>
@@ -41,7 +41,7 @@
 				<![CDATA[
 					select *
 					from (select no, category, title, regDate, FORMAT(@ROWNUM:=@ROWNUM+1,0) AS rn
-							from (	select n.no, c.category, n.title, DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s' ) as regDate
+							from (	select n.no, c.category, n.title, DATE_FORMAT(n.regDate, '%Y-%m-%d %H:%i:%s' ) as regDate
 									from categoryNo c, notice n
 									where c.no=n.categoryNo
 									order by no desc )k, (select @ROWNUM:=0) b )j

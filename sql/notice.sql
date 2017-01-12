@@ -122,3 +122,7 @@ from (select no, category, title, regDate, FORMAT(@ROWNUM:=@ROWNUM+1,0) AS rn
 				from categoryno c, notice n
 				where c.no=n.categoryno
 				order by no desc )k, (select @ROWNUM:=0) b )j;
+				
+insert into categoryno values(1, 'Total Notify');
+insert into categoryno values(2, 'User Notify');
+insert into categoryno values(3, 'Shop Notify');
