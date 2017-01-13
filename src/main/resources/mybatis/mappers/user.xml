@@ -10,25 +10,31 @@
 			(select FORMAT(@ROWNUM:=@ROWNUM+1,0) as ROWNUM, u.* 
 			from (select * from users order by no desc) u, (select @ROWNUM:=0) b) u
 		]]>
-		<choose>
-			<when test="keyword != null and filterCheck==1">
-				<![CDATA[
-					where ROWNUM<=${page}*${user_page } and ROWNUM>(${page}-1)*${user_page }
-				]]>
-			</when>
-			<when test="keyword != null and filterCheck==2">
-				<![CDATA[
-					where ROWNUM<=${page}*${user_page } and ROWNUM>(${page}-1)*${user_page }
-				]]>
-			</when>
-			<when test="keyword != null and filterCheck==3">
-				<![CDATA[
-					where ROWNUM<=${page}*${user_page } and ROWNUM>(${page}-1)*${user_page }
-				]]>
-			</when>
-			<otherwise>
-			</otherwise>
-		</choose>
+			<choose>
+				<when test="keyword != null and keyword !='' and filterCheck==1">
+					<![CDATA[
+						where id like '%${keyword }%' or location like '%${keyword }%' and
+					]]>
+				</when>
+				<when test="keyword != null and keyword !='' and filterCheck==2">
+					<![CDATA[
+						where id like '%${keyword }%' and 
+					]]>
+				</when>
+				<when test="keyword != null and keyword !='' and filterCheck==3">
+					<![CDATA[
+						where location like '%${keyword }%' and 
+					]]>
+				</when>
+				<otherwise>
+					<![CDATA[
+						where  
+					]]>
+				</otherwise>
+			</choose> 
+		<![CDATA[
+			 ROWNUM<=${page }*${user_page } and ROWNUM>(${page}-1)*${user_page } 
+		]]>
 	</select>
 
 	<!-- 가입자 수 & 검색 수 조회 -->

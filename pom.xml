@@ -131,7 +131,7 @@
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
-			<version>1.2.0</version>
+			<version>1.2.4</version>
 		</dependency>
 
 		<!-- jackson -->

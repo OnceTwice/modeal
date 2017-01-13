@@ -34,13 +34,13 @@
 				<th width="700">댓글내용</th>
 				<th width="100">평점</th>
 			</tr>
-			<tr>
 				<c:forEach items="${list }" var="vo" varStatus="index">
+			<tr>
 					<td >${vo.name }</td>
 					<td >${vo.content}</td>
 					<td >${vo.grade }</td>
-				</c:forEach>
 			</tr>
+				</c:forEach>
 			
 		
 		</table>
