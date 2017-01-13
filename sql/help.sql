@@ -20,7 +20,7 @@ commit;
 
 -- 리스트 생성 ( exerd : no, title, complain, regDate, usersNo(id) ) -- 
 INSERT INTO help (title, complain, `regDate`, `usersNo`) 
-	 VALUES ('title', 'complain', DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s'), 1);
+	 VALUES ('title', 'complain', DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s'), 2);
 COMMIT;
 
 -- 테이블 조회 --
@@ -55,6 +55,9 @@ select *
 					where u.no = h.usersNo 
 					order by h.no desc) as r, (select @ROWNUM:=0) as rn) rr
 	where (1-1)*3+1 <= ROWNUM and ROWNUM <= 1*3;
+	
+	
+
 
 -------------------------------------------------- oracle sql문
 /* seq 생성 */

@@ -17,6 +17,7 @@
 			select count(*) 
 			from help
 		]]>
+
 			<!-- choose : when을 사용하기 위해 씀 -->
 			<choose>
 				<!-- when은 = if문 같음, test 안에 조건식 적기 -->
@@ -25,7 +26,6 @@
 					where title like '%${searchKeyword}%' or complain like '%${searchKeyword}%'
 				]]>
 				</when>
-
 				<when test="searchCondition == 2">
 				<![CDATA[	
 					where title like '%${searchKeyword}%'
@@ -37,16 +37,13 @@
 				]]>
 				</when>
 			</choose>
-		
 	</select>
-
-
+		
 	<!-- 고객센터 리스트 -->
 	<!-- parameterType : sql문에서 받아오는 파라미터값이 no면 long이라고 쓰고 받아오는 파라미터값이 2개 이상이면 map을 사용, 
 			resultType : select에 있는 데이터타입이 해당 vo안에 있으면 helpvo라고 쓰고 다른테이블에 있는 속성도 함께 쓰려면 map을 사용. -->
-	
 	<select id="helpList" parameterType="map" resultType="map">
-		<!-- h.userNo를 u.id로 바꾸려는 sql문 --> 
+		<!-- h.userNo를 u.id로 바꾸려는 sql문 -->
 		<!-- FORMAT(@ROWNUM:=@ROWNUM+1,0) : 필드명 -->
 		<![CDATA[
 			select * 
@@ -67,7 +64,6 @@
 					where title like '%${searchKeyword}%' or complain like '%${searchKeyword}%'
 				]]>
 				</when>
-
 				<when test="searchCondition == 2">
 				<![CDATA[	
 					where title like '%${searchKeyword}%'
@@ -79,12 +75,13 @@
 				]]>
 				</when>
 			</choose>
-		</if>
-				<!-- 페이징 & 정렬 -->
-				<![CDATA[
-					) as rr
-					where (#{currentPage }-1)*#{size }+1 <= rownum and rownum <= #{currentPage }*#{size }
-				]]>
+		</if>	
+				
+			<!-- 페이징 & 정렬 -->
+			<![CDATA[
+				) as rr
+				where (#{currentPage }-1)*#{size }+1 <= rownum and rownum <= #{currentPage }*#{size }
+			]]>
 	</select>
 
 	<!-- 뷰 페이지 -->

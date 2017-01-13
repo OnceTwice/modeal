@@ -31,19 +31,19 @@
 			<table class="helptable table">
 				<tr>													<!-- tr : 행 나누기 -->
 					<th class="short"  align="center"> 작성자 </th>			<!-- th : 필드명(제목) -->
-					<td class="middle" align="left"> ${view.ID } </td>	<!-- td : 데이터(값)-->
+					<td class="middle" align="left"> ${view.id } </td>	<!-- td : 데이터(값)-->
 				</tr>
 				<tr>
 					<th class="short" align="center"> 등록일 </th>
-					<td class="middle" align="left"> ${view.REGDATE } </td>
+					<td class="middle" align="left"> ${view.regDate } </td>
 				</tr>
 				<tr>
 					<th class="short" align="center"> 제목 </th>
-					<td class="middle" align="left"> ${view.TITLE } </td>
+					<td class="middle" align="left"> ${view.title } </td>
 				</tr>
 				<tr>
 					<th class="short" align="center"> 내용 </th>
-					<td class="middle" align="left"> ${view.COMPLAIN } </td>
+					<td class="middle" align="left"> ${view.complain } </td>
 				</tr>
 				<tr>
 					<!-- c:forEach문(자바의 for문과 같음)으로 돌려준다. -->
