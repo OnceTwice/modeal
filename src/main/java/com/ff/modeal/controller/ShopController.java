@@ -1,7 +1,5 @@
 package com.ff.modeal.controller;
 
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ff.modeal.dto.JSONResult;
 import com.ff.modeal.service.ShopService;
 
 @Controller
@@ -38,10 +37,11 @@ public class ShopController {
 	
 	@RequestMapping("/test")
 	@ResponseBody
-	public Map<String, Object> test(@RequestParam(value="keyword", required=false, defaultValue="") String keyword,
+	public JSONResult test(@RequestParam(value="keyword", required=false, defaultValue="") String keyword,
 											@RequestParam(value="filterCheck", required=false, defaultValue="1") Integer option,
 											@RequestParam(value="page", required=false, defaultValue="1") Integer page) {
-		return shopService.list(page, keyword, option);
+		
+		return JSONResult.success(shopService.list(page, keyword, option));
 	}
 	
 }

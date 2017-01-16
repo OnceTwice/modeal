@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ff.modeal.repository.HelpDao;
-import com.ff.modeal.vo.HelpVo;
 
 @Service
 public class HelpService {
