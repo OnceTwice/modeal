@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ff.modeal.dto.JSONResult;
+import com.ff.modeal.service.app.DaumSearchService;
 import com.ff.modeal.service.app.MapsService;
 import com.ff.modeal.vo.ShopVo;
 
@@ -26,7 +27,7 @@ public class MapsController {
 			@RequestParam(value = "longitude", required = true, defaultValue = "0") String longitude,
 			@RequestParam(value = "latitude", required = true, defaultValue = "0") String latitude) {
 		range = "0.002";
-		longitude ="127.0280215767454";
+		longitude = "127.0280215767454";
 		latitude = "37.49456429671521";
 		List<ShopVo> list = mapsService.maplist(range, longitude, latitude);
 		return JSONResult.success(list);
@@ -37,4 +38,11 @@ public class MapsController {
 	public String hello() {
 		return "hello23443";
 	}
+
+	@ResponseBody
+	@RequestMapping("/addresstopoint")
+	public JSONResult DaumSearchAddress(@RequestParam(value = "addr", required = true, defaultValue = "") String addr) {
+		return JSONResult.success(new DaumSearchService().fetchAddress(addr));
+	}
+
 }
