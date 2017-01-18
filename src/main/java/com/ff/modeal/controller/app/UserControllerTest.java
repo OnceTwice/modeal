@@ -22,12 +22,14 @@ public class UserControllerTest {
 	
 	@ResponseBody
 	@RequestMapping("/input")
-	public JSONResult InputString(@RequestParam(value="name", required=true, defaultValue="" ) String name,
-									@RequestParam(value="id", required=true, defaultValue="" ) String id,
-									@RequestParam(value="password", required=true, defaultValue="" ) String password ) {
-		System.out.println(name);
+	public JSONResult InputString(@RequestParam(value="id", required=true, defaultValue="" ) String id,
+									@RequestParam(value="password", required=true, defaultValue="" ) String password,
+									@RequestParam(value="gender", required=true, defaultValue="" ) String gender,
+									@RequestParam(value="managerIdentified", required=true, defaultValue="1") String managerIdentified) {
 		System.out.println(id);
 		System.out.println(password);
+		System.out.println(gender);
+		System.out.println(managerIdentified);
 		
 		return JSONResult.success(1);
 	}
