@@ -7,6 +7,7 @@
 		<typeAlias alias="shopvo" type="com.ff.modeal.vo.ShopVo" />
 		<typeAlias alias="helpvo" type="com.ff.modeal.vo.HelpVo" />
 		<typeAlias alias="commentvo" type="com.ff.modeal.vo.CommentVo" />
+		<typeAlias alias="itemvo" type="com.ff.modeal.vo.ItemVo" />
 	</typeAliases>
 
 	<mappers>
@@ -15,5 +16,6 @@
 		<mapper resource="mybatis/mappers/shop.xml" />
 		<mapper resource="mybatis/mappers/help.xml" />
 		<mapper resource="mybatis/mappers/comment.xml" />
+		<mapper resource="mybatis/mappers/item.xml" />
 	</mappers>
 </configuration>
