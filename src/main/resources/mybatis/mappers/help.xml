@@ -3,6 +3,14 @@
 <!-- xml에서 Type은 소문자로 작성할것 : mybatis의 configuration.xml에서 타입명을 alias로 정한 값을 써줌 -->
 <mapper namespace="help">
 
+	<!-- 안드로이드 테스트해보기 -->
+	<select id="getList" resultType="helpvo">
+		<![CDATA[
+			select count(*)
+			from help
+		]]>	
+	</select>
+
 	<!-- 총 리스트 수 -->
 	<select id="helpListCount" resultType="long">
 		<![CDATA[

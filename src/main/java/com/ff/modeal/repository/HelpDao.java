@@ -8,11 +8,19 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ff.modeal.vo.HelpVo;
+
 @Repository
 public class HelpDao {
 
 	@Autowired
 	private SqlSession sqlSession;
+	
+	// 안드로이드 테스트해보기
+	public List<HelpVo> getList() {
+		return sqlSession.selectList("help.getList");
+	}
+	
 
 	// 총 리스트 수
 	public long helpListCount() {
