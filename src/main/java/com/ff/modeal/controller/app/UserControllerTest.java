@@ -1,11 +1,14 @@
 package com.ff.modeal.controller.app;
 
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 
 import com.ff.modeal.dto.*;
 import com.ff.modeal.service.app.*;
+import com.ff.modeal.vo.*;
 
 @Controller
 @RequestMapping("user/app")
@@ -18,6 +21,18 @@ public class UserControllerTest {
 	@RequestMapping("/main")
 	public String main() {
 		return "asdf";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/list")
+	public Object list() {
+		List<UserVo> list = userService.getAllUsers();
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("result", "success");
+		map.put("data", list);
+		
+		return map;
 	}
 	
 	@ResponseBody
