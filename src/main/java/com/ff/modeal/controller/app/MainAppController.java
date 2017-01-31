@@ -19,7 +19,7 @@ public class MainAppController {
 	@Autowired
 	private MainAppService mainAppService;
 	
-	
+	//메인출력
 	@ResponseBody
 	@RequestMapping(value="/list")
 	public Object mainlist(Model model){ 

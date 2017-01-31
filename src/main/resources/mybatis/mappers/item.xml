@@ -8,4 +8,21 @@
 			from item i left join shop s on s.no = i.`shopNo`
 		]]>
 	</select>
+	
+	<!-- 검색 리스트  -->
+	<select id="searchList" resultType="map">
+		select name from item union select name from shop
+	</select>
+	
+	<!-- 검색 결과 리스트 조회 -->
+	<select id="searchResultList" parameterType="String" resultType="map">
+		<![CDATA[
+			select i.* , s.name as shopName
+			from item i left join shop s on s.no = i.`shopNo`
+			where i.name LIKE '%${name }%' OR s.name LIKE '%${name }%'
+		]]>
+	</select>
+	
+	
+	
 </mapper>

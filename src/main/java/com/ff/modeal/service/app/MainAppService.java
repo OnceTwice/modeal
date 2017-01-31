@@ -20,6 +20,7 @@ public class MainAppService {
 		return mainDao.mainList();
 	}
 	
+	//list Mock data
 	public List<ItemVo> getMainlist(){
 		
 		List<ItemVo> list = new ArrayList<ItemVo>();
