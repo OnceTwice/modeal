@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="userApp">
+
+	<select id="login" parameterType="uservo" resultType="uservo">
+		<![CDATA[
+			select * from users where id = #{id }
+		]]>
+	</select>
+
+</mapper>

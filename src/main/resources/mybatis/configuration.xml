@@ -17,5 +17,7 @@
 		<mapper resource="mybatis/mappers/help.xml" />
 		<mapper resource="mybatis/mappers/comment.xml" />
 		<mapper resource="mybatis/mappers/item.xml" />
+		
+		<mapper resource="mybatis/mappers/app/userApp.xml" />
 	</mappers>
 </configuration>
