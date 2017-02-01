@@ -16,4 +16,7 @@ public class UserAppDao {
 		return sqlSession.selectOne("userApp.login", userVo);
 	}
 
+	public void FBJoin(UserVo userVo) {
+		sqlSession.insert("userApp.FBJoin", userVo);
+	}
 }

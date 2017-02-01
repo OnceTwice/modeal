@@ -15,4 +15,8 @@ public class UserAppService {
 	public UserVo login(UserVo userVo) {
 		return userAppDao.login(userVo);
 	}
+	
+	public void FBJoin(UserVo userVo) {
+		userAppDao.FBJoin(userVo);
+	}
 }

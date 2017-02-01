@@ -20,8 +20,13 @@ public class UserAppController {
 	@ResponseBody
 	@RequestMapping("/login")
 	public JSONResult login(@RequestBody UserVo userVo) {
-		System.out.println(userVo);
 		return JSONResult.success(userAppService.login(userVo));
+	}
+	
+	@ResponseBody
+	@RequestMapping("/fbjoin")
+	public void FBJoin(@RequestBody UserVo userVo) {
+		userAppService.FBJoin(userVo);
 	}
 
 }
