@@ -15,14 +15,13 @@
 	</select>
 	
 	<!-- 검색 결과 리스트 조회 -->
-	<select id="searchResultList" parameterType="String" resultType="map">
+	<select id="searchResultList" parameterType="string" resultType="map">
 		<![CDATA[
 			select i.* , s.name as shopName
 			from item i left join shop s on s.no = i.`shopNo`
-			where i.name LIKE '%${name }%' OR s.name LIKE '%${name }%'
+			where i.name LIKE CONCAT('%',#{name},'%') OR s.name LIKE CONCAT('%',#{name},'%')
 		]]>
 	</select>
-	
 	
 	
 </mapper>

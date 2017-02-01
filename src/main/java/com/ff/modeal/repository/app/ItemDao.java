@@ -20,7 +20,8 @@ public class ItemDao {
 	}
 	
 	public List<Map<String, Object>> searchResultList(String name){
-		return sqlSession.selectList("item.searchResultList", name);
+		System.out.println(name);
+		return sqlSession.selectList("item.searchResultList",name );
 	}
 	
 }
