@@ -17,9 +17,7 @@ public class ItemService2 {
 	private ItemDao2 itemDao;
 	
 	public List<ItemVo> getAllItmes() {
-		
 		List<ItemVo> list = new ArrayList<ItemVo>();
-		
 		// 가짜데이터 
 		ItemVo itemvo = new ItemVo();
 		itemvo.setName( "밀크초콜릿" );
@@ -32,7 +30,6 @@ public class ItemService2 {
 		itemvo.setShopNo( 1 );
 		itemvo.setItemCategoryNo( 2 );
 		list.add( itemvo );
-		
 		return list;
 	}	
 	

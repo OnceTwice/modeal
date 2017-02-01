@@ -27,7 +27,7 @@ public class ItemController2 {
 		
 		List<ItemVo> list = itemService.getAllItmes();
 		
-		System.out.println(itemVo);
+//		System.out.println(itemVo);
 		return JSONResult.success(list);
 	}	
 
