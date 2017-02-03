@@ -1,12 +1,13 @@
 package com.ff.modeal.controller.app;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ff.modeal.dto.JSONResult;
 import com.ff.modeal.service.app.UserAppService;
 import com.ff.modeal.vo.UserVo;
 
@@ -19,13 +20,15 @@ public class UserAppController {
 
 	@ResponseBody
 	@RequestMapping("/login")
-	public JSONResult login(@RequestBody UserVo userVo) {
-		return JSONResult.success(userAppService.login(userVo));
+	public UserVo login(@RequestBody UserVo userVo) {
+		System.out.println(userAppService.login(userVo));
+		return userAppService.login(userVo);
 	}
 	
 	@ResponseBody
 	@RequestMapping("/fbjoin")
 	public void FBJoin(@RequestBody UserVo userVo) {
+		System.out.println("facebook" + userVo);
 		userAppService.FBJoin(userVo);
 	}
 

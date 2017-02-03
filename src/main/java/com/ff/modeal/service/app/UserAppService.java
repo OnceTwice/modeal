@@ -17,6 +17,15 @@ public class UserAppService {
 	}
 	
 	public void FBJoin(UserVo userVo) {
+		if (userVo.getLocation() == null) {
+			userVo.setLocation("facebook user");
+		} 
+		if (userVo.getBirth() == null) {
+			userVo.setBirth("facebook user");
+		} 
+		if (userVo.getPassword() == null) {
+			userVo.setPassword("facebook user");
+		}
 		userAppDao.FBJoin(userVo);
 	}
 }

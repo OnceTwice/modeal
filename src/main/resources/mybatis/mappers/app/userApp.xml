@@ -12,7 +12,7 @@
 	<insert id="FBJoin" parameterType="uservo">
 		<![CDATA[
 			insert into users (id, password, gender, location, birth, `managerIdentified`, `shopNo`) 
-			VALUES(#{id }, 'facebook', #{gender }, #{location }, #{birth }, #{managerIdentified }, shopno)
+			VALUES(#{id }, #{password }, #{gender }, #{location }, #{birth }, #{managerIdentified }, shopno)
 		]]>
 	</insert>
 
