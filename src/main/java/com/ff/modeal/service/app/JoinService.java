@@ -7,7 +7,7 @@ import org.springframework.stereotype.*;
 import com.ff.modeal.vo.*;
 
 @Service
-public class UserServiceTest {
+public class JoinService {
 	public List<UserVo> getAllUsers() {
 		List<UserVo> list = new ArrayList<UserVo>();
 		

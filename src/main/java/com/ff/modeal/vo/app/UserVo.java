@@ -1,6 +1,6 @@
 package com.ff.modeal.vo.app;
 
-public class UserVoTest {
+public class UserVo {
 	private Long no;
 	private String id;
 	private String password;

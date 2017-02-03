@@ -12,10 +12,10 @@ import com.ff.modeal.vo.*;
 
 @Controller
 @RequestMapping("user/app")
-public class UserControllerTest {
+public class JoinController {
 	
 	@Autowired
-	UserServiceTest userService;
+	JoinService userService;
 	
 	@ResponseBody
 	@RequestMapping("/main")
@@ -36,7 +36,7 @@ public class UserControllerTest {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/userinput")
+	@RequestMapping("/userinput")		// default값이 get이더라도 get을 써주면 못받아옴
 	public JSONResult InputUserString(@RequestParam(value="id", required=true, defaultValue="" ) String id,
 										@RequestParam(value="password", required=true, defaultValue="" ) String password,
 										@RequestParam(value="gender", required=true, defaultValue="" ) String gender,
@@ -54,7 +54,7 @@ public class UserControllerTest {
 	@ResponseBody
 	@RequestMapping("/ownerinput")
 	public JSONResult InputOwnerString(@RequestBody UserVo userVo) {
-		
+		System.out.println("ㅅㅄㅄㅄㅄㅂ");
 		System.out.println(userVo);
 		
 		return JSONResult.success(1);

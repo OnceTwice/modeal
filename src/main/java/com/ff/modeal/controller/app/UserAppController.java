@@ -1,15 +1,11 @@
 package com.ff.modeal.controller.app;
 
-import java.util.Map;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.ff.modeal.service.app.UserAppService;
-import com.ff.modeal.vo.UserVo;
+import com.ff.modeal.service.app.*;
+import com.ff.modeal.vo.*;
 
 @Controller
 @RequestMapping("/userapp")
