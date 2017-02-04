@@ -2,15 +2,20 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+		<!-- web -->
 		<typeAlias alias="uservo" type="com.ff.modeal.vo.UserVo" />
 		<typeAlias alias="noticevo" type="com.ff.modeal.vo.NoticeVo" />
 		<typeAlias alias="shopvo" type="com.ff.modeal.vo.ShopVo" />
 		<typeAlias alias="helpvo" type="com.ff.modeal.vo.HelpVo" />
 		<typeAlias alias="commentvo" type="com.ff.modeal.vo.CommentVo" />
 		<typeAlias alias="itemvo" type="com.ff.modeal.vo.ItemVo" />
+		
+		<!-- mobile(app) -->
+		<typeAlias alias="appuservo" type="com.ff.modeal.vo.app.UserVo"/>
 	</typeAliases>
 
 	<mappers>
+		<!-- web -->
 		<mapper resource="mybatis/mappers/user.xml" />
 		<mapper resource="mybatis/mappers/notice.xml" />
 		<mapper resource="mybatis/mappers/shop.xml" />
@@ -19,7 +24,8 @@
 		<mapper resource="mybatis/mappers/item.xml" />
 		<mapper resource="mybatis/mappers/item2.xml" />
 		
-		
+		<!-- mobile(app) -->
+		<mapper resource="mybatis/mappers/app/joinApp.xml"/>
 		<mapper resource="mybatis/mappers/app/userApp.xml" />
 	</mappers>
 </configuration>
