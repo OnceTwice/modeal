@@ -15,17 +15,44 @@ public class UserAppService {
 	public UserVo login(UserVo userVo) {
 		return userAppDao.login(userVo);
 	}
-	
-	public void FBJoin(UserVo userVo) {
-		if (userVo.getLocation() == null) {
-			userVo.setLocation("facebook user");
-		} 
-		if (userVo.getBirth() == null) {
-			userVo.setBirth("facebook user");
-		} 
-		if (userVo.getPassword() == null) {
-			userVo.setPassword("facebook user");
+
+	public void SocialJoin(UserVo userVo) {
+		if (userVo.getManagerIdentified() == 3) {
+			if (userVo.getLocation() == null) {
+				userVo.setLocation("FBUSER");
+			}
+			if (userVo.getBirth() == null) {
+				userVo.setBirth("FBUSER");
+			}
+			if (userVo.getPassword() == null) {
+				userVo.setPassword("FBUSER");
+			}
+			if (userVo.getGender() == null) {
+				userVo.setGender("FBUSER");
+			}
+		} else if (userVo.getManagerIdentified() == 4) {
+			if (userVo.getLocation() == null) {
+				userVo.setLocation("Google");
+			}
+			if (userVo.getBirth() == null) {
+				userVo.setBirth("Google");
+			}
+			if (userVo.getPassword() == null) {
+				userVo.setPassword("Google");
+			}
+			if (userVo.getGender() == null) {
+				userVo.setGender("Google");
+			}
 		}
-		userAppDao.FBJoin(userVo);
+		userAppDao.SocialJoin(userVo);
 	}
+
+	public UserVo findPW(String email) {
+		return userAppDao.findPW(email);
+	}
+
+	public void changePassword(String email, String password) {
+		userAppDao.changePassword(email, password);
+	}
+
 }

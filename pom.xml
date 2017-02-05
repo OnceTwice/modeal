@@ -207,8 +207,14 @@
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 
-	</dependencies>
+		<!-- java mail (임시비밀번호 이메일로 보내기)-->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+		</dependency>
 
+	</dependencies>
 
 	<build>
 		<plugins>

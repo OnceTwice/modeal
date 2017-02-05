@@ -8,15 +8,26 @@ import com.ff.modeal.vo.UserVo;
 
 @Repository
 public class UserAppDao {
-	
+
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	public UserVo login(UserVo userVo) {
 		return sqlSession.selectOne("userApp.login", userVo);
 	}
 
-	public void FBJoin(UserVo userVo) {
-		sqlSession.insert("userApp.FBJoin", userVo);
+	public void SocialJoin(UserVo userVo) {
+		sqlSession.insert("userApp.SocialJoin", userVo);
+	}
+
+	public UserVo findPW(String email) {
+		return sqlSession.selectOne("userApp.findPW", email);
+	}
+
+	public void changePassword(String email, String password) {
+		UserVo userVo = new UserVo();
+		userVo.setId(email);
+		userVo.setPassword(password);
+		sqlSession.update("userApp.changePassword", userVo);
 	}
 }

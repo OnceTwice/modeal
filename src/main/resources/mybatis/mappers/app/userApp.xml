@@ -8,12 +8,24 @@
 			select * from users where id = #{id }
 		]]>
 	</select>
-	
-	<insert id="FBJoin" parameterType="uservo">
+
+	<insert id="SocialJoin" parameterType="uservo">
 		<![CDATA[
 			insert into users (id, password, gender, location, birth, `managerIdentified`, `shopNo`) 
 			VALUES(#{id }, #{password }, #{gender }, #{location }, #{birth }, #{managerIdentified }, shopno)
 		]]>
 	</insert>
+
+	<select id="findPW" parameterType="string" resultType="uservo">
+		<![CDATA[
+			select * from users where id = #{id }
+		]]>
+	</select>
+
+	<update id="changePassword" parameterType="uservo">
+		<![CDATA[
+			update users set password = #{password } where id = #{id }
+		]]>
+	</update>
 
 </mapper>
