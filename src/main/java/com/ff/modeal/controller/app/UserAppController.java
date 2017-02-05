@@ -17,14 +17,12 @@ public class UserAppController {
 	@ResponseBody
 	@RequestMapping("/login")
 	public UserVo login(@RequestBody UserVo userVo) {
-		System.out.println(userAppService.login(userVo));
 		return userAppService.login(userVo);
 	}
 	
 	@ResponseBody
 	@RequestMapping("/fbjoin")
 	public void FBJoin(@RequestBody UserVo userVo) {
-		System.out.println("facebook" + userVo);
 		userAppService.FBJoin(userVo);
 	}
 
