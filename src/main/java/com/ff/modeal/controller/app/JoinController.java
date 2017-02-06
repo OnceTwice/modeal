@@ -1,19 +1,14 @@
 package com.ff.modeal.controller.app;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
+import org.springframework.web.bind.annotation.*;
 
-import com.ff.modeal.dto.JSONResult;
-import com.ff.modeal.service.app.JoinService;
-import com.ff.modeal.vo.app.UserVo;
+import com.ff.modeal.dto.*;
+import com.ff.modeal.service.app.*;
+import com.ff.modeal.vo.app.*;
 
 @Controller
 @RequestMapping("user/app")
@@ -40,7 +35,7 @@ public class JoinController {
 		return map;
 	}
 	
-	@ResponseBody
+	@ResponseBody						// InputUserString 메소드는 데이터를 저장해주는 메소드이므로 리턴값이 어떤것이 들어오든 무관
 	@RequestMapping("/userinput")		// default값이 get이더라도 get을 써주면 못받아옴
 	public JSONResult InputUserString(UserVo userVo,
 										@RequestParam(value="id", required=true, defaultValue="" ) String id,
@@ -61,7 +56,9 @@ public class JoinController {
 		userVo.setBirth(birth);
 		userVo.setManagerIdentified(1L);
 		
-//		System.out.println(userVo);
+//		System.out.println(userVo + "123");
+//		List<UserVo> data = new ArrayList<UserVo>();
+//		data.add(userVo);
 		
 //		System.out.println("사용자 Controller 실행 전 =====" + joinService.joinUser(userVo));
 		
