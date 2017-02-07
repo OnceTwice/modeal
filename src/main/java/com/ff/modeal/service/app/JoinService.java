@@ -1,13 +1,12 @@
 package com.ff.modeal.service.app;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
 
-import com.ff.modeal.repository.app.JoinDao;
-import com.ff.modeal.vo.app.UserVo;
+import com.ff.modeal.repository.app.*;
+import com.ff.modeal.vo.app.*;
 
 @Service
 public class JoinService {
@@ -53,8 +52,12 @@ public class JoinService {
 		return joinDao.insertUser(userVo);
 	}
 	
-	public int joinOwner(UserVo userVo) {
+	public int joinOwnerUser(Object obj) {
 //		System.out.println("사업자 Service ===== " + joinDao.insertOwner(userVo));
-		return joinDao.insertOwner(userVo);
+		
+		System.out.println("Service에서========" + obj);
+		
+		UserVo userVo = null;;
+		return joinDao.insertOwnerUser(userVo);
 	}
 }
