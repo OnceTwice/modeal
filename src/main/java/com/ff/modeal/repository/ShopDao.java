@@ -44,11 +44,11 @@ public class ShopDao {
 	}
 
 	// 범위에 맞는 매장 리스트 가져오기
-	public List<ShopVo> maplist(Double range, Double longitude, Double latitude) {
+	public List<ShopVo> maplist(Double doubleRange, Double doubleLongitude, Double doubleLatitude) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("range", range);
-		map.put("longitude", longitude);
-		map.put("latitude", latitude);
+		map.put("range", doubleRange);
+		map.put("longitude", doubleLongitude);
+		map.put("latitude", doubleLatitude);
 		return sqlSession.selectList("shop.maplist", map);
 	}
 }

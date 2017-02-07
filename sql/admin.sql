@@ -87,6 +87,38 @@ INSERT INTO shop(address,
              '11',
              127.0300215767454,
              37.49656429671521);
+INSERT INTO shop(address,
+                 newaddress,
+                 name,
+                 phone,
+                 picture,
+                 introduce,
+                 longitude,
+                 latitude)
+     VALUES ('광주시청',
+             '광주시청',
+             '광주시청',
+             '광주시청',
+             '광주시청',
+             '광주시청',
+             126.8515729214,
+             35.1600820602);
+			 INSERT INTO shop(address,
+                 newaddress,
+                 name,
+                 phone,
+                 picture,
+                 introduce,
+                 longitude,
+                 latitude)
+     VALUES ('광주시청으로부터10미터',
+             '광주시청으로부터10미터',
+             '광주시청으로부터10미터',
+             '광주시청으로부터10미터',
+             '광주시청으로부터10미터',
+             '광주시청으로부터10미터',
+             126.8515729214,
+             35.1510820602);
 
 COMMIT;
 

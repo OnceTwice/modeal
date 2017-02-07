@@ -19,6 +19,8 @@ public class MapsService {
 		Double doubleLongitude = Double.valueOf(longitude);
 		Double doubleLatitude = Double.valueOf(latitude);
 
+		doubleRange = doubleRange *0.001 * 0.009009;
+		System.out.println("doubleRange = " + doubleRange+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		List<ShopVo> list = shopDao.maplist(doubleRange, doubleLongitude, doubleLatitude);
 		return list;
 	}

@@ -26,9 +26,12 @@ public class MapsController {
 	public JSONResult maplist(@RequestParam(value = "range", required = true, defaultValue = "0") String range,
 			@RequestParam(value = "longitude", required = true, defaultValue = "0") String longitude,
 			@RequestParam(value = "latitude", required = true, defaultValue = "0") String latitude) {
-		range = "0.002";
-		longitude = "127.0280215767454";
-		latitude = "37.49456429671521";
+		System.out.println("기존 range ==" + range);
+		System.out.println("기존 longitude ==" + longitude);
+		System.out.println("기존 latitude ==" + latitude);
+//		range = "1100";
+//		longitude = "126.8515729214";
+//		latitude = "35.1600820602";
 		List<ShopVo> list = mapsService.maplist(range, longitude, latitude);
 		return JSONResult.success(list);
 	}
