@@ -47,17 +47,51 @@ public class JoinService {
 		return list;
 	}
 	
-	public int joinUser(UserVo userVo) {
+	public int joinUser(UserVo userVo) {			// 일반
 //		System.out.println("사용자 Service ===== " + joinDao.insertUser(userVo));
 		return joinDao.insertUser(userVo);
 	}
 	
-	public int joinOwnerUser(Object obj) {
+	public void joinOwnerUser(Map<String, Object> map) {
 //		System.out.println("사업자 Service ===== " + joinDao.insertOwner(userVo));
+	
+		System.out.println("Service joinOwnerUser에서========" + map);
 		
-		System.out.println("Service에서========" + obj);
+		UserVo userVo = new UserVo();		
+		userVo.setId((String) map.get("userId"));
+		userVo.setPassword((String) map.get("userPassword"));
+		userVo.setGender((String) map.get("userGender"));
+		userVo.setLocation((String) map.get("userLocation"));
+		userVo.setBirth((String) map.get("userBirth"));
+		userVo.setManagerIdentified( ((Integer) map.get("userManagerIdentified")).longValue());
+//		userVo.setShopNo(((Integer) map.get("userShopNo")).longValue());
 		
-		UserVo userVo = null;;
-		return joinDao.insertOwnerUser(userVo);
+		System.out.println("userVo 출력123123123");
+		System.out.println(userVo);
+		
+		return;
+//		return joinDao.insertOwnerUser(userVo);
+	}
+	
+	public void joinOwnerMarket(Map<String, Object> map) {
+		System.out.println("Service joinOwnerMarket에서========" + map);
+		
+		ShopVo shopVo = new ShopVo();
+		shopVo.setAddress((String) map.get("marketAddress"));
+		shopVo.setNewAddress((String) map.get("marketNewAddress"));
+		shopVo.setName((String) map.get("shopName"));
+		shopVo.setPhone((String) map.get("marketPhoneNumber"));
+		shopVo.setPicture((String) map.get("shopPicture"));
+		shopVo.setIntroduce((String) map.get("shopIntroduce"));
+		shopVo.setLongitude((Double) map.get("shopLongitude"));
+		shopVo.setLatitude((Double) map.get("shopLatitude"));
+		
+		System.out.println("shopVo 출력123123124124124");
+		System.out.println(shopVo);
+		
+//		ShopVo shopVo = null;
+		
+		return;
+//		return joinDao.insertOwnerMarket(shopVo);
 	}
 }

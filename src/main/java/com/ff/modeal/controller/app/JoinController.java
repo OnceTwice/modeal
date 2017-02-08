@@ -71,7 +71,7 @@ public class JoinController {
 	
 	@ResponseBody
 	@RequestMapping("/ownerinput")
-	public JSONResult InputOwnerString(@RequestBody Map<Object, Object> map) {/*@RequestBody UserVo userVo*/ 
+	public JSONResult InputOwnerString(@RequestBody Map<String, Object> map) {/*@RequestBody UserVo userVo*/ 
 //		System.out.println("ㅅㅄㅄㅄㅄㅂ");
 //		System.out.println(userVo);
 		
@@ -83,11 +83,12 @@ public class JoinController {
 		
 		joinService.joinOwner(userVo);
 */
-		System.out.println(map);
-		System.out.println(map.get("user"));
-		System.out.println(map.get("shop"));
+		System.out.println("Controller에서========" + map);
+//		System.out.println(map.get("user"));
+//		System.out.println(map.get("shop"));
 		
-		joinService.joinOwnerUser(map.get("user"));
+		joinService.joinOwnerMarket(map);
+		joinService.joinOwnerUser(map);
 		
 		
 //		System.out.println("사업자 Controller 실행 후 ===== " + joinService.joinOwner(userVo));

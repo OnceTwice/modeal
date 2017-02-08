@@ -11,7 +11,7 @@
 		]]>
 	</insert>
 	
-	<insert id="insertOwner" parameterType="appuservo">
+	<insert id="insertOwnerUser" parameterType="appuservo">
 		<![CDATA[
 			insert
 			into users

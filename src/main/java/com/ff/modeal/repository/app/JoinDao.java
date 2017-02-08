@@ -20,7 +20,7 @@ public class JoinDao {
 	
 	public int insertOwnerUser(UserVo userVo) {
 //		System.out.println("사업자 Dao ===== " + sqlSession.insert("join.insertOwner", userVo));
-		return sqlSession.insert("join.insertOwner", userVo);
+		return sqlSession.insert("join.insertOwnerUser", userVo);
 	}
 	
 	public int insertOwnerMarket(ShopVo shopVo) {
