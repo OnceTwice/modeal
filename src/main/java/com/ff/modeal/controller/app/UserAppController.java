@@ -37,7 +37,7 @@ public class UserAppController {
 	public UserVo findPW(@RequestParam(value = "email", required = true, defaultValue = "") String email) {
 		UserVo userVo = userAppService.findPW(email);
 		if (userVo != null) {
-			if (userVo.getManagerIdentified() == 3 || userVo.getManagerIdentified() == 4) {
+			if (userVo.getManagerIdentified() == 3L || userVo.getManagerIdentified() == 4L) {
 				return null;
 			}
 			String password = TemporaryPassword.temporaryPassword(8); // 임시비밀번호생성

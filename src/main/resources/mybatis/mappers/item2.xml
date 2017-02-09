@@ -11,4 +11,14 @@
 		]]>
 	</select>
 	
+	<!-- 상품 상세 정보 -->
+	<select id="itemDetail" parameterType="long" resultType="itemvo">
+		<![CDATA[
+			select i.*, s.name, c.grade from (select avg(grade) as grade, shopNo
+										from comments
+									group by shopNo
+									order by shopNo) c, item i left outer join shop s on i.`shopNo` = s.no where i.no = #{no }
+		]]>
+	</select>
+	
 </mapper>

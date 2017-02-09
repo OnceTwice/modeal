@@ -17,7 +17,7 @@ public class UserAppService {
 	}
 
 	public void SocialJoin(UserVo userVo) {
-		if (userVo.getManagerIdentified() == 3) {
+		if (userVo.getManagerIdentified() == 3L) {
 			if (userVo.getLocation() == null) {
 				userVo.setLocation("FBUSER");
 			}
@@ -30,7 +30,7 @@ public class UserAppService {
 			if (userVo.getGender() == null) {
 				userVo.setGender("FBUSER");
 			}
-		} else if (userVo.getManagerIdentified() == 4) {
+		} else if (userVo.getManagerIdentified() == 4L) {
 			if (userVo.getLocation() == null) {
 				userVo.setLocation("Google");
 			}

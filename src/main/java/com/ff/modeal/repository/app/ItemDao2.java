@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ff.modeal.vo.ItemVo;
+
 @Repository
 public class ItemDao2 {
 
@@ -18,4 +20,7 @@ public class ItemDao2 {
 		return sqlSession.selectList("item2.shopItemList", shopNo);
 	}
 
+	public ItemVo itemDetail(Long no) {
+		return sqlSession.selectOne("item2.itemDetail", no);
+	}
 }

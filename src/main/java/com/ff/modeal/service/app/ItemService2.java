@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ff.modeal.repository.app.ItemDao2;
 import com.ff.modeal.vo.ItemVo;
@@ -36,6 +37,11 @@ public class ItemService2 {
 	// 해당 매장의 상품 목록
 	public List<Map<String, Object>> shopItemList(Long shopNo){
 		return itemDao.shopItemList(shopNo);
+	}
+	
+	// 상품 상세 목록
+	public ItemVo itemDetail(Long no) {
+		return itemDao.itemDetail(no);
 	}
 	
 }

@@ -37,7 +37,15 @@ public class ItemController2 {
 	public JSONResult shopItemList(@RequestParam(value="no") Long shopNo){
 		System.out.println(shopNo);
 //		List<Map<String, Object>> map = itemService.shopItemList(shopNo);
-		System.out.println(itemService.shopItemList(shopNo));
+		System.out.println(itemService.shopItemList(shopNo).get(0).get("oriPrice").getClass());
 		return JSONResult.success(itemService.shopItemList(shopNo));
+	}
+	
+	// 상품 상세 목록
+	@ResponseBody
+	@RequestMapping(value="/itemDetail", method=RequestMethod.POST)
+	public ItemVo itemDetail(@RequestParam(value="no", required=true, defaultValue="") Long no) {
+		System.out.println("---------------" + no);
+		return itemService.itemDetail(no);
 	}
 }
