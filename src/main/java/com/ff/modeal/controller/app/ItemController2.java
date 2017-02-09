@@ -1,6 +1,7 @@
 package com.ff.modeal.controller.app;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,8 +45,7 @@ public class ItemController2 {
 	// 상품 상세 목록
 	@ResponseBody
 	@RequestMapping(value="/itemDetail", method=RequestMethod.POST)
-	public ItemVo itemDetail(@RequestParam(value="no", required=true, defaultValue="") Long no) {
-		System.out.println("---------------" + no);
-		return itemService.itemDetail(no);
+	public JSONResult itemDetail(@RequestParam(value="no", required=true, defaultValue="") Long no) {
+		return JSONResult.success(itemService.itemDetail(no));
 	}
 }

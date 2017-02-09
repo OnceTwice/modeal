@@ -40,7 +40,7 @@ public class ItemService2 {
 	}
 	
 	// 상품 상세 목록
-	public ItemVo itemDetail(Long no) {
+	public Map<String, Object> itemDetail(Long no) {
 		return itemDao.itemDetail(no);
 	}
 	

@@ -20,7 +20,7 @@ public class ItemDao2 {
 		return sqlSession.selectList("item2.shopItemList", shopNo);
 	}
 
-	public ItemVo itemDetail(Long no) {
+	public Map<String, Object> itemDetail(Long no) {
 		return sqlSession.selectOne("item2.itemDetail", no);
 	}
 }
