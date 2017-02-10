@@ -3,6 +3,18 @@
 
 <mapper namespace="user">
 
+	<!-- 가입자 통계 -->
+	<select id="getCountGender" resultType="map">
+	<![CDATA[
+		select gender, count(*) as count from users group by gender
+	]]>
+	</select>
+	<select id="genlocationCount" resultType="uservo">
+	<![CDATA[
+		select gender, count(*) as count from users group by gender
+	]]>
+	</select>
+
 	<!-- 가입자 조회 -->
 	<select id="getUserList" parameterType="map" resultType="uservo">
 		<![CDATA[

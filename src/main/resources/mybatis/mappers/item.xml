@@ -6,6 +6,7 @@
 		<![CDATA[
 			select i.* , s.name as shopName
 			from item i left join shop s on s.no = i.`shopNo`
+			where showItem = 1
 		]]>
 	</select>
 	

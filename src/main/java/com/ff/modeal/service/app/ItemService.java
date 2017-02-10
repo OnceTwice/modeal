@@ -26,6 +26,4 @@ public class ItemService {
 		return itemDao.searchResultList(name);
 	}
 	
-	
-	
 }
