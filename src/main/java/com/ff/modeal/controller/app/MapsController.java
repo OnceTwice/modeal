@@ -44,7 +44,7 @@ public class MapsController {
 
 	@ResponseBody
 	@RequestMapping("/addresstopoint")
-	public JSONResult DaumSearchAddress(@RequestParam(value = "addr", required = true, defaultValue = "") String addr) {
+	public JSONResult DaumSearchAddress(@RequestParam(value = "addr", required = true, defaultValue = "") String addr) { // 안드로이드에서 검색할 주소 받아옴
 		return JSONResult.success(new DaumSearchService().fetchAddress(addr));
 	}
 

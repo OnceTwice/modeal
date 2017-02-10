@@ -14,10 +14,13 @@
 	<!-- 상품 상세 정보 -->
 	<select id="itemDetail" parameterType="long" resultType="map">
 		<![CDATA[
-			select i.*, s.name shopName, c.grade from (select avg(grade) as grade, shopNo
+			select i.*, s.name shopName, c.grade 
+			from shop s left outer join item i on i.`shopNo` = s.no 
+							left outer join 
+										(select avg(grade) as grade, shopNo
 										from comments
-									group by shopNo
-									order by shopNo) c, item i left outer join shop s on i.`shopNo` = s.no where i.no = #{no }
+										group by shopNo) c on s.no = c.shopNo 
+			where i.no =  #{no }
 		]]>
 	</select>
 	
