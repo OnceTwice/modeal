@@ -12,6 +12,7 @@
 		
 		<!-- mobile(app) -->
 		<typeAlias alias="appuservo" type="com.ff.modeal.vo.app.UserVo"/>
+		<typeAlias alias="appshopvo" type="com.ff.modeal.vo.app.ShopVo"/>
 	</typeAliases>
 
 	<mappers>

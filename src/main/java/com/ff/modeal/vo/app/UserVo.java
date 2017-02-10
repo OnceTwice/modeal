@@ -58,10 +58,10 @@ public class UserVo {
 	public void setShopNo(Long shopNo) {
 		this.shopNo = shopNo;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "UserVoTest [no=" + no + ", id=" + id + ", password=" + password + ", gender=" + gender + ", location="
+		return "UserVo [no=" + no + ", id=" + id + ", password=" + password + ", gender=" + gender + ", location="
 				+ location + ", birth=" + birth + ", managerIdentified=" + managerIdentified + ", shopNo=" + shopNo
 				+ "]";
 	}

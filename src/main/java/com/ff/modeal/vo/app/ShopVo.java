@@ -3,7 +3,7 @@ package com.ff.modeal.vo.app;
 public class ShopVo {
 	private Long no;
 	private String address;
-	private String newAddress;
+	private String newaddress;
 	private String name;
 	private String phone;
 	private String picture;
@@ -23,11 +23,11 @@ public class ShopVo {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getNewAddress() {
-		return newAddress;
+	public String getNewaddress() {
+		return newaddress;
 	}
-	public void setNewAddress(String newAddress) {
-		this.newAddress = newAddress;
+	public void setNewaddress(String newaddress) {
+		this.newaddress = newaddress;
 	}
 	public String getName() {
 		return name;
@@ -65,10 +65,10 @@ public class ShopVo {
 	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "ShopVo [no=" + no + ", address=" + address + ", newAddress=" + newAddress + ", name=" + name
+		return "ShopVo [no=" + no + ", address=" + address + ", newaddress=" + newaddress + ", name=" + name
 				+ ", phone=" + phone + ", picture=" + picture + ", introduce=" + introduce + ", longitude=" + longitude
 				+ ", latitude=" + latitude + "]";
 	}

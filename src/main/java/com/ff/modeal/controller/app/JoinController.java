@@ -23,18 +23,6 @@ public class JoinController {
 		return "asdf";
 	}
 	
-	@ResponseBody
-	@RequestMapping("/list")
-	public Object list() {
-		List<UserVo> list = joinService.getAllUsers();
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("result", "success");
-		map.put("data", list);
-		
-		return map;
-	}
-	
 	@ResponseBody						// InputUserString 메소드는 데이터를 저장해주는 메소드이므로 리턴값이 어떤것이 들어오든 무관
 	@RequestMapping("/userinput")		// default값이 get이더라도 get을 써주면 못받아옴
 	public JSONResult InputUserString(UserVo userVo,
@@ -87,8 +75,8 @@ public class JoinController {
 //		System.out.println(map.get("user"));
 //		System.out.println(map.get("shop"));
 		
-		joinService.joinOwnerMarket(map);
-		joinService.joinOwnerUser(map);
+		joinService.joinOwnerMarket(map);			// 사업자 점포 등록 후
+		joinService.joinOwnerUser(map);				// 점포 번호와 shopno를 일치시킴
 		
 		
 //		System.out.println("사업자 Controller 실행 후 ===== " + joinService.joinOwner(userVo));

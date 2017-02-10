@@ -10,13 +10,27 @@
 			values(#{id}, #{password}, #{gender}, #{location}, #{birth}, 1, null)
 		]]>
 	</insert>
+
+	<insert id="insertOwnerMarket" parameterType="appshopvo">
+		<![CDATA[
+			insert
+			into shop (address, newaddress, name, phone, picture, introduce, longitude, latitude)
+			VALUES (#{address}, #{newaddress}, #{name}, #{phone}, #{picture}, #{introduce}, #{longitude}, #{latitude})
+		]]>
+	</insert>
 	
 	<insert id="insertOwnerUser" parameterType="appuservo">
 		<![CDATA[
 			insert
-			into users
-			(id, password, gender, location, birth, `managerIdentified`, `shopNo`)
-			values(#{id}, #{password}, #{gender}, #{location}, #{birth}, 2, null)
+			into users (id, password, gender, location, birth, `managerIdentified`, `shopNo`)
+			values 	(#{id}, #{password}, #{gender}, #{location}, #{birth}, 2, #{shopNo})
 		]]>
 	</insert>
+	
+	<select id="getByShopNo" resultType="long">
+		<![CDATA[
+			select count(*)
+			from shop
+		]]>
+	</select>
 </mapper>
