@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ff.modeal.repository.app.ItemDao2;
 import com.ff.modeal.vo.ItemVo;
@@ -19,18 +18,18 @@ public class ItemService2 {
 	
 	public List<ItemVo> getAllItmes() {
 		List<ItemVo> list = new ArrayList<ItemVo>();
-		// 가짜데이터 
-		ItemVo itemvo = new ItemVo();
-		itemvo.setName( "밀크초콜릿" );
-		itemvo.setCount( 5 );
-		itemvo.setOriPrice( 2000 );
-		itemvo.setPrice( 1000 );
-		itemvo.setDiscount( 50 );
-		itemvo.setExpDate("2017-01-20 15:00:00");
-		itemvo.setPicture("im.jpg");
-		itemvo.setShopNo( 1 );
-		itemvo.setItemCategoryNo( 2 );
-		list.add( itemvo );
+//		// 가짜데이터 
+//		ItemVo itemvo = new ItemVo();
+//		itemvo.setName( "밀크초콜릿" );
+//		itemvo.setCount( 5 );
+//		itemvo.setOriPrice( 2000 );
+//		itemvo.setPrice( 1000 );
+//		itemvo.setDiscount( 50 );
+//		itemvo.setExpDate("2017-01-20 15:00:00");
+//		itemvo.setPicture("im.jpg");
+//		itemvo.setShopNo( 1 );
+//		itemvo.setItemCategoryNo( 2 );
+//		list.add( itemvo );
 		return list;
 	}	
 	
@@ -39,7 +38,12 @@ public class ItemService2 {
 		return itemDao.shopItemList(shopNo);
 	}
 	
-	// 상품 상세 목록
+	// 상품 추가
+	public void itemInsert(ItemVo itemVo) {
+		itemDao.itemInsert(itemVo);
+	}
+	
+	// 상품 상세 정보
 	public Map<String, Object> itemDetail(Long no) {
 		return itemDao.itemDetail(no);
 	}
