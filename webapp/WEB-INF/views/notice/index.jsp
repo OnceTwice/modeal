@@ -90,10 +90,12 @@
 				</ul>
 			</div>
 			
+			<!-- 
 			<c:forEach items="${map.list }" var="vo" varStatus="status">
 				${vo }
 			</c:forEach>
-			
+			 -->
+			 
 		</div>
 	</div>
 
