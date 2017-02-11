@@ -3,9 +3,11 @@
 
 <mapper namespace="userApp">
 
-	<select id="login" parameterType="uservo" resultType="uservo">
+	<select id="login" parameterType="uservo" resultType="map">
 		<![CDATA[
-			select * from users where id = #{id }
+			select u.*, s.address, s.newaddress, s.name, s.phone, s.picture, s.introduce
+ 			from users u left outer join shop s on u.`shopNo` = s.no 
+ 			where u.id = #{id }
 		]]>
 	</select>
 

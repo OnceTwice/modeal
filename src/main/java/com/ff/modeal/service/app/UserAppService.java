@@ -1,5 +1,7 @@
 package com.ff.modeal.service.app;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +14,7 @@ public class UserAppService {
 	@Autowired
 	private UserAppDao userAppDao;
 
-	public UserVo login(UserVo userVo) {
+	public Map<String, Object> login(UserVo userVo) {
 		return userAppDao.login(userVo);
 	}
 
