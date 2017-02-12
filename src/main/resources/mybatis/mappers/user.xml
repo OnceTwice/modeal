@@ -9,9 +9,9 @@
 		select gender, count(*) as count from users group by gender
 	]]>
 	</select>
-	<select id="genlocationCount" resultType="uservo">
+	<select id="getAgeCount" resultType="map">
 	<![CDATA[
-		select gender, count(*) as count from users group by gender
+		  SELECT CONCAT(floor((DATE_FORMAT(now(), '%Y') - SUBSTR(birth,1,4))/10)*10,'대') AS age ,count(*) as count FROM users group by age
 	]]>
 	</select>
 

@@ -21,9 +21,10 @@ public class StatsController {
 	public String statsIndex(Model model){
 		
 		List<Map<String, Object>> genderlist = statsService.getgenderCount();
-		List<Map<String, Object>> locationlist = statsService.genlocationCount();
+		List<Map<String, Object>> agelist = statsService.getAgeCount();
 		model.addAttribute("genderlist",genderlist);
-		model.addAttribute("locationlist",locationlist);
+		model.addAttribute("agelist",agelist);
+		System.out.println(agelist);
 		return "stats/statsMain";
 	}
 	

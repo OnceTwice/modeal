@@ -16,7 +16,7 @@ public class StatsDao {
 	public List<Map<String, Object>> getgenderCount(){
 		return sqlsession.selectList("user.getCountGender");
 	}
-	public List<Map<String, Object>> genlocationCount(){
-		return sqlsession.selectList("user.genlocationCount");
+	public List<Map<String, Object>> getAgeCount(){
+		return sqlsession.selectList("user.getAgeCount");
 	}
 }

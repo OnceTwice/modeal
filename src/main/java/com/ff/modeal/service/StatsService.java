@@ -19,9 +19,10 @@ public class StatsService {
 		List<Map<String, Object>> list = statsDao.getgenderCount();
 		return list;
 	}
-	public List<Map<String, Object>> genlocationCount(){
+	public List<Map<String, Object>> getAgeCount(){
 		
-		List<Map<String, Object>> list = statsDao.genlocationCount();
+		List<Map<String, Object>> list = statsDao.getAgeCount();
+		
 		return list;
 	}
 	
