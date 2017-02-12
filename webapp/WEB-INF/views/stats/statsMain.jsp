@@ -54,7 +54,7 @@
 		</div>
 		<div id="content">
 
-			<h2>총 가입자 : <fmt:formatNumber value="${usercount }" pattern="###,###,###"/>명 </h2><br>
+			<h2> 통 계 </h2><br>
 
 
 				<div id="my_chart1" style="width: 500px; height: 300px"> </div>
