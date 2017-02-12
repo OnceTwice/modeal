@@ -17,7 +17,6 @@ import com.ff.modeal.vo.ItemVo;
 @Controller
 @RequestMapping("/list")
 public class ItemController2 {
-	
 
 	@Autowired
 	ItemService2 itemService;

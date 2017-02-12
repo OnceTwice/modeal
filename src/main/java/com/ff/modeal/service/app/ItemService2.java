@@ -47,5 +47,4 @@ public class ItemService2 {
 	public Map<String, Object> itemDetail(Long no) {
 		return itemDao.itemDetail(no);
 	}
-
 }
