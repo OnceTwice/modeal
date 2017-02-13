@@ -4,7 +4,7 @@ insert into users (id, password, gender, location, birth, `managerIdentified`, `
 insert into shop (address, newaddress, name, phone, picture, introduce, longitude, latitude) VALUES('서울 강남구 ', '서초대로', '파리바게트', '1234-5678', 'picture_01.jpg', '파리파게트', 37.495175, 127.028454);
 insert into shop (address, newaddress, name, phone, picture, introduce, longitude, latitude) VALUES('서울 강남구 ', '서초대로', 'GS편의점', '1234-5678', 'picture_02.jpg', '파리파게트', 37.500040, 127.024890);
    
-insert into users (id, password, gender, location, birth, `managerIdentified`, `shopNo`) VALUES('test', '1', '여', '서울 강남구', '20070310', 0, 1);
+insert into users (id, password, gender, location, birth, `managerIdentified`, `shopNo`) VALUES('1@2', '123456', '여', '서울 강남구', '20070310', 0, 1);
 insert into users (id, password, gender, location, birth, `managerIdentified`, `shopNo`) VALUES('test02', '1', '남', '서울 강남구', '20170208', 0, 1);
 insert into users (id, password, gender, location, birth, `managerIdentified`, `shopNo`) VALUES('test03', '1', '남', '서울 강남구', '20170208', 0, 1);
 

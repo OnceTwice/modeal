@@ -7,7 +7,7 @@
 	<select id="appHelpInsert" parameterType="helpvo">
 		<![CDATA[
 			insert into help (title, complain, `regDate`, `usersNo`) 
-			VALUES(#{title }, #{complain }, now(), #{usersno })
+			VALUES(#{title }, #{complain }, now(), #{usersNo })
 		]]>
 	</select>
 
