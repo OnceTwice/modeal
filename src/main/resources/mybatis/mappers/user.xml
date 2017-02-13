@@ -5,14 +5,35 @@
 
 	<!-- 가입자 통계 -->
 	<select id="getCountGender" resultType="map">
-	<![CDATA[
-		select gender, count(*) as count from users group by gender
-	]]>
+		<![CDATA[
+			select gender, count(*) as count
+			from users
+			group by gender
+		]]>
 	</select>
+	
 	<select id="getAgeCount" resultType="map">
-	<![CDATA[
-		  SELECT CONCAT(floor((DATE_FORMAT(now(), '%Y') - SUBSTR(birth,1,4))/10)*10,'대') AS age ,count(*) as count FROM users group by age
-	]]>
+		<![CDATA[
+			  SELECT CONCAT(floor((DATE_FORMAT(now(), '%Y') - SUBSTR(birth,1,4))/10)*10,'대') AS age ,count(*) as count
+			  FROM users
+			  group by age
+		]]>
+	</select>
+	
+	<select id="getCountMan" resultType="int">
+		<![CDATA[
+			select count(*) count
+			from users
+			where gender='man'
+		]]>
+	</select>
+	
+	<select id="getCountWoman" resultType="int">
+		<![CDATA[
+			select count(*) count
+			from users
+			where gender='woman'
+		]]>
 	</select>
 
 	<!-- 가입자 조회 -->
@@ -87,12 +108,13 @@
 		]]>
 	</select>
 	
-	 
 	 <!-- 로그인 정보 가져오기(김영조) -->
 	<select id="getUserInfo" parameterType="map" resultType="uservo">
-	<![CDATA[
-	SELECT * FROM users WHERE id =#{id} AND password = #{password}
-	]]>
+		<![CDATA[
+			SELECT *
+			FROM users
+			WHERE id =#{id} AND password = #{password}
+		]]>
 	</select>
 	
 </mapper>

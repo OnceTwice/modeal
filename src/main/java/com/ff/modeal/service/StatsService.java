@@ -15,15 +15,20 @@ public class StatsService {
 	private StatsDao statsDao;
 	
 	public List<Map<String, Object>> getgenderCount(){
-		
 		List<Map<String, Object>> list = statsDao.getgenderCount();
 		return list;
 	}
+	
 	public List<Map<String, Object>> getAgeCount(){
-		
 		List<Map<String, Object>> list = statsDao.getAgeCount();
-		
 		return list;
 	}
 	
+	public int getCountMan() {
+		return statsDao.selectMan();
+	}
+	
+	public int getCountWoman() {
+		return statsDao.selectWoman();
+	}
 }

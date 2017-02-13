@@ -11,12 +11,21 @@ import org.springframework.stereotype.Repository;
 public class StatsDao {
 
 	@Autowired
-	private SqlSession sqlsession;
-	
-	public List<Map<String, Object>> getgenderCount(){
-		return sqlsession.selectList("user.getCountGender");
+	private SqlSession sqlSession;
+
+	public List<Map<String, Object>> getgenderCount() {
+		return sqlSession.selectList("user.getCountGender");
 	}
-	public List<Map<String, Object>> getAgeCount(){
-		return sqlsession.selectList("user.getAgeCount");
+
+	public List<Map<String, Object>> getAgeCount() {
+		return sqlSession.selectList("user.getAgeCount");
+	}
+
+	public int selectMan() {
+		return sqlSession.selectOne("user.getCountMan");
+	}
+	
+	public int selectWoman() {
+		return sqlSession.selectOne("user.getCountWoman");
 	}
 }
