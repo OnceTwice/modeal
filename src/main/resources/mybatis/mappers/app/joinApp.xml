@@ -33,4 +33,35 @@
 			from shop
 		]]>
 	</select>
+	
+	<update id="modifyUser" parameterType="appuservo">
+		<![CDATA[
+			update users
+			set password=#{password}, gender=#{gender}, location=#{location}, birth=#{birth}
+			where no=#{no}
+		]]>
+	</update>
+	
+	<update id="modifyOwnerMarket" parameterType="appshopvo">
+		<![CDATA[
+			update shop
+			set password=#{password}
+		]]>
+	</update>
+	
+	<update id="modifyOwnerUser" parameterType="appuservo">
+		<![CDATA[
+			update users
+			set password=#{password}, gender=#{gender}, location=#{location}, birth=#{birth}
+			where no=#{no}
+		]]>
+	</update>
+	
+	<delete id="delete" parameterType="appuservo">
+		<![CDATA[
+			delete
+			from users
+		]]>
+	</delete>
+	
 </mapper>

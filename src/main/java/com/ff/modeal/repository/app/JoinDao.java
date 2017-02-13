@@ -12,6 +12,7 @@ public class JoinDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	/************ 회원가입 *****************/
 	public int insertUser(UserVo userVo) {
 //		System.out.println("사용자 Dao ===== " + sqlSession.insert("join.insertUser", userVo));
 		return sqlSession.insert("join.insertUser", userVo);
@@ -31,5 +32,23 @@ public class JoinDao {
 	public Long getNo() {
 //		System.out.println("no값 출력!!!!!" + sqlSession.selectOne("join.getByShopNo"));
 		return sqlSession.selectOne("join.getByShopNo");
+	}
+	
+	/********** 회원수정 ************/
+	public int updateUser(UserVo userVo) {
+		return sqlSession.update("join.modifyUser", userVo);
+	}
+	
+	public int updateOwnerMarket(ShopVo shopVo) {
+		return sqlSession.update("join.modifyOwnerMarket", shopVo);
+	}
+	
+	public int updateOwnerUser(UserVo userVo) {
+		return sqlSession.update("join.modifyOwnerUser", userVo);
+	}
+
+	/********** 회원 탈퇴 ************/
+	public int deleteUser(UserVo userVo) {
+		return sqlSession.delete("join.delete", userVo);
 	}
 }

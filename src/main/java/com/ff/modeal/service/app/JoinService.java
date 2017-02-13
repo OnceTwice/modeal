@@ -13,7 +13,8 @@ public class JoinService {
 	
 	@Autowired
 	private JoinDao joinDao;
-	
+
+	/************ 회원가입 ************/
 	public int joinUser(UserVo userVo) {			// 일반인 회원가입
 //		System.out.println("사용자 Service ===== " + joinDao.insertUser(userVo));
 		return joinDao.insertUser(userVo);
@@ -58,5 +59,27 @@ public class JoinService {
 		System.out.println(userVo);
 		
 		return joinDao.insertOwnerUser(userVo);
+	}
+	
+	/************ 회원 정보 수정 ************/
+	public int modifyUser(UserVo userVo) {
+		return joinDao.updateUser(userVo);
+	}
+	
+	public int modifyOwnerMarket(Map<String, Object> map) {
+		ShopVo shopVo = new ShopVo();
+		
+		return joinDao.updateOwnerMarket(shopVo);
+	}
+	
+	public int modifyOwnerUser(Map<String, Object> map) {
+		UserVo userVo = new UserVo();
+		
+		return joinDao.updateOwnerUser(userVo);
+	}
+
+	/********** 회원 탈퇴 ************/
+	public int deleteUser(UserVo userVo) {
+		return joinDao.deleteUser(userVo);
 	}
 }

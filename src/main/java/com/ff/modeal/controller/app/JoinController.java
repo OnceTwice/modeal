@@ -17,12 +17,7 @@ public class JoinController {
 	@Autowired
 	private JoinService joinService;
 	
-	@ResponseBody
-	@RequestMapping("/main")
-	public String main() {
-		return "asdf";
-	}
-	
+	/************ 회원 가입 ************/
 	@ResponseBody						// InputUserString 메소드는 데이터를 저장해주는 메소드이므로 리턴값이 어떤것이 들어오든 무관
 	@RequestMapping("/userinput")		// default값이 get이더라도 get을 써주면 못받아옴
 	public JSONResult InputUserString(UserVo userVo,
@@ -80,6 +75,45 @@ public class JoinController {
 		
 		
 //		System.out.println("사업자 Controller 실행 후 ===== " + joinService.joinOwner(userVo));
+		
+		return JSONResult.success(1);
+	}
+
+	/************ 회원 정보 수정 ************/
+	@ResponseBody
+	@RequestMapping("/usermodify")
+	public JSONResult UserModify(UserVo userVo,	@RequestParam(value="no", required=true, defaultValue="" ) Long no,
+												@RequestParam(value="password", required=true, defaultValue="" ) String password,
+												@RequestParam(value="gender", required=true, defaultValue="" ) String gender,
+												@RequestParam(value="location", required=true, defaultValue="" ) String location,
+												@RequestParam(value="birth", required=true, defaultValue="" ) String birth) {
+		userVo.setNo(no);
+		userVo.setPassword(password);
+		userVo.setGender(gender);
+		userVo.setLocation(location);
+		userVo.setBirth(birth);
+		
+		joinService.modifyUser(userVo);
+		
+		return JSONResult.success(1);
+	}
+	
+	@ResponseBody
+	@RequestMapping("/ownermodify")
+	public JSONResult OwnerModify(@RequestBody Map<String, Object> map) {
+		
+		joinService.modifyOwnerMarket(map);
+		joinService.modifyOwnerUser(map);
+		
+		return JSONResult.success(1);
+	}
+
+	/********** 회원 탈퇴 ************/
+	@ResponseBody
+	@RequestMapping("/withdraw")
+	public JSONResult deleteUser(UserVo userVo) {
+		
+		joinService.deleteUser(userVo);
 		
 		return JSONResult.success(1);
 	}
