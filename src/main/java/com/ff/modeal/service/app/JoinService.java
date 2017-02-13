@@ -68,12 +68,31 @@ public class JoinService {
 	
 	public int modifyOwnerMarket(Map<String, Object> map) {
 		ShopVo shopVo = new ShopVo();
+
+		shopVo.setNo(((Integer) map.get("shopNo")).longValue());
+		shopVo.setAddress((String) map.get("shopAddress"));
+		shopVo.setNewaddress((String) map.get("shopNewAddress"));
+		shopVo.setName((String) map.get("shopName"));
+		shopVo.setPhone((String) map.get("shopPhone"));
+		shopVo.setPicture((String) map.get("shopPicture"));
+		shopVo.setIntroduce((String) map.get("shopIntroduce"));
+		shopVo.setLongitude((Double) map.get("shopLongitude"));
+		shopVo.setLatitude((Double) map.get("shopLatitude"));
 		
 		return joinDao.updateOwnerMarket(shopVo);
 	}
 	
 	public int modifyOwnerUser(Map<String, Object> map) {
 		UserVo userVo = new UserVo();
+		
+		userVo.setNo(((Integer)map.get("userNo")).longValue());
+		userVo.setId((String) map.get("userId"));
+		userVo.setPassword((String) map.get("userPassword"));
+		userVo.setGender((String) map.get("userGender"));
+		userVo.setLocation((String) map.get("userLocation"));
+		userVo.setBirth((String) map.get("userBirth"));
+		userVo.setManagerIdentified( ((Integer) map.get("userManagerIdentified")).longValue());
+		userVo.setShopNo(((Integer) map.get("shopNo")).longValue());
 		
 		return joinDao.updateOwnerUser(userVo);
 	}

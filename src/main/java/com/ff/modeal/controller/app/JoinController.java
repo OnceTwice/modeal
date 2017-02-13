@@ -101,9 +101,8 @@ public class JoinController {
 	@ResponseBody
 	@RequestMapping("/ownermodify")
 	public JSONResult OwnerModify(@RequestBody Map<String, Object> map) {
-		
-		joinService.modifyOwnerMarket(map);
-		joinService.modifyOwnerUser(map);
+		joinService.modifyOwnerMarket(map);					// 사업자 매장 수정
+		joinService.modifyOwnerUser(map);					// 사업자 개인정보 수정
 		
 		return JSONResult.success(1);
 	}

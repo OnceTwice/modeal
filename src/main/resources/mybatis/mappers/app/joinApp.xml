@@ -34,6 +34,7 @@
 		]]>
 	</select>
 	
+	<!-- 회원정보 수정 -->
 	<update id="modifyUser" parameterType="appuservo">
 		<![CDATA[
 			update users
@@ -45,7 +46,8 @@
 	<update id="modifyOwnerMarket" parameterType="appshopvo">
 		<![CDATA[
 			update shop
-			set password=#{password}
+			set address=#{address}, newaddress=#{newaddress}, name=#{name}, phone=#{phone}, picture=#{picture}, introduce=#{introduce}, longitude=#{longitude}, latitude=#{latitude}
+			where no=#{no}
 		]]>
 	</update>
 	
