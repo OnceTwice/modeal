@@ -59,10 +59,10 @@
 		]]>
 	</update>
 	
-	<delete id="delete" parameterType="appuservo">
+	<delete id="delete" parameterType="Long">
 		<![CDATA[
 			delete
-			from users
+			from users where no=#{no }
 		]]>
 	</delete>
 	

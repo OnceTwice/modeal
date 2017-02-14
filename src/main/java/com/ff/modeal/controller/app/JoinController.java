@@ -109,11 +109,12 @@ public class JoinController {
 
 	/********** 회원 탈퇴 ************/
 	@ResponseBody
-	@RequestMapping("/withdraw")
-	public JSONResult deleteUser(UserVo userVo) {
-		
-		joinService.deleteUser(userVo);
-		
-		return JSONResult.success(1);
+	@RequestMapping(value="/userleave", method=RequestMethod.POST)
+	public void deleteUser(
+			@RequestParam(value = "no", required = true, defaultValue = "") Long no
+			) {
+		System.out.println("dfasfdfadfdfdfa"+no);
+		joinService.deleteUser(no);
+
 	}
 }

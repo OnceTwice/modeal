@@ -98,7 +98,8 @@ public class JoinService {
 	}
 
 	/********** 회원 탈퇴 ************/
-	public int deleteUser(UserVo userVo) {
-		return joinDao.deleteUser(userVo);
+	public void deleteUser(long no) {
+
+		joinDao.deleteUser(no);
 	}
 }

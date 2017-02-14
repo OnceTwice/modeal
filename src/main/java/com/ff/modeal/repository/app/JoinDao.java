@@ -48,7 +48,7 @@ public class JoinDao {
 	}
 
 	/********** 회원 탈퇴 ************/
-	public int deleteUser(UserVo userVo) {
-		return sqlSession.delete("join.delete", userVo);
+	public void deleteUser(long no) {
+		sqlSession.selectOne("join.delete",no);
 	}
 }
