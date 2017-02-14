@@ -23,25 +23,4 @@ public class MainDao {
 		System.out.println(sqlSession.selectList("item.mainList", map));
 		return sqlSession.selectList("item.mainList", map);
 	}
-	
-	public void addBookmark(Long itemNo, Long userNo) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("itemNo", itemNo);
-		map.put("userNo", userNo);
-		sqlSession.insert("bookmark.add", map);
-	}
-	
-	public void deleteBookmark(Long itemNo, Long userNo) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("itemNo", itemNo);
-		map.put("userNo", userNo);
-		sqlSession.delete("bookmark.delete", map);
-	}
-	
-	public Long selectBookmark(Long itemNo, Long userNo) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("itemNo", itemNo);
-		map.put("userNo", userNo);
-		return sqlSession.selectOne("bookmark.select", map);
-	}
 }

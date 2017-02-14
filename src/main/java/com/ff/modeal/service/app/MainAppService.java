@@ -40,16 +40,4 @@ public class MainAppService {
 		list.add(itemVo);
 		return list;
 	}
-
-	public void addBookmark(Long itemNo, Long userNo) {
-		mainDao.addBookmark(itemNo, userNo);
-	}
-	
-	public void deleteBookmark(Long itemNo, Long userNo) {
-		mainDao.deleteBookmark(itemNo, userNo);
-	}
-	
-	public Long selectBookmark(Long itemNo, Long userNo) {
-		return mainDao.selectBookmark(itemNo, userNo);
-	}
 }
