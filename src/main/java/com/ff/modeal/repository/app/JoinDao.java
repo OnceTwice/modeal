@@ -51,4 +51,9 @@ public class JoinDao {
 	public void deleteUser(long no) {
 		sqlSession.selectOne("join.delete",no);
 	}
+
+	/********** 이메일 중복 체크 ************/
+	public int checkedEmail(String email) {
+		return sqlSession.selectOne("join.checkEmail", email);
+	}
 }

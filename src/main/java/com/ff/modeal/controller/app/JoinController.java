@@ -110,11 +110,15 @@ public class JoinController {
 	/********** 회원 탈퇴 ************/
 	@ResponseBody
 	@RequestMapping(value="/userleave", method=RequestMethod.POST)
-	public void deleteUser(
-			@RequestParam(value = "no", required = true, defaultValue = "") Long no
-			) {
+	public void deleteUser(@RequestParam(value = "no", required = true, defaultValue = "") Long no) {
 		System.out.println("dfasfdfadfdfdfa"+no);
 		joinService.deleteUser(no);
+	}
 
+	/********** 이메일 중복 체크 ************/
+	@ResponseBody
+	@RequestMapping("/check")
+	public int checkedEmail(@RequestParam(value="email", required=true, defaultValue="" ) String email) {
+		return joinService.emailCheckService(email);
 	}
 }

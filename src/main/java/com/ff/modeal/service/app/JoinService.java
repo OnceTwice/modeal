@@ -99,7 +99,11 @@ public class JoinService {
 
 	/********** 회원 탈퇴 ************/
 	public void deleteUser(long no) {
-
 		joinDao.deleteUser(no);
+	}
+
+	/********** 이메일 중복 체크 ************/
+	public int emailCheckService(String email) {
+		return joinDao.checkedEmail(email);
 	}
 }

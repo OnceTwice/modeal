@@ -66,4 +66,12 @@
 		]]>
 	</delete>
 	
+	<select id="checkEmail" parameterType="int" resultType="int">
+		<![CDATA[
+			select count(*)
+			from users
+			where id=#{id }
+		]]>
+	</select>
+	
 </mapper>
