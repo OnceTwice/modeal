@@ -36,13 +36,12 @@ public class ItemController {
 	//검색결과 리스트 출력
 	@ResponseBody
 	@RequestMapping(value="/resultsearch", method=RequestMethod.POST)
-	public Object resultSearchList(@RequestBody(required=true)ItemVo itemVo, Model model){
+	public Object resultSearchList(@RequestBody(required=true)ItemVo itemVo){
 		
 	
 		List<Map<String, Object>> map = itemService.GetResultList(itemVo.getName()); 
-		model.addAttribute("map",map);
+
 		
-		System.out.println(map);
 		return JSONResult.success(map);
 	}
 }
