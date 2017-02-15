@@ -14,24 +14,30 @@ public class BookmarkDao {
 	@Autowired
 	private SqlSession sqlSession;
 
-	public void addBookmark(Long itemNo, Long userNo) {
+	public void addBookmark(Long itemNo, Long userNo, Long shopNo) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("itemNo", itemNo);
 		map.put("userNo", userNo);
+		map.put("shopNo", shopNo);
 		sqlSession.insert("bookmark.add", map);
 	}
 
-	public void deleteBookmark(Long itemNo, Long userNo) {
+	public void deleteBookmark(Long itemNo, Long userNo, Long shopNo) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("itemNo", itemNo);
 		map.put("userNo", userNo);
+		map.put("shopNo", shopNo);
 		sqlSession.delete("bookmark.delete", map);
 	}
 
-	public Long selectBookmark(Long itemNo, Long userNo) {
+	public Long selectBookmark(Long itemNo, Long userNo, Long shopNo) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("itemNo", itemNo);
-		map.put("userNo", userNo);
+		if (shopNo == null) {
+			map.put("userNo", userNo);
+		} else if (itemNo == null) {
+			map.put("shopNo", shopNo);
+		}
 		return sqlSession.selectOne("bookmark.select", map);
 	}
 

@@ -14,16 +14,16 @@ public class BookmarkService {
 	@Autowired
 	private BookmarkDao bookmarkDao;
 
-	public void addBookmark(Long itemNo, Long userNo) {
-		bookmarkDao.addBookmark(itemNo, userNo);
+	public void addBookmark(Long itemNo, Long userNo, Long shopNo) {
+		bookmarkDao.addBookmark(itemNo, userNo, shopNo);
 	}
 
-	public void deleteBookmark(Long itemNo, Long userNo) {
-		bookmarkDao.deleteBookmark(itemNo, userNo);
+	public void deleteBookmark(Long itemNo, Long userNo, Long shopNo) {
+		bookmarkDao.deleteBookmark(itemNo, userNo, shopNo);
 	}
 
-	public Long selectBookmark(Long itemNo, Long userNo) {
-		return bookmarkDao.selectBookmark(itemNo, userNo);
+	public Long selectBookmark(Long itemNo, Long userNo, Long shopNo) {
+		return bookmarkDao.selectBookmark(itemNo, userNo, shopNo);
 	}
 
 	public List<Map<String, Object>> list(Long userNo) {

@@ -5,22 +5,40 @@
 	<!-- 즐겨찾기 추가 -->
 	<insert id="add" parameterType="map">
 		<![CDATA[
-			insert into bookmark (`usersNo`, `itemNo`, `shopNo`, `itemCategoryNo`) VALUES(#{userNo }, #{itemNo }, shopno, itemcategoryno)
+			insert into bookmark (`usersNo`, `itemNo`, `shopNo`, `itemCategoryNo`) VALUES(#{userNo }, #{itemNo }, #{shopNo }, itemcategoryno)
 		]]>
 	</insert>
 
 	<!-- 즐겨찾기 삭제 -->
 	<delete id="delete" parameterType="map">
-		<![CDATA[
-			delete from bookmark where itemNo = #{itemNo } and usersNo = #{userNo }
-		]]>
+		<choose>
+			<when test="shopNo == null">
+				<![CDATA[
+					delete from bookmark where itemNo = #{itemNo } and usersNo = #{userNo }
+				]]>
+			</when>
+			<when test="itemNo == null">
+				<![CDATA[
+					delete from bookmark where usersNo = #{userNo } and shopNo = #{shopNo }
+				]]>
+		</when>
+		</choose>
 	</delete>
 
 	<!-- 즐겨찾기 검색 -->
 	<select id="select" parameterType="map" resultType="long">
-		<![CDATA[
-			select no from bookmark where usersNo = #{userNo } and itemNo = #{itemNo }
-		]]>
+		<choose>
+			<when test="itemNo != null">
+				<![CDATA[
+					select no from bookmark where usersNo = #{userNo } and itemNo = #{itemNo }
+				]]>
+			</when>
+			<when test="shopNo != null">
+				<![CDATA[
+					select no from bookmark where usersNo = #{userNo } and shopNo = #{shopNo }
+				]]>
+			</when>
+		</choose>
 	</select>
 
 	<!-- 즐겨찾기 리스트 -->
@@ -29,7 +47,8 @@
 			select b.*, i.name iname, i.picture ipicture, s.name sname, s.picture spicture 
 			from bookmark b left outer join item i on b.itemNo = i.no 
 				  					left outer join shop s on b.shopNo = s.no 
-			where b.usersNo = #{userNo }
+			where b.usersNo = #{userNo } 
+			order by no desc
 		]]>
 	</select>
 </mapper>

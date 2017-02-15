@@ -20,24 +20,22 @@ public class BookmarkController {
 	// 즐겨찾기 추가
 	@ResponseBody
 	@RequestMapping(value = "/addbookmark", method = RequestMethod.POST)
-	public void addBookmark(@RequestParam(value = "itemNo") Long itemNo, @RequestParam(value = "userNo") Long userNo) {
-		bookmarkService.addBookmark(itemNo, userNo);
+	public void addBookmark(@RequestParam(value = "itemNo", required=true, defaultValue="") Long itemNo, @RequestParam(value = "userNo") Long userNo, @RequestParam(value = "shopNo", required=true, defaultValue="") Long shopNo) {
+		bookmarkService.addBookmark(itemNo, userNo, shopNo);
 	}
 
 	// 즐겨찾기 삭제
 	@ResponseBody
 	@RequestMapping(value = "/deletebookmark", method = RequestMethod.POST)
-	public void deleteBookmark(@RequestParam(value = "itemNo") Long itemNo,
-			@RequestParam(value = "userNo") Long userNo) {
-		bookmarkService.deleteBookmark(itemNo, userNo);
+	public void deleteBookmark(@RequestParam(value = "itemNo", required=true, defaultValue="") Long itemNo, @RequestParam(value = "userNo") Long userNo, @RequestParam(value = "shopNo", required=true, defaultValue="") Long shopNo) {
+		bookmarkService.deleteBookmark(itemNo, userNo, shopNo);
 	}
 
 	// 즐겨찾기 검색
 	@ResponseBody
 	@RequestMapping(value = "/selectbookmark", method = RequestMethod.POST)
-	public Long selectBookmark(@RequestParam(value = "itemNo") Long itemNo,
-			@RequestParam(value = "userNo") Long userNo) {
-		return bookmarkService.selectBookmark(itemNo, userNo);
+	public Long selectBookmark(@RequestParam(value = "itemNo", required=true, defaultValue="") Long itemNo, @RequestParam(value = "userNo") Long userNo, @RequestParam(value = "shopNo", required=true, defaultValue="") Long shopNo) {
+		return bookmarkService.selectBookmark(itemNo, userNo, shopNo);
 	}
 
 	// 즐겨찾기 리스트
