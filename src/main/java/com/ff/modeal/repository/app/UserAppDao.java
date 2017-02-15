@@ -18,8 +18,9 @@ public class UserAppDao {
 		return sqlSession.selectOne("userApp.login", userVo);
 	}
 
-	public void SocialJoin(UserVo userVo) {
+	public Map<String, Object> SocialJoin(UserVo userVo) {
 		sqlSession.insert("userApp.SocialJoin", userVo);
+		return sqlSession.selectOne("userApp.login", userVo);
 	}
 
 	public UserVo findPW(String email) {

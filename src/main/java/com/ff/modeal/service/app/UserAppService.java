@@ -17,12 +17,14 @@ public class UserAppService {
 
 	public Map<String, Object> login(UserVo userVo) {
 		System.out.println("로그인욤11111" + userVo);
-		userVo.setPassword(Encryption.Sha256(userVo.getPassword()));		// 암호화
+		if (userVo.getPassword() != null) {
+			userVo.setPassword(Encryption.Sha256(userVo.getPassword())); // 암호화
+		}
 		System.out.println("로그인욤22222" + userVo);
 		return userAppDao.login(userVo);
 	}
 
-	public void SocialJoin(UserVo userVo) {
+	public Map<String, Object> SocialJoin(UserVo userVo) {
 		if (userVo.getManagerIdentified() == 3L) {
 			if (userVo.getLocation() == null) {
 				userVo.setLocation("FBUSER");
@@ -50,7 +52,7 @@ public class UserAppService {
 				userVo.setGender("Google");
 			}
 		}
-		userAppDao.SocialJoin(userVo);
+		return userAppDao.SocialJoin(userVo);
 	}
 
 	public UserVo findPW(String email) {

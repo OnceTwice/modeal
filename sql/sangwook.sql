@@ -9,7 +9,9 @@ SELECT i.*, s.name shopName, SQRT (POWER ( (127.036618 - longitude), 2) + POWER 
  		 			WHERE 0.0135135 > SQRT (POWER ( (127.036618 - longitude), 2) + POWER ( (37.504 - latitude), 2)) and i.`showItem` = 1
 					order by distance asc;
 
-delete from item;
+DELETE FROM users;
+
+commit;
 
 rollback;
 

@@ -31,8 +31,8 @@ public class UserAppController {
 
 	@ResponseBody
 	@RequestMapping(value = "/social", method = RequestMethod.POST)
-	public void SocialJoin(@RequestBody UserVo userVo) {
-		userAppService.SocialJoin(userVo);
+	public Map<String, Object> SocialJoin(@RequestBody UserVo userVo) {
+		return userAppService.SocialJoin(userVo);
 	}
 
 	@ResponseBody
