@@ -25,7 +25,7 @@ public class UserAppController {
 	@ResponseBody
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public Map<String, Object> login(@RequestBody UserVo userVo) {
-		System.out.println(userAppService.login(userVo));
+//		System.out.println(userAppService.login(userVo));
 		return userAppService.login(userVo);
 	}
 

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
 import com.ff.modeal.repository.app.*;
+import com.ff.modeal.util.*;
 import com.ff.modeal.vo.app.*;
 
 @Service
@@ -17,6 +18,8 @@ public class JoinService {
 	/************ 회원가입 ************/
 	public int joinUser(UserVo userVo) {			// 일반인 회원가입
 //		System.out.println("사용자 Service ===== " + joinDao.insertUser(userVo));
+		
+		userVo.setPassword(Encryption.Sha256(userVo.getPassword()));		// 암호화
 		return joinDao.insertUser(userVo);
 	}
 	
@@ -49,6 +52,9 @@ public class JoinService {
 		UserVo userVo = new UserVo();
 		userVo.setId((String) map.get("userId"));
 		userVo.setPassword((String) map.get("userPassword"));
+
+		userVo.setPassword(Encryption.Sha256(userVo.getPassword()));		// 암호화
+		
 		userVo.setGender((String) map.get("userGender"));
 		userVo.setLocation((String) map.get("userLocation"));
 		userVo.setBirth((String) map.get("userBirth"));

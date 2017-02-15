@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ff.modeal.repository.app.UserAppDao;
+import com.ff.modeal.util.*;
 import com.ff.modeal.vo.UserVo;
 
 @Service
@@ -15,6 +16,9 @@ public class UserAppService {
 	private UserAppDao userAppDao;
 
 	public Map<String, Object> login(UserVo userVo) {
+		System.out.println("로그인욤11111" + userVo);
+		userVo.setPassword(Encryption.Sha256(userVo.getPassword()));		// 암호화
+		System.out.println("로그인욤22222" + userVo);
 		return userAppDao.login(userVo);
 	}
 
