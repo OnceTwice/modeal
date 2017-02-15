@@ -14,9 +14,10 @@
 			</when>
 			<otherwise>
 				<![CDATA[
-					SELECT i.*, s.name shopName
+					SELECT i.*, s.name shopName, SQRT (POWER ( (longitude - #{longitude }), 2) + POWER ( (latitude - #{latitude }), 2))/0.001/0.009009 distance
   	 	  			FROM item i right outer join shop s on i.`shopNo` = s.no
- 		 			WHERE #{range } > SQRT (POWER ( (#{longitude } - longitude), 2) + POWER ( (#{latitude } - latitude), 2)) and i.`showItem` = 1
+ 		 			WHERE #{range } > SQRT (POWER ( (longitude - #{longitude }), 2) + POWER ( (latitude - #{latitude }), 2)) and i.`showItem` = 1
+ 		 			order by distance asc
 				]]>
 			</otherwise>
 		</choose>

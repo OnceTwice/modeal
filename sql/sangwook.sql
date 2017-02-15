@@ -4,17 +4,19 @@ SELECT * FROM shop;
 SELECT * FROM item;
 SELECT * FROM itemcategory;
 
-delete from item where no > 7;
+SELECT i.*, s.name shopName, SQRT (POWER ( (127.036618 - longitude), 2) + POWER ( (37.504 - latitude), 2))/0.001/0.009009 distance
+  	 	  			FROM item i right outer join shop s on i.`shopNo` = s.no
+ 		 			WHERE 0.0135135 > SQRT (POWER ( (127.036618 - longitude), 2) + POWER ( (37.504 - latitude), 2)) and i.`showItem` = 1
+					order by distance asc;
+
+delete from item;
+
+rollback;
 
 select b.*, i.name iname, i.picture ipicture, s.name sname, s.picture spicture 
 from bookmark b left outer join item i on b.itemNo = i.no 
 						left outer join shop s on b.shopNo = s.no 
 where b.usersNo = 1;
-
-select b.*, i.name iname, i.picture ipicture, s.name sname, s.picture spicture 
-			from bookmark b left outer join item i on b.itemNo = i.no 
-				  					left outer join shop s on b.shopNo = s.no 
-			where b.usersNo = 1 and b.shopNo = 1;
 
 delete from bookmark;
 
@@ -47,10 +49,12 @@ INSERT INTO bookmark(`usersNo`,
                      `shopNo`,
                      `itemCategoryNo`)
      VALUES (1,
+             7,
              null,
-             6,
              itemcategoryno);
 
 
 DELETE FROM bookmark
       WHERE itemNo = 8 AND usersNo = 1;
+	  
+update item SET name = '왕큰김밥' WHERE no = 7;
