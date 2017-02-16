@@ -20,11 +20,22 @@ public class ItemDao2 {
 		return sqlSession.selectList("item2.shopItemList", shopNo);
 	}
 
-	// 상품 추가
+	// 상품 등록
 	public void itemInsert(ItemVo itemVo) {
 		sqlSession.selectOne("item2.itemInsert", itemVo);
 	}
 
+	// 상품 수정 - 수정페이지 출력
+	public ItemVo itemModify(Long shopNo) {
+		return sqlSession.selectOne("item2.itemModify", shopNo);
+	}
+	
+//	// 상품 수정 - 업데이트
+//	public Itemvo itemModify(Long shopNo) {
+//		sqlSession.selectOne("item2.itemModify", shopNo);
+//	}
+	
+	
 	// 상품 상세 정보
 	public Map<String, Object> itemDetail(Long no) {
 		return sqlSession.selectOne("item2.itemDetail", no);

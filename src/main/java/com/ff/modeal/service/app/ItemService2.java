@@ -38,11 +38,16 @@ public class ItemService2 {
 		return itemDao.shopItemList(shopNo);
 	}
 
-	// 상품 추가
+	// 상품 등록
 	public void itemInsert(ItemVo itemVo) {
 		itemDao.itemInsert(itemVo);
 	}
 
+	// 상품 수정
+	public ItemVo itemModify (Long shopNo) {
+		return itemDao.itemModify(shopNo);
+	}
+	
 	// 상품 상세 정보
 	public Map<String, Object> itemDetail(Long no) {
 		return itemDao.itemDetail(no);

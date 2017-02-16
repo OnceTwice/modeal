@@ -19,6 +19,16 @@
 		]]>
 	</select>	
 	
+	<!-- 상품 수정 - 수정페이지 출력  -->
+	<select id="itemModify" parameterType="long" resultType="itemvo">
+	<![CDATA[
+		select i.*, s.name
+		from item i left OUTER JOIN shop s ON s.no = i.'shopNo'
+		where i.'shopNo' = #{shopNo } 
+	]]>
+	</select>
+	
+	
 	<!-- 상품 상세 정보 -->
 	<select id="itemDetail" parameterType="long" resultType="map">
 		<![CDATA[

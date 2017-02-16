@@ -14,6 +14,8 @@ import com.ff.modeal.dto.JSONResult;
 import com.ff.modeal.service.app.ItemService2;
 import com.ff.modeal.vo.ItemVo;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
+
 @Controller
 @RequestMapping("/list")
 public class ItemController2 {
@@ -43,7 +45,7 @@ public class ItemController2 {
 		return JSONResult.success(itemService.shopItemList(shopNo));
 	}
 
-	// 상품 추가
+	// 상품 등록
 	@ResponseBody
 	@RequestMapping(value = "itemInsert", method = RequestMethod.POST)
 	public void itemInsert(@RequestParam(value = "name", required = true, defaultValue = "") String name,
@@ -64,6 +66,40 @@ public class ItemController2 {
 		itemService.itemInsert(itemVo);
 	}
 
+	// 상품 수정  - 수정페이지 출력 
+	@ResponseBody
+	@RequestMapping(value = "/itemModify", method = RequestMethod.POST)
+	public JSONResult itemModify(@RequestParam(value = "no") Long shopNo) {
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!"+shopNo);
+		return JSONResult.success(itemService.itemModify(shopNo));
+	}
+	
+	// 상품 수정  - 업데이트
+	
+	
+//	@ResponseBody
+//	@RequestMapping(value = "itemModify", method = RequestMethod.POST)
+//	public JSONResult itemModify(@RequestParam(value = "no", required = true, defaultValue = "") Long shopNo,
+//			@RequestParam(value = "name", required = true, defaultValue = "") String name,
+//			@RequestParam(value = "oriPrice", required = true, defaultValue = "") Long oriPrice,
+//			@RequestParam(value = "count", required = true, defaultValue = "") Long count,
+//			@RequestParam(value = "price", required = true, defaultValue = "") Long price,
+//			@RequestParam(value = "expDate", required = true, defaultValue = "") String exp_date,
+//			@RequestParam(value = "discount", required = true, defaultValue = "") Long discount,
+//			@RequestParam(value = "itemCategoryNo", required = true, defaultValue = "") Long itemCategoryNo) {
+//		
+//		ItemVo itemVo = new ItemVo();
+//		itemVo.setName(name);
+//		itemVo.setOriPrice(oriPrice);
+//		itemVo.setCount(count);
+//		itemVo.setPrice(price);
+//		itemVo.setExpDate(exp_date);
+//		itemVo.setDiscount(discount);
+//		itemVo.setItemCategoryNo(itemCategoryNo);
+//		
+//		return JSONResult.success(itemService.shopItemList(shopNo));
+//	}
+		
 	// 상품 상세 정보
 	@ResponseBody
 	@RequestMapping(value = "/itemDetail", method = RequestMethod.POST)
