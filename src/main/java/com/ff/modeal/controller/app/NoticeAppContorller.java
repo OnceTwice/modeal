@@ -20,7 +20,7 @@ public class NoticeAppContorller {
 	private NoticeAppService noticeAppService;
 	
 	@ResponseBody
-	@RequestMapping(value="", method = RequestMethod.GET)
+	@RequestMapping(value="", method = RequestMethod.POST)
 	public JSONResult NoticeList(){
 		
 		List<NoticeVo> list = noticeAppService.NoticeList();
