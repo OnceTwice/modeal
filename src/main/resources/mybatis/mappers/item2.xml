@@ -15,7 +15,7 @@
 	<select id="itemInsert" parameterType="itemvo" >
 		<![CDATA[
 			insert INTO item (name, count, `oriPrice`, price, discount, `expDate`, picture, `showItem`, `shopNo`, `itemCategoryNo`) 
-		  VALUES(#{name }, #{count }, #{oriPrice }, #{price }, #{discount }, #{expDate }, 'picture', 1, 1, 1) 
+		  VALUES(#{name }, #{count }, #{oriPrice }, #{price }, #{discount }, #{expDate }, 'picture', 1, #{shopNo }, #{itemCategoryNo }) 
 		]]>
 	</select>	
 	

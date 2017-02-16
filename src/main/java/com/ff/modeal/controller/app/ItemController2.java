@@ -53,6 +53,8 @@ public class ItemController2 {
 			@RequestParam(value = "count", required = true, defaultValue = "") Long count,
 			@RequestParam(value = "price", required = true, defaultValue = "") Long price,
 			@RequestParam(value = "expDate", required = true, defaultValue = "") String exp_date,
+			@RequestParam(value = "shopNo", required = true, defaultValue = "") Long shopNo,
+			@RequestParam(value = "itemCategoryNo", required = true, defaultValue = "") Long itemCategoryNo,
 			@RequestParam(value = "discount", required = true, defaultValue = "") Long discount) {
 
 		ItemVo itemVo = new ItemVo();
@@ -61,8 +63,10 @@ public class ItemController2 {
 		itemVo.setCount(count);
 		itemVo.setPrice(price);
 		itemVo.setExpDate(exp_date);
+		itemVo.setShopNo(shopNo);
+		itemVo.setItemCategoryNo(itemCategoryNo);
 		itemVo.setDiscount(discount);
-
+		System.out.println(itemVo);
 		itemService.itemInsert(itemVo);
 	}
 
