@@ -49,7 +49,7 @@ public class JoinDao {
 
 	/********** 회원 탈퇴 ************/
 	public void deleteUser(long no) {
-		sqlSession.selectOne("join.delete",no);
+		sqlSession.delete("join.delete",no);
 	}
 
 	/********** 이메일 중복 체크 ************/
