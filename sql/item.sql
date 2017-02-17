@@ -1,13 +1,13 @@
 
--------------------- /* USER 사용자  (매장보유자 1, 일반사용자 2) */
+-------------------- /* USER 사용자  (매장보유자 1, 일반사용자 2) */ 
 select * from users;
 
 insert into users (id, password, gender, location, birth, `managerIdentified`, `shopNo`) 
-		   values ('11111@mail.com', '11111', 'male', 'seoul', now(), 1, shopno);
+		   values ('1@1', '11111', 'male', 'seoul', now(), 1, shopno);
 insert into users (id, password, gender, location, birth, `managerIdentified`, `shopNo`) 
 		   values ('22222@mail.com', '22222', 'female', 'seoul', now(), 2, shopno);	
 insert into users (id, password, gender, location, birth, `managerIdentified`, `shopNo`) 
-		   values ('33333@mail.com', '33333', 'male', 'seoul', now(), 1, 1);		   	   
+		   values ('3@3', '33333', 'male', 'seoul', now(), 1, 1);		   	   
 
 delete from users;
 delete from users where no=숫자; 

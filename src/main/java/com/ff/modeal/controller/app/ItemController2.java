@@ -42,10 +42,11 @@ public class ItemController2 {
 
 		return JSONResult.success(itemService.shopItemList(shopNo));
 	}
-
+	
 	// 상품 등록
 	@ResponseBody
 	@RequestMapping(value = "itemInsert", method = RequestMethod.POST)
+
 	public void itemInsert(@RequestParam(value = "name", required = true, defaultValue = "") String name,
 			@RequestParam(value = "oriPrice", required = true, defaultValue = "") Long oriPrice,
 			@RequestParam(value = "count", required = true, defaultValue = "") Long count,
@@ -68,13 +69,13 @@ public class ItemController2 {
 		itemService.itemInsert(itemVo);
 	}
 
-	// 상품 수정 - 수정페이지 출력
-	@ResponseBody
-	@RequestMapping(value = "/itemModify", method = RequestMethod.POST)
-	public JSONResult itemModify(@RequestParam(value = "no") Long shopNo) {
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!" + shopNo);
-		return JSONResult.success(itemService.itemModify(shopNo));
-	}
+//	// 상품 수정 - 수정페이지 출력
+//	@ResponseBody
+//	@RequestMapping(value = "/itemModify", method = RequestMethod.POST)
+//	public JSONResult itemModify(@RequestParam(value = "no") Long shopNo) {
+//		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!" + shopNo);
+//		return JSONResult.success(itemService.itemModify(shopNo));
+//	}
 
 	// 상품 수정 - 업데이트
 
@@ -109,6 +110,14 @@ public class ItemController2 {
 	// return JSONResult.success(itemService.shopItemList(shopNo));
 	// }
 
+	
+	// 상품 삭제
+	@ResponseBody
+	@RequestMapping(value = "/itemDelete", method = RequestMethod.POST)
+	public void itemDelete(@RequestParam(value = "no", required = true, defaultValue = "") Long no ) {
+		itemService.itemDelete(no);
+	}
+	
 	// 상품 상세 정보
 	@ResponseBody
 	@RequestMapping(value = "/itemDetail", method = RequestMethod.POST)

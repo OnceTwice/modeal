@@ -12,22 +12,26 @@
 	</select>
 
 	<!-- 상품 추가 -->
-	<select id="itemInsert" parameterType="itemvo">
+	<insert id="itemInsert" parameterType="itemvo">
 		<![CDATA[
 			insert INTO item (name, count, `oriPrice`, price, discount, `expDate`, picture, `showItem`, `shopNo`, `itemCategoryNo`) 
 		  VALUES(#{name }, #{count }, #{oriPrice }, #{price }, #{discount }, #{expDate }, 'picture', 1, #{shopNo }, #{itemCategoryNo }) 
 		]]>
-	</select>
+	</insert>
 
-	<!-- 상품 수정 - 수정페이지 출력 -->
-	<select id="itemModify" parameterType="long" resultType="itemvo">
+	<!-- 상품 수정 - 수정페이지 출력 
+	<update id="itemModify" parameterType="long" resultType="itemvo">
 	<![CDATA[
-		select i.*, s.name
-		from item i left OUTER JOIN shop s ON s.no = i.'shopNo'
-		where i.'shopNo' = #{shopNo } 
-	]]>
-	</select>
 
+	]]>
+	</update>-->
+
+	<!-- 상품 삭제  -->
+	<delete id="itemDelete" parameterType="long">
+	<![CDATA[
+		delete from item where no = #{no }
+	]]>
+	</delete>
 
 	<!-- 상품 상세 정보 -->
 	<select id="itemDetail" parameterType="long" resultType="map">
