@@ -29,5 +29,6 @@
 		<mapper resource="mybatis/mappers/app/joinApp.xml"/>
 		<mapper resource="mybatis/mappers/app/userApp.xml" />
 		<mapper resource="mybatis/mappers/app/bookmark.xml" />
+		<mapper resource="mybatis/mappers/app/market.xml" />
 	</mappers>
 </configuration>
