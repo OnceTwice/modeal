@@ -4,12 +4,12 @@
 <mapper namespace="help">
 
 	<!-- App Help 문의 등록 -->
-	<select id="appHelpInsert" parameterType="helpvo">
+	<insert id="appHelpInsert" parameterType="helpvo">
 		<![CDATA[
 			insert into help (title, complain, `regDate`, `usersNo`) 
 			VALUES(#{title }, #{complain }, now(), #{usersNo })
 		]]>
-	</select>
+	</insert>
 
 	<!-- 안드로이드 테스트해보기 -->
 	<select id="getList" resultType="helpvo">

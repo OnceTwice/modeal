@@ -13,6 +13,6 @@ public class HelpAppDao {
 	private SqlSession sqlSession;
 	
 	public void helpInsert(HelpVo helpVo){
-		sqlSession.selectOne("help.appHelpInsert",helpVo);
+		sqlSession.insert("help.appHelpInsert",helpVo);
 	}
 }
