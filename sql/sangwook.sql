@@ -1,17 +1,43 @@
-SELECT * FROM bookmark;
+/* 범위 내 상점 */
+SELECT * FROM shop
+ 		 WHERE 0.009009 > SQRT (POWER ( (127.02 - longitude), 2) + POWER ( (37.49 - latitude), 2));
+
+/* 상세 상품 페이지 */
+select i.*, s.name shopName, s.no shopNo, c.grade 
+			from shop s left outer join item i on i.`shopNo` = s.no 
+							left outer join 
+										(select avg(grade) as grade, shopNo
+										from comments
+										group by shopNo) c on s.no = c.shopNo 
+			where i.no =  4;
+			
+/* 기초적인것 */
 SELECT * FROM users;
 SELECT * FROM shop;
 SELECT * FROM item;
 SELECT * FROM itemcategory;
 
+/* 매장 위도 경도 변경 */
 update shop SET latitude = 37.49, longitude = 127.02 where no = 1;
 
+/* 범위내 상품 변경 */
 SELECT i.*, s.name shopName, SQRT (POWER ( (127.027328 - longitude), 2) + POWER ( (37.494492 - latitude), 2))/0.001/0.009009 distance
   	 	  			FROM item i right outer join shop s on i.`shopNo` = s.no
- 		 			WHERE 0.9009 > SQRT (POWER ( (127.027328 - longitude), 2) + POWER ( (37.494492 - latitude), 2)) and i.`showItem` = 1
+ 		 			WHERE 0.009009 > SQRT (POWER ( (127.027328 - longitude), 2) + POWER ( (37.494492 - latitude), 2)) and i.`showItem` = 1
 					order by distance asc, no desc;
+					
+select * from item where shopNo = 1;
+select i.*, s.name as shopName
+			from item i left OUTER JOIN shop s ON s.no = i.`shopNo`
+			where i.`shopNo` = 1;
+					
+update item set `showItem` = 1 where no = 8;
 
-DELETE FROM users;
+DELETE FROM item where no = 9;
+
+update users SET `managerIdentified` = 0 WHERE no = 1;
+
+delete from shop where no = 6;
 
 commit;
 
@@ -49,7 +75,7 @@ SELECT u.*,
   FROM users u LEFT OUTER JOIN shop s ON u.`shopNo` = s.no
  WHERE u.id = '1@1';
 
-INSERT INTO bookmark(`usersNo`, `itemNo`, `shopNo`, `itemCategoryNo`) VALUES (1, null, 7, itemcategoryno);
+INSERT INTO bookmark(`usersNo`, `itemNo`, `shopNo`, `itemCategoryNo`) VALUES (1, null, 8, itemcategoryno);
 
 
 DELETE FROM bookmark

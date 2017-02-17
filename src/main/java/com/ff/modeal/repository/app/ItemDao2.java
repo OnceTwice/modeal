@@ -1,5 +1,6 @@
 package com.ff.modeal.repository.app;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,15 +30,22 @@ public class ItemDao2 {
 	public ItemVo itemModify(Long shopNo) {
 		return sqlSession.selectOne("item2.itemModify", shopNo);
 	}
-	
-//	// 상품 수정 - 업데이트
-//	public Itemvo itemModify(Long shopNo) {
-//		sqlSession.selectOne("item2.itemModify", shopNo);
-//	}
-	
-	
+
+	// // 상품 수정 - 업데이트
+	// public Itemvo itemModify(Long shopNo) {
+	// sqlSession.selectOne("item2.itemModify", shopNo);
+	// }
+
 	// 상품 상세 정보
 	public Map<String, Object> itemDetail(Long no) {
 		return sqlSession.selectOne("item2.itemDetail", no);
+	}
+
+	// 상품 보이기 / 숨기기
+	public void itemView(Long no, Long check) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("no", no);
+		map.put("check", check);
+		sqlSession.update("item2.itemInvisible", map);
 	}
 }

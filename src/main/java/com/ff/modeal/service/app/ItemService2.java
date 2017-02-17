@@ -44,12 +44,17 @@ public class ItemService2 {
 	}
 
 	// 상품 수정
-	public ItemVo itemModify (Long shopNo) {
+	public ItemVo itemModify(Long shopNo) {
 		return itemDao.itemModify(shopNo);
 	}
-	
+
 	// 상품 상세 정보
 	public Map<String, Object> itemDetail(Long no) {
 		return itemDao.itemDetail(no);
+	}
+
+	// 상품 보이기 / 숨기기
+	public void itemView(Long no, Long check) {
+		itemDao.itemView(no, check);
 	}
 }
