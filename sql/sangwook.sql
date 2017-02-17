@@ -3,7 +3,7 @@ SELECT * FROM shop
  		 WHERE 0.009009 > SQRT (POWER ( (127.02 - longitude), 2) + POWER ( (37.49 - latitude), 2));
 
 /* 상세 상품 페이지 */
-select i.*, s.name shopName, s.no shopNo, c.grade 
+select i.*, s.name shopName, s.no, c.grade 
 			from shop s left outer join item i on i.`shopNo` = s.no 
 							left outer join 
 										(select avg(grade) as grade, shopNo
@@ -16,6 +16,10 @@ SELECT * FROM users;
 SELECT * FROM shop;
 SELECT * FROM item;
 SELECT * FROM itemcategory;
+
+update item SET picture = '도시락1.jpg' WHERE no = 7;
+
+insert into comments (content, grade, `shopNo`, `usersNo`) VALUES('좋아요', 3, 1, 1);
 
 /* 매장 위도 경도 변경 */
 update shop SET latitude = 37.49, longitude = 127.02 where no = 1;
