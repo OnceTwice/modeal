@@ -20,11 +20,13 @@
 	</insert>
 
 	<!-- 상품 수정 - 수정페이지 출력 
-	<update id="itemModify" parameterType="long" resultType="itemvo">
-	<![CDATA[
-
-	]]>
-	</update>-->
+	<update id="itemModify" parameterType="long">
+		<![CDATA[
+			update *
+			set =
+			null where
+		]]>
+	</update> -->
 
 	<!-- 상품 삭제  -->
 	<delete id="itemDelete" parameterType="long">
