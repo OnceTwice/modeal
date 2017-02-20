@@ -43,10 +43,10 @@ public class ItemService2 {
 		itemDao.itemInsert(itemVo);
 	}
 
-	// // 상품 수정
-	// public ItemVo itemModify(Long shopNo) {
-	// return itemDao.itemModify(shopNo);
-	// }
+	 // 상품 수정
+	 public ItemVo itemModify(Long no) {
+		 return itemDao.itemModify(no);
+	 }
 
 	// 상품 삭제
 	public void itemDelete(Long no) {

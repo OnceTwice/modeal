@@ -26,14 +26,14 @@ public class ItemDao2 {
 		sqlSession.insert("item2.itemInsert", itemVo);
 	}
 
-	// // 상품 수정 - 수정페이지 출력
-	// public ItemVo itemModify(Long shopNo) {
-	// return sqlSession.update("item2.itemModify", shopNo);
-	// }
+	 // 상품 수정 - 수정페이지 출력
+	 public ItemVo itemModify(Long no) {
+	 return sqlSession.selectOne("item2.itemModify", no);
+	 }
 
 	// // 상품 수정 - 업데이트
 	// public Itemvo itemModify(Long shopNo) {
-	// sqlSession.selectOne("item2.itemModify", shopNo);
+	// sqlSession.update("item2.itemModify", shopNo);
 	// }
 
 	// 상품 삭제

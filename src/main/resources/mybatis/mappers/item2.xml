@@ -19,7 +19,18 @@
 		]]>
 	</insert>
 
-	<!-- 상품 수정 - 수정페이지 출력 <update id="itemModify" parameterType="long"> <![CDATA[ 
+	<!-- 상품 수정 - 수정페이지 출력 -->
+	<select id="itemModify" parameterType="long"> 
+		<![CDATA[ 
+			select *
+			from item
+			where no = #{no }
+		 ]]> 
+	</select>
+
+	<!-- 상품 수정 - 업데이트 
+	<update id="itemModify" parameterType="long"> 
+	<![CDATA[ 
 		update * set = null where ]]> </update> -->
 
 	<!-- 상품 삭제 -->

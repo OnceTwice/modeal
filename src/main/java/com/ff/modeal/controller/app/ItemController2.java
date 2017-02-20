@@ -69,13 +69,13 @@ public class ItemController2 {
 		itemService.itemInsert(itemVo);
 	}
 
-	// // 상품 수정 - 수정페이지 출력
-	// @ResponseBody
-	// @RequestMapping(value = "/itemModify", method = RequestMethod.POST)
-	// public JSONResult itemModify(@RequestParam(value = "no") Long shopNo) {
-	// System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!" + shopNo);
-	// return JSONResult.success(itemService.itemModify(shopNo));
-	// }
+	 // 상품 수정 - 수정페이지 출력
+	 @ResponseBody
+	 @RequestMapping(value = "/itemModify", method = RequestMethod.POST)
+	 public JSONResult itemModify(@RequestParam(value = "no") Long no) {
+		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!" + no);
+		 return JSONResult.success(itemService.itemModify(no));
+	 }
 
 	// 상품 수정 - 업데이트
 
