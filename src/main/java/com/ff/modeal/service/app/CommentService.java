@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ff.modeal.vo.app.CommentVo;
 
-@Service
+@Service("commentappservice")
 public class CommentService {
 	public List<CommentVo> getAllComments() {
 		List<CommentVo> list = new ArrayList<CommentVo>();
