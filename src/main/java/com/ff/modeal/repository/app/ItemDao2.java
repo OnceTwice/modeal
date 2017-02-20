@@ -26,10 +26,10 @@ public class ItemDao2 {
 		sqlSession.insert("item2.itemInsert", itemVo);
 	}
 
-//	 // 상품 수정 - 수정페이지 출력
-//	 public ItemVo itemModify(Long shopNo) {
-//	 return sqlSession.update("item2.itemModify", shopNo);
-//	 }
+	// // 상품 수정 - 수정페이지 출력
+	// public ItemVo itemModify(Long shopNo) {
+	// return sqlSession.update("item2.itemModify", shopNo);
+	// }
 
 	// // 상품 수정 - 업데이트
 	// public Itemvo itemModify(Long shopNo) {
@@ -42,8 +42,12 @@ public class ItemDao2 {
 	}
 
 	// 상품 상세 정보
-	public Map<String, Object> itemDetail(Long no) {
-		return sqlSession.selectOne("item2.itemDetail", no);
+	public Map<String, Object> itemDetail(String latitude, String longitude, Long no) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("latitude", latitude);
+		map.put("longitude", longitude);
+		map.put("no", no);
+		return sqlSession.selectOne("item2.itemDetail", map);
 	}
 
 	// 상품 보이기/숨기기

@@ -19,16 +19,10 @@
 		]]>
 	</insert>
 
-	<!-- 상품 수정 - 수정페이지 출력 
-	<update id="itemModify" parameterType="long">
-		<![CDATA[
-			update *
-			set =
-			null where
-		]]>
-	</update> -->
+	<!-- 상품 수정 - 수정페이지 출력 <update id="itemModify" parameterType="long"> <![CDATA[ 
+		update * set = null where ]]> </update> -->
 
-	<!-- 상품 삭제  -->
+	<!-- 상품 삭제 -->
 	<delete id="itemDelete" parameterType="long">
 	<![CDATA[
 		delete from item where no = #{no }
@@ -36,16 +30,31 @@
 	</delete>
 
 	<!-- 상품 상세 정보 -->
-	<select id="itemDetail" parameterType="long" resultType="map">
-		<![CDATA[
-			select i.*, s.name shopName, c.grade 
-			from shop s left outer join item i on i.`shopNo` = s.no 
-							left outer join 
-										(select avg(grade) as grade, shopNo
-										from comments
-										group by shopNo) c on s.no = c.shopNo 
-			where i.no =  #{no }
-		]]>
+	<select id="itemDetail" parameterType="map" resultType="map">
+		<choose>
+			<when test="latitude == 'noData' and longitude == 'noData'">
+				<![CDATA[
+					select i.*, s.name shopName, c.grade
+					from shop s left outer join item i on i.`shopNo` = s.no 
+									left outer join 
+												(select avg(grade) as grade, shopNo
+												from comments
+												group by shopNo) c on s.no = c.shopNo 
+					where i.no =  #{no }
+				]]>
+			</when>
+			<otherwise>
+				<![CDATA[
+					select i.*, s.name shopName, c.grade, SQRT (POWER ( (longitude - #{longitude }), 2) + POWER ( (latitude - #{latitude }), 2))/0.001/0.009009 distance
+					from shop s left outer join item i on i.`shopNo` = s.no 
+									left outer join 
+												(select avg(grade) as grade, shopNo
+												from comments
+												group by shopNo) c on s.no = c.shopNo 
+					where i.no =  #{no }
+				]]>
+			</otherwise>
+		</choose>
 	</select>
 
 	<!-- 상품 보이기 / 숨기기 -->

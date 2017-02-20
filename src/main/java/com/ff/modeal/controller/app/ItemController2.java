@@ -57,25 +57,25 @@ public class ItemController2 {
 			@RequestParam(value = "discount", required = true, defaultValue = "") Long discount) {
 
 		ItemVo itemVo = new ItemVo();
-			itemVo.setName(name);
-			itemVo.setOriPrice(oriPrice);
-			itemVo.setCount(count);
-			itemVo.setPrice(price);
-			itemVo.setExpDate(exp_date);
-			itemVo.setShopNo(shopNo);
-			itemVo.setItemCategoryNo(itemCategoryNo);
-			itemVo.setDiscount(discount);
-			System.out.println(itemVo);
+		itemVo.setName(name);
+		itemVo.setOriPrice(oriPrice);
+		itemVo.setCount(count);
+		itemVo.setPrice(price);
+		itemVo.setExpDate(exp_date);
+		itemVo.setShopNo(shopNo);
+		itemVo.setItemCategoryNo(itemCategoryNo);
+		itemVo.setDiscount(discount);
+		System.out.println(itemVo);
 		itemService.itemInsert(itemVo);
 	}
 
-//	 // 상품 수정 - 수정페이지 출력
-//	 @ResponseBody
-//	 @RequestMapping(value = "/itemModify", method = RequestMethod.POST)
-//	 public JSONResult itemModify(@RequestParam(value = "no") Long shopNo) {
-//	 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!" + shopNo);
-//	 return JSONResult.success(itemService.itemModify(shopNo));
-//	 }
+	// // 상품 수정 - 수정페이지 출력
+	// @ResponseBody
+	// @RequestMapping(value = "/itemModify", method = RequestMethod.POST)
+	// public JSONResult itemModify(@RequestParam(value = "no") Long shopNo) {
+	// System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!" + shopNo);
+	// return JSONResult.success(itemService.itemModify(shopNo));
+	// }
 
 	// 상품 수정 - 업데이트
 
@@ -120,8 +120,10 @@ public class ItemController2 {
 	// 상품 상세 정보
 	@ResponseBody
 	@RequestMapping(value = "/itemDetail", method = RequestMethod.POST)
-	public JSONResult itemDetail(@RequestParam(value = "no", required = true, defaultValue = "") Long no) {
-		return JSONResult.success(itemService.itemDetail(no));
+	public JSONResult itemDetail(@RequestParam(value = "latitude") String latitude,
+			@RequestParam(value = "longitude") String longitude,
+			@RequestParam(value = "no", required = true, defaultValue = "") Long no) {
+		return JSONResult.success(itemService.itemDetail(latitude, longitude, no));
 	}
 
 	// 상품 보이기/숨기기
