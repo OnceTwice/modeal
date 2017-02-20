@@ -13,6 +13,7 @@
 		<!-- mobile(app) -->
 		<typeAlias alias="appuservo" type="com.ff.modeal.vo.app.UserVo"/>
 		<typeAlias alias="appshopvo" type="com.ff.modeal.vo.app.ShopVo"/>
+		<typeAlias alias="appcommentvo" type="com.ff.modeal.vo.app.CommentVo"/>
 	</typeAliases>
 
 	<mappers>
@@ -30,5 +31,6 @@
 		<mapper resource="mybatis/mappers/app/userApp.xml" />
 		<mapper resource="mybatis/mappers/app/bookmark.xml" />
 		<mapper resource="mybatis/mappers/app/market.xml" />
+		<mapper resource="mybatis/mappers/app/comment.xml" />
 	</mappers>
 </configuration>
