@@ -17,4 +17,8 @@ public class CommentService {
 	public List<CommentVo> getAllComments(Integer shopNo) {
 		return commentDao.getList(shopNo);
 	}
+	
+	public int addComment(CommentVo commentVo) {
+		return commentDao.addList(commentVo);
+	}
 }

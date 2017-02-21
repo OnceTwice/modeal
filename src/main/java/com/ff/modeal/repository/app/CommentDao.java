@@ -19,5 +19,7 @@ public class CommentDao {
 	}
 	
 	// 댓글 리스트 입력
-	
+	public int addList(CommentVo commentVo) {
+		return sqlSession.insert("comment.add", commentVo);
+	}
 }

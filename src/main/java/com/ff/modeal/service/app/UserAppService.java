@@ -60,7 +60,7 @@ public class UserAppService {
 	}
 
 	public void changePassword(String email, String password) {
-		userAppDao.changePassword(email, password);
+		userAppDao.changePassword(email, Encryption.Sha256(password));
 	}
 
 }

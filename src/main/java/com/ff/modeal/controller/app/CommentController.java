@@ -1,13 +1,12 @@
 package com.ff.modeal.controller.app;
 
-import java.util.*;
-
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 
 import com.ff.modeal.dto.*;
 import com.ff.modeal.service.app.*;
+import com.ff.modeal.vo.app.*;
 
 @Controller
 @RequestMapping("/commentapp")
@@ -18,7 +17,14 @@ public class CommentController {
 	
 	@ResponseBody
 	@RequestMapping("/list")
-	public JSONResult list(@RequestBody Map<String, Object> map) {
-		return JSONResult.success(commentService.getAllComments( (Integer)map.get("shopNo"))  );
+	public JSONResult list(@RequestParam(value="shopNo") Integer shopNo) {
+		return JSONResult.success(commentService.getAllComments(shopNo));
+	}
+	
+	@ResponseBody
+	@RequestMapping("/add")
+	public JSONResult add(@RequestBody CommentVo commentVo) {
+		JSONResult.success(commentService.addComment(commentVo));
+		return JSONResult.success(commentService.getAllComments(commentVo.getShopNo().intValue()));
 	}
 }

@@ -9,4 +9,12 @@
 			where shopNo = #{shopNo}
 		]]>
 	</select>
+	
+	<insert id="add" parameterType="appcommentvo">
+		<![CDATA[
+			insert
+			into comments (content, grade, `shopNo`, `usersNo`)
+			values (#{content}, #{grade}, #{shopNo}, #{userNo})
+		]]>
+	</insert>
 </mapper>
