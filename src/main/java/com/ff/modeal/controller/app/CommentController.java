@@ -1,5 +1,7 @@
 package com.ff.modeal.controller.app;
 
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
@@ -16,22 +18,7 @@ public class CommentController {
 	
 	@ResponseBody
 	@RequestMapping("/list")
-	public JSONResult list() {
-		
-//		List<CommentVo> list = commentService.getAllComments();
-		
-		System.out.println("tqtqtqtqt");
-		System.out.println("출력은요!!!" + commentService.getAllComments());
-		
-		return JSONResult.success(commentService.getAllComments());
-		
-//		List<CommentVo> list = commentService.getAllComments();
-//		
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("result", "success");
-//		map.put("data", list);
-//		
-//		return map;
+	public JSONResult list(@RequestBody Map<String, Object> map) {
+		return JSONResult.success(commentService.getAllComments( (Integer)map.get("shopNo"))  );
 	}
-
 }

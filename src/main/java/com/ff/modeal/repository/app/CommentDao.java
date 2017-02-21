@@ -14,8 +14,8 @@ public class CommentDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<CommentVo> getList() {			// 댓글 리스트 출력
-		return sqlSession.selectList("comment.getList");
+	public List<CommentVo> getList(Integer shopNo) {			// 댓글 리스트 출력
+		return sqlSession.selectList("comment.getList", shopNo);
 	}
 	
 	// 댓글 리스트 입력
