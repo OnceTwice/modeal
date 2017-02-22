@@ -24,65 +24,36 @@ insert into comments (content, grade, `shopNo`, `usersNo`) VALUES('좋아요', 3
 /* 매장 위도 경도 변경 */
 update shop SET latitude = 37.49, longitude = 127.02 where no = 1;
 
-/* 범위내 상품 변경 */
+/* 범위내 상품 목록 */
 SELECT i.*, s.name shopName, SQRT (POWER ( (127.027328 - longitude), 2) + POWER ( (37.494492 - latitude), 2))/0.001/0.009009 distance
   	 	  			FROM item i right outer join shop s on i.`shopNo` = s.no
- 		 			WHERE 0.009009 > SQRT (POWER ( (127.027328 - longitude), 2) + POWER ( (37.494492 - latitude), 2)) and i.`showItem` = 1
+ 		 			WHERE 0.027009 > SQRT (POWER ( (127.027328 - longitude), 2) + POWER ( (37.494492 - latitude), 2)) and i.`showItem` = 1
 					order by distance asc, no desc;
 					
-select * from item where shopNo = 1;
 select i.*, s.name as shopName
 			from item i left OUTER JOIN shop s ON s.no = i.`shopNo`
 			where i.`shopNo` = 1;
 					
-update item set `showItem` = 1 where no = 8;
-
-DELETE FROM item where no = 9;
-
-update users SET `managerIdentified` = 0 WHERE no = 1;
-
-delete from shop where no = 6;
-
-commit;
-
-rollback;
-
 select b.*, i.name iname, i.picture ipicture, s.name sname, s.picture spicture 
 from bookmark b left outer join item i on b.itemNo = i.no 
 						left outer join shop s on b.shopNo = s.no 
-where b.usersNo = 1 
+where b.usersNo = 3
 order by no desc, itemNo asc;
-
-delete from bookmark where usersNo = 3;
 
 commit;
 
 insert INTO shop (address, newaddress, name, phone, picture, introduce, longitude, latitude) VALUES('역삼3132333242', '신역삼413233232', '씨유133233242', '02-1234-1234', '갓영조2.jpg', '헬헬헬', 127.036618, 37.504);
+
 insert into item (name, count, `oriPrice`, price, discount, `expDate`, picture, `showItem`, `shopNo`, `itemCategoryNo`) 
 VALUES('삼각김밥8', 10, 1000, 500,  50, '2017/02/20 09:00', '갓영조1.jpg', 1, 7, 1);
+
 insert INTO users (id, password, gender, location, birth, `managerIdentified`, `shopNo`) VALUES('3@3', '12345', 'male', '역삼', '1990/10/31', 2, 2);
 INSERT INTO itemcategory (content) VALUES('삼각김밥류'); 
 
-COMMIT;
+update item SET `expDate` = '2017/02/21 16:33' WHERE no = 12;
 
-SELECT no
-  FROM bookmark
- WHERE usersNo = 1 AND itemNo = 6;
-
-SELECT u.*,
-       s.address,
-       s.newaddress,
-       s.name,
-       s.phone,
-       s.picture,
-       s.introduce
-  FROM users u LEFT OUTER JOIN shop s ON u.`shopNo` = s.no
- WHERE u.id = '1@1';
-
-INSERT INTO bookmark(`usersNo`, `itemNo`, `shopNo`, `itemCategoryNo`) VALUES (1, null, 8, itemcategoryno);
-
-
-DELETE FROM bookmark
-      WHERE itemNo = 8 AND usersNo = 1;
-	  
-update item SET name = '왕큰김밥' WHERE no = 7;
+select b.*, i.name iname, i.picture ipicture, s.name sname, s.picture spicture 
+			from bookmark b left outer join item i on b.itemNo = i.no 
+				  					left outer join shop s on b.shopNo = s.no 
+			where b.usersNo = 4 
+			order by no desc;			

@@ -4,9 +4,11 @@
 
 	<select id="detail" parameterType="long" resultType="map">
 		<![CDATA[
-			select *
-			from shop
-			where no=#{no}
+			select s.*, c.grade
+			from shop s LEFT outer join (select avg(grade) as grade, shopNo
+												from comments
+												group by shopNo) c on s.no = c.shopNo
+			where s.no= #{no }
 		]]>
 	</select>
 
