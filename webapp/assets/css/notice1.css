@@ -1,0 +1,147 @@
+@CHARSET "UTF-8";@CHARSET "UTF-8";
+
+/* 게시판 리스트 페이징(내꺼) */
+div.pager {
+	width: 100%;
+	text-align: center;
+}
+
+div.pager  ul {
+	height: 20px;
+	margin: 10px auto;
+}
+
+div.pager  ul li {
+	color: #ddd;
+	display: inline-block;
+	margin: 5px 0;
+	width: 20px;
+	font-weight: bold;
+}
+
+div.pager  ul li.selected {
+	font-size: 16px;
+	text-decoration: underline;
+	color: #f40808
+}
+
+div.pager  ul li a, div.pager  ul li a:visited, div.pager  ul li a:link,
+	div.pager  ul li a:active {
+	text-decoration: none;
+	color: #555
+}
+
+div.pager  ul li a:hover {
+	text-decoration: none;
+	color: #f00
+}
+
+/* anchor태그의 id값이 new-book(내꺼) */
+a#new-book {
+	float: right;
+	padding: 5px 10px 5px 10px;
+	border: 1px solid #555;
+	font-weight: bold;
+	background-color: #E8ECF6;
+	color: #111
+}
+
+/* ============================= */
+
+#content {
+	background-color: #fff;
+}
+
+#content .pic img { 
+	width: 100px;
+	height: auto;
+}
+
+.table th.short{
+	width:5px;
+}
+
+.table th.middle{
+	width:100px;
+}
+
+.table th.long{
+	width:250px;
+}
+
+/* 커서 모양 변경 */
+.my_cursor{
+    cursor:pointer;
+}
+
+/* ============================= */
+
+.table{
+	width:100%;max-width:100%;margin-bottom:20px;
+    table-layout:fixed;
+}
+
+.table td,.table th{
+	background-color:#fff!important;
+	padding:8px;
+    word-wrap:break-word;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    table-layout:fixed;
+}
+
+.table>tbody>tr>td{
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+    word-wrap:break-word;
+}
+
+.my_table td {
+	width:400px;
+}
+
+#shop_image {
+	width:400px;
+	height: auto;
+}
+
+.form {
+	color: #585858;
+	font-weight: bold; 
+}
+
+.form2 {
+	color:#000;
+	font-size: 1.5em;
+}
+
+b.form2 {
+	margin-left: 10px;
+}
+
+div .avg {
+	text-align: center;
+	margin:20px;
+}
+
+/* 검색창 css인데 부트스트랩만 추가하면 바로 되는건데 ㅠㅠ 부트스트랩을 가져오면 다른것이 깨지므로... 수동으로 가져오는중 */
+div.search {
+    padding: 4px 14px;
+    margin: 10px 5px;
+    font-family: NanumGothic, 나눔고딕, "Malgun Gothic", "맑은 고딕", sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    text-align:center;  
+    line-height: 1;
+}
+
+div.content .table th {
+	width:2px;
+	
+}
+/* ============================= */

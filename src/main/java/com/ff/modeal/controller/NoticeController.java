@@ -29,7 +29,7 @@ public class NoticeController {
 
 		model.addAttribute("map", map);
 
-		return "notice/index";
+		return "notice/index1";
 	}
 
 	// @Admin
