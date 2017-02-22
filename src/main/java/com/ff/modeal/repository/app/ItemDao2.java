@@ -26,15 +26,34 @@ public class ItemDao2 {
 		sqlSession.insert("item2.itemInsert", itemVo);
 	}
 
-	 // 상품 수정 - 수정페이지 출력
+	 // 상품 수정 - 기존에 입력한 정보 출력
 	 public ItemVo itemModify(Long no) {
 	 return sqlSession.selectOne("item2.itemModify", no);
 	 }
 
-	// // 상품 수정 - 업데이트
-	// public Itemvo itemModify(Long shopNo) {
-	// sqlSession.update("item2.itemModify", shopNo);
-	// }
+	 // 상품 수정 - 업데이트(갱신)
+	 public void itemModifyUpdate(Map<String, Object> map) {
+//		map = new HashMap<String, Object>();
+//		map.put("no", no);
+//		map.put("name", name);
+//		map.put("count", count);
+//		map.put("oriPrice", oriPrice);
+//		map.put("price", price);
+//		map.put("discount", discount);
+//		map.put("expDate", expDate);
+//		map.put("itemCategoryNo", itemCategoryNo);
+		 System.out.println(map);
+		 
+//			Map<String, Object> map = new HashMap<String, Object>();
+//			map.put("no", no);
+//			map.put("name", name);
+//			map.put("count", count);
+//			map.put("oriPrice", oriPrice);
+//			map.put("price", price);
+//			map.put("discount", discount);
+//			map.put("expDate", expDate);
+		sqlSession.update("item2.itemModifyUpdate", map);
+	 }
 
 	// 상품 삭제
 	public void itemDelete(Long no) {

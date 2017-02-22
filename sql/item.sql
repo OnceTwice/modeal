@@ -51,6 +51,8 @@ commit;
 -------------------- /* ITEM 상품 */
 select * from item;
 
+UPDATE item SET `expDate`= '2017/02/22 01:11' WHERE no=1;
+
 insert into item (name, count, `oriPrice`, price, discount, `expDate`, picture, showItem, `shopNo`, `itemCategoryNo`)
 		  values ('라면', 1, 1000, 900, 10, now(), 'item1.jpg', 1, 3, 4);
 insert into item (name, count, `oriPrice`, price, discount, `expDate`, picture, showItem, `shopNo`, `itemCategoryNo`)
@@ -66,8 +68,7 @@ insert into item (name, count, `oriPrice`, price, discount, `expDate`, picture, 
 
 -- insert into item (name, count, `oriPrice`, price, discount, `expDate`, picture, `showItem`, `shopNo`, `itemCategoryNo`) values (#{name }, #{count }, #{oriPrice }, #{price }, #{discount }, #{expDate }, 'picture', 1, 1, 1) -- 		  
 
-delete from item;	  		  
-delete from item where no=숫자;
+delete from item where no=4;
 
 rollback;
 commit;
@@ -104,4 +105,6 @@ on i.`shopNo` = s.no right outer join (select avg(grade) as grade, shopNo
 										order by shopNo) c on s.no = c.shopNo where i.no = 1;
 
 /* insert INTO item (name, count, `oriPrice`, price, discount, `expDate`, picture, `showItem`, `shopNo`, `itemCategoryNo`) 
-VALUES(#{name }, #{count }, #{oriPrice }, #{price }, #{discount }, #{expDate }, 'picture', 1, 1, 1) */										
+VALUES(#{name }, #{count }, #{oriPrice }, #{price }, #{discount }, #{expDate }, 'picture', 1, 1, 1) */			
+select * from bookmark b;
+delete FROM bookmark WHERE no = 3;							

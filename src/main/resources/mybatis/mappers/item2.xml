@@ -19,8 +19,8 @@
 		]]>
 	</insert>
 
-	<!-- 상품 수정 - 수정페이지 출력 -->
-	<select id="itemModify" parameterType="long"> 
+	<!-- 상품 수정 - 기존에 입력한 정보 출력 -->
+	<select id="itemModify" parameterType="long" resultType="itemvo"> 
 		<![CDATA[ 
 			select *
 			from item
@@ -28,10 +28,20 @@
 		 ]]> 
 	</select>
 
-	<!-- 상품 수정 - 업데이트 
-	<update id="itemModify" parameterType="long"> 
-	<![CDATA[ 
-		update * set = null where ]]> </update> -->
+	<!-- 상품 수정 - 업데이트(갱신) -->
+	<update id="itemModifyUpdate" parameterType="map"> 
+		<![CDATA[ 
+			update item 
+			set name = #{name } , 
+				count = #{count } , 
+				price = #{price } , 
+				discount = #{discount } ,
+				`oriPrice` = #{oriPrice } ,
+				`expDate` = #{expDate }	,  
+				`itemCategoryNo` = #{itemCategoryNo }
+			where no = #{no }
+		]]> 
+	</update>
 
 	<!-- 상품 삭제 -->
 	<delete id="itemDelete" parameterType="long">
@@ -74,5 +84,4 @@
 			update item set `showItem` = #{check } where no = #{no }
 		]]>
 	</update>
-
 </mapper>

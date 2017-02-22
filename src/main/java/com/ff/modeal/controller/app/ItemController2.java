@@ -1,6 +1,8 @@
 package com.ff.modeal.controller.app;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,8 +48,8 @@ public class ItemController2 {
 	// 상품 등록
 	@ResponseBody
 	@RequestMapping(value = "itemInsert", method = RequestMethod.POST)
-
-	public void itemInsert(@RequestParam(value = "name", required = true, defaultValue = "") String name,
+	public void itemInsert(
+			@RequestParam(value = "name", required = true, defaultValue = "") String name,
 			@RequestParam(value = "oriPrice", required = true, defaultValue = "") Long oriPrice,
 			@RequestParam(value = "count", required = true, defaultValue = "") Long count,
 			@RequestParam(value = "price", required = true, defaultValue = "") Long price,
@@ -65,50 +67,47 @@ public class ItemController2 {
 		itemVo.setShopNo(shopNo);
 		itemVo.setItemCategoryNo(itemCategoryNo);
 		itemVo.setDiscount(discount);
+		
 		System.out.println(itemVo);
+		
 		itemService.itemInsert(itemVo);
 	}
 
-	 // 상품 수정 - 수정페이지 출력
+	 // 상품 수정 - 기존에 입력한 정보 출력
 	 @ResponseBody
 	 @RequestMapping(value = "/itemModify", method = RequestMethod.POST)
 	 public JSONResult itemModify(@RequestParam(value = "no") Long no) {
-		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!" + no);
+		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!" + no);
 		 return JSONResult.success(itemService.itemModify(no));
 	 }
 
-	// 상품 수정 - 업데이트
+	// 상품 수정 - 업데이트(갱신)
+	 @ResponseBody
+	 @RequestMapping(value = "/itemModifyUpdate"/*, method = RequestMethod.POST*/)
+	 public void itemModifyUpdate(
+		 @RequestParam(value = "no", required = true, defaultValue = "") Long no,
+		 @RequestParam(value = "name", required = true, defaultValue = "") String name,
+		 @RequestParam(value = "oriPrice", required = true, defaultValue = "") Long oriPrice,
+		 @RequestParam(value = "count", required = true, defaultValue = "") Long count,
+		 @RequestParam(value = "price", required = true, defaultValue = "") Long price,
+		 @RequestParam(value = "expDate", required = true, defaultValue = "") String exp_date,
+		 @RequestParam(value = "discount", required = true, defaultValue = "") Long discount,
+		 @RequestParam(value = "itemCategoryNo", required = true, defaultValue = "") Long itemCategoryNo) {
+	
+		 System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&" + name + oriPrice + count + price + exp_date + discount);
+		 
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("no", no);
+		 map.put("name", name);
+		 map.put("oriPrice", oriPrice);
+		 map.put("count", count);
+		 map.put("price", price);
+		 map.put("expDate", exp_date);
+		 map.put("discount", discount);
+		 map.put("itemCategoryNo", itemCategoryNo);
 
-	// @ResponseBody
-	// @RequestMapping(value = "itemModify", method = RequestMethod.POST)
-	// public JSONResult itemModify(@RequestParam(value = "no", required = true,
-	// defaultValue = "") Long shopNo,
-	// @RequestParam(value = "name", required = true, defaultValue = "") String
-	// name,
-	// @RequestParam(value = "oriPrice", required = true, defaultValue = "")
-	// Long oriPrice,
-	// @RequestParam(value = "count", required = true, defaultValue = "") Long
-	// count,
-	// @RequestParam(value = "price", required = true, defaultValue = "") Long
-	// price,
-	// @RequestParam(value = "expDate", required = true, defaultValue = "")
-	// String exp_date,
-	// @RequestParam(value = "discount", required = true, defaultValue = "")
-	// Long discount,
-	// @RequestParam(value = "itemCategoryNo", required = true, defaultValue =
-	// "") Long itemCategoryNo) {
-	//
-	// ItemVo itemVo = new ItemVo();
-	// itemVo.setName(name);
-	// itemVo.setOriPrice(oriPrice);
-	// itemVo.setCount(count);
-	// itemVo.setPrice(price);
-	// itemVo.setExpDate(exp_date);
-	// itemVo.setDiscount(discount);
-	// itemVo.setItemCategoryNo(itemCategoryNo);
-	//
-	// return JSONResult.success(itemService.shopItemList(shopNo));
-	// }
+		 itemService.itemModifyUpdate(map);
+	 }
 
 	// 상품 삭제
 	@ResponseBody
