@@ -29,4 +29,8 @@ public class BookmarkService {
 	public List<Map<String, Object>> list(Long userNo) {
 		return bookmarkDao.list(userNo);
 	}
+	
+	public Long catchShopNo(Long itemNo) {
+		return bookmarkDao.catchShopNo(itemNo);
+	}
 }

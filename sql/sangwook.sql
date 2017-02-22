@@ -37,7 +37,7 @@ select i.*, s.name as shopName
 select b.*, i.name iname, i.picture ipicture, s.name sname, s.picture spicture 
 from bookmark b left outer join item i on b.itemNo = i.no 
 						left outer join shop s on b.shopNo = s.no 
-where b.usersNo = 3
+where b.usersNo = 4
 order by no desc, itemNo asc;
 
 commit;
@@ -56,4 +56,6 @@ select b.*, i.name iname, i.picture ipicture, s.name sname, s.picture spicture
 			from bookmark b left outer join item i on b.itemNo = i.no 
 				  					left outer join shop s on b.shopNo = s.no 
 			where b.usersNo = 4 
-			order by no desc;			
+			order by no desc;	
+			
+

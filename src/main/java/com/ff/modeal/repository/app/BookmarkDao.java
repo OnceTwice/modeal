@@ -33,9 +33,10 @@ public class BookmarkDao {
 	public Long selectBookmark(Long itemNo, Long userNo, Long shopNo) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("userNo", userNo);
-		if (shopNo == null) {
+		if (itemNo == null) {
+			map.put("shopNo", shopNo);
+		} else {
 			map.put("itemNo", itemNo);
-		} else if (itemNo == null) {
 			map.put("shopNo", shopNo);
 		}
 		return sqlSession.selectOne("bookmark.select", map);
@@ -43,6 +44,10 @@ public class BookmarkDao {
 
 	public List<Map<String, Object>> list(Long userNo) {
 		return sqlSession.selectList("bookmark.list", userNo);
+	}
+	
+	public Long catchShopNo(Long itemNo) {
+		return sqlSession.selectOne("bookmark.catchShopNo", itemNo);
 	}
 
 }

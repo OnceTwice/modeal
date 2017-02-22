@@ -12,32 +12,32 @@
 	<!-- 즐겨찾기 삭제 -->
 	<delete id="delete" parameterType="map">
 		<choose>
-			<when test="shopNo == null">
-				<![CDATA[
-					delete from bookmark where itemNo = #{itemNo } and usersNo = #{userNo }
-				]]>
-			</when>
 			<when test="itemNo == null">
 				<![CDATA[
-					delete from bookmark where usersNo = #{userNo } and shopNo = #{shopNo }
+					delete from bookmark where shopNo = #{shopNo } and usersNo = #{userNo }
 				]]>
-		</when>
+			</when>
+			<otherwise>
+				<![CDATA[
+					delete from bookmark where usersNo = #{userNo } and shopNo = #{shopNo } and itemNo = #{itemNo }
+				]]>
+			</otherwise>
 		</choose>
 	</delete>
 
 	<!-- 즐겨찾기 검색 -->
 	<select id="select" parameterType="map" resultType="long">
 		<choose>
-			<when test="itemNo != null">
-				<![CDATA[
-					select no from bookmark where usersNo = #{userNo } and itemNo = #{itemNo }
-				]]>
-			</when>
-			<when test="shopNo != null">
+			<when test="itemNo == null">
 				<![CDATA[
 					select no from bookmark where usersNo = #{userNo } and shopNo = #{shopNo }
 				]]>
 			</when>
+			<otherwise>
+				<![CDATA[
+					select no from bookmark where usersNo = #{userNo } and itemNo = #{itemNo } and shopNo = #{shopNo }
+				]]>
+			</otherwise>
 		</choose>
 	</select>
 
@@ -49,6 +49,13 @@
 				  					left outer join shop s on b.shopNo = s.no 
 			where b.usersNo = #{userNo } 
 			order by no desc
+		]]>
+	</select>
+	
+	<!-- itemNo로 shopNo 구하기 -->
+	<select id="catchShopNo" parameterType="long" resultType="long">
+		<![CDATA[
+			select shopNo from item where no = #{itemNo }
 		]]>
 	</select>
 </mapper>

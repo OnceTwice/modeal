@@ -44,4 +44,11 @@ public class BookmarkController {
 	public JSONResult list(@RequestParam(value = "userNo") Long userNo) {
 		return JSONResult.success(bookmarkService.list(userNo));
 	}
+	
+	// no값으로 shopNo 가져오기
+		@ResponseBody
+		@RequestMapping(value = "/catchshopno", method = RequestMethod.POST)
+		public Long catchShopNo(@RequestParam(value = "itemNo", required=true, defaultValue="") Long itemNo) {
+			return bookmarkService.catchShopNo(itemNo);
+		}
 }
