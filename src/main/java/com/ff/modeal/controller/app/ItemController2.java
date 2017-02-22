@@ -56,7 +56,8 @@ public class ItemController2 {
 			@RequestParam(value = "expDate", required = true, defaultValue = "") String exp_date,
 			@RequestParam(value = "shopNo", required = true, defaultValue = "") Long shopNo,
 			@RequestParam(value = "itemCategoryNo", required = true, defaultValue = "") Long itemCategoryNo,
-			@RequestParam(value = "discount", required = true, defaultValue = "") Long discount) {
+			@RequestParam(value = "discount", required = true, defaultValue = "") Long discount,
+			@RequestParam(value = "picture" , required = true, defaultValue = "") String picture) {
 
 		ItemVo itemVo = new ItemVo();
 		itemVo.setName(name);
@@ -67,6 +68,7 @@ public class ItemController2 {
 		itemVo.setShopNo(shopNo);
 		itemVo.setItemCategoryNo(itemCategoryNo);
 		itemVo.setDiscount(discount);
+		itemVo.setPicture(picture);
 		
 		System.out.println(itemVo);
 		
