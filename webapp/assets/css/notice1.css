@@ -37,7 +37,7 @@ div.pager  ul li a:hover {
 }
 
 /* anchor태그의 id값이 new-book(내꺼) */
-a#new-book {
+#write {					/* # : ID 선택자*/
 	float: right;
 	padding: 5px 10px 5px 10px;
 	border: 1px solid #555;
@@ -52,31 +52,21 @@ a#new-book {
 	background-color: #fff;
 }
 
-#content .pic img { 
-	width: 100px;
-	height: auto;
-}
-
 .table th.short{
-	width:5px;
+	width:40px;
 }
 
 .table th.middle{
-	width:100px;
+	width:120px;
 }
 
 .table th.long{
-	width:250px;
-}
-
-/* 커서 모양 변경 */
-.my_cursor{
-    cursor:pointer;
+	width:400px;
 }
 
 /* ============================= */
 
-.table{
+.table{		/* . : class 선택자 */
 	width:100%;max-width:100%;margin-bottom:20px;
     table-layout:fixed;
 }
@@ -99,15 +89,6 @@ table {
     vertical-align: top;
     border-top: 1px solid #ddd;
     word-wrap:break-word;
-}
-
-.my_table td {
-	width:400px;
-}
-
-#shop_image {
-	width:400px;
-	height: auto;
 }
 
 .form {

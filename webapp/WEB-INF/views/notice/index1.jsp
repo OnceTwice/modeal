@@ -30,11 +30,11 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th>No</th>
-						<th>Category</th>
-						<th>Title</th>
-						<th>Date</th>
-						<th>Del</th>
+						<th class="short">No</th>
+						<th class="middle">Category</th>
+						<th class="long">Title</th>
+						<th class="middle">Date</th>
+						<th class="short">Del</th>
 					</tr>
 				</thead>
 				
@@ -49,7 +49,7 @@
 				</c:forEach>
 			</table>
 			
-			<a id="new-book" href="${pageContext.request.contextPath }/notice/write">글쓰기</a>
+			<a id="write" href="${pageContext.request.contextPath }/notice/write">글쓰기</a>
 			
 			<div class="pager">
 				<ul>

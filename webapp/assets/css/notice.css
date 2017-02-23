@@ -1,8 +1,12 @@
 @CHARSET "UTF-8";
 
 #notice {				/* id의 값이 notice */
-	margin: 20px auto;
+	margin: 20px;
 	width: 550px;
+}
+
+td.label {
+	width:50px;
 }
 
 .table th.short{
@@ -18,7 +22,8 @@
 }
 
 .table{
-	width:100%;max-width:100%;margin-bottom:20px;
+	width:100%;max-width:100%;
+	margin-bottom:20px;
     table-layout:fixed;
 }
 
@@ -31,7 +36,6 @@
 table {
     border-spacing: 0;
     border-collapse: collapse;
-    table-layout:fixed;
 }
 
 .table>tbody>tr>td{
@@ -48,9 +52,12 @@ table {
 
 .tbl-ex {				/* class의 값이 tbl-ex */
 	width: 100%;
-	margin: 30px auto;
+	/*margin: 30px auto;*/
 	border-collapse: collapse;
 	border-bottom: 3px solid #333;
+}
+.bottom {
+	height : 10px;
 }
 
 a.del {					/* anchor태그의 class값이 del */
@@ -73,7 +80,7 @@ a#new-book { 			/* anchor태그의 id값이 new-book */
 .board-form .tbl-ex {	/* class의 값이 board-form, tbl-ex과 td태그의 class값이 label(총3개 적용) */
 	text-align: right;
 	font-weight: bold;
-	width: 60px;
+	width: 20px;
 }
 
 /* 게시판 리스트 페이징 */

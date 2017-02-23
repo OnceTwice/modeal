@@ -25,14 +25,12 @@
 		</div>
 		
 		<div id="content">
+			<h2> 글쓰기 </h2>
 			<div id="notice">
-			
 				<form class="notice-form" enctype="multipart/form-data" method="post" action="upload">
 					<table class="tbl-ex">
 						<tr>
-							<th colspan="2">글쓰기</th>
-						</tr>
-						<tr>
+							<td class="label">유형</td>
 							<td>
 								<div class="dropdown">
 						  			<select name="categoryNo">
@@ -45,11 +43,11 @@
 						</tr>
 						<tr>
 							<td class="label">제목</td>		<!-- class:css, name:parameter값 넘김 -->
-							<td><input type="text" name="title" style="width: 450px"></td>
+							<td><input type="text" name="title"></td>
 						</tr>
 						<tr>
 							<td class="label">내용</td>
-							<td><textarea name="content" style="width: 450px"></textarea></td>
+							<td><textarea name="content"></textarea></td>
 						</tr>
 					</table>
 
