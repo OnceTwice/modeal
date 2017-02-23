@@ -14,7 +14,7 @@
 			</when>
 			<otherwise>
 				<![CDATA[
-					SELECT i.*, s.name shopName, s.no shopNo, SQRT (POWER ( (longitude - #{longitude }), 2) + POWER ( (latitude - #{latitude }), 2))/0.001/0.009009 distance
+					SELECT i.*, s.name shopName, SQRT (POWER ( (longitude - #{longitude }), 2) + POWER ( (latitude - #{latitude }), 2))/0.001/0.009009 distance
   	 	  			FROM item i right outer join shop s on i.`shopNo` = s.no
  		 			WHERE #{range } > SQRT (POWER ( (longitude - #{longitude }), 2) + POWER ( (latitude - #{latitude }), 2)) 
  		 				and i.`showItem` = 1
@@ -30,11 +30,12 @@
 	</select>
 	
 	<!-- 검색 결과 리스트 조회 -->
-	<select id="searchResultList" parameterType="string" resultType="map">
+	<select id="searchResultList" parameterType="map" resultType="map">
 		<![CDATA[
-			select i.* , s.name as shopName
+			select i.* , s.name as shopName, SQRT (POWER ( (longitude - #{longitude }), 2) + POWER ( (latitude - #{latitude }), 2))/0.001/0.009009 distance
 			from item i left join shop s on s.no = i.`shopNo`
-			where i.name LIKE CONCAT('%',#{name},'%') OR s.name LIKE CONCAT('%',#{name},'%')
+			where i.name LIKE CONCAT('%',#{name},'%') OR s.name LIKE CONCAT('%',#{name},'%') and i.`showItem` = 1
+			order by distance asc
 		]]>
 	</select>
 	

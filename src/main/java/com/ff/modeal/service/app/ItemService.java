@@ -22,8 +22,8 @@ public class ItemService {
 	}
 	
 	//검색결과 리스트
-	public List<Map<String, Object>> GetResultList(String name){
-		return itemDao.searchResultList(name);
+	public List<Map<String, Object>> GetResultList(String name,String latitude, String longtitude){
+		return itemDao.searchResultList(name,latitude, longtitude);
 	}
 	
 }
