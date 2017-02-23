@@ -68,7 +68,7 @@ insert into item (name, count, `oriPrice`, price, discount, `expDate`, picture, 
 
 -- insert into item (name, count, `oriPrice`, price, discount, `expDate`, picture, `showItem`, `shopNo`, `itemCategoryNo`) values (#{name }, #{count }, #{oriPrice }, #{price }, #{discount }, #{expDate }, 'picture', 1, 1, 1) -- 		  
 
-delete from item where no=4;
+delete from item where no=3;
 
 rollback;
 commit;

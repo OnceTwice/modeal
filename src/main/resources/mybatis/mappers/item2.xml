@@ -11,7 +11,7 @@
 		]]>
 	</select>
 
-	<!-- 상품 추가 -->
+	<!-- 상품 등록 -->
 	<insert id="itemInsert" parameterType="itemvo">
 		<![CDATA[
 			insert INTO item (name, count, `oriPrice`, price, discount, `expDate`, picture, `showItem`, `shopNo`, `itemCategoryNo`) 
@@ -32,13 +32,8 @@
 	<update id="itemModifyUpdate" parameterType="map"> 
 		<![CDATA[ 
 			update item 
-			set name = #{name } , 
-				count = #{count } , 
-				price = #{price } , 
-				discount = #{discount } ,
-				`oriPrice` = #{oriPrice } ,
-				`expDate` = #{expDate }	,  
-				`itemCategoryNo` = #{itemCategoryNo }
+			set name = #{name } , count = #{count } , price = #{price } , discount = #{discount } , `oriPrice` = #{oriPrice } , 
+				`expDate` = #{expDate }	, `itemCategoryNo` = #{itemCategoryNo }, picture = #{picture }, showItem = 1
 			where no = #{no }
 		]]> 
 	</update>

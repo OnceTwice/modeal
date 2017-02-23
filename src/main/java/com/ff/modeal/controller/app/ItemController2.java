@@ -94,9 +94,8 @@ public class ItemController2 {
 		 @RequestParam(value = "price", required = true, defaultValue = "") Long price,
 		 @RequestParam(value = "expDate", required = true, defaultValue = "") String exp_date,
 		 @RequestParam(value = "discount", required = true, defaultValue = "") Long discount,
-		 @RequestParam(value = "itemCategoryNo", required = true, defaultValue = "") Long itemCategoryNo) {
-	
-		 System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&" + name + oriPrice + count + price + exp_date + discount);
+		 @RequestParam(value = "itemCategoryNo", required = true, defaultValue = "") Long itemCategoryNo,
+		 @RequestParam(value = "picture" , required = true, defaultValue = "") String picture) {
 		 
 		 Map<String, Object> map = new HashMap<String, Object>();
 		 map.put("no", no);
@@ -107,6 +106,7 @@ public class ItemController2 {
 		 map.put("expDate", exp_date);
 		 map.put("discount", discount);
 		 map.put("itemCategoryNo", itemCategoryNo);
+		 map.put("picture", picture);
 
 		 itemService.itemModifyUpdate(map);
 	 }
