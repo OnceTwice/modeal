@@ -1,11 +1,14 @@
 package com.ff.modeal.controller;
 
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.stereotype.*;
-import org.springframework.ui.*;
-import org.springframework.web.bind.annotation.*;
+import java.util.List;
+import java.util.Map;
 
-import com.ff.modeal.service.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ff.modeal.service.StatsService;
 
 @Controller
 @RequestMapping("/stats")
@@ -16,11 +19,11 @@ public class StatsController {
 	
 	@RequestMapping("")
 	public String statsIndex(Model model){
-//		List<Map<String, Object>> genderlist = statsService.getgenderCount();
-//		List<Map<String, Object>> agelist = statsService.getAgeCount();
+		List<Map<String, Object>> genderlist = statsService.getgenderCount();
+		List<Map<String, Object>> agelist = statsService.getAgeCount();
 		
-//		model.addAttribute("genderlist",genderlist);
-//		model.addAttribute("agelist",agelist);
+		model.addAttribute("genderlist",genderlist);
+		model.addAttribute("agelist",agelist);
 		
 		int man = statsService.getCountMan();
 		int woman = statsService.getCountWoman();
