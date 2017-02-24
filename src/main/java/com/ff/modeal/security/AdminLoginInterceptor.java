@@ -17,6 +17,8 @@ public class AdminLoginInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 
+		System.out.println(request.getParameter("id") + "::::" + request.getParameter("password"));
+		
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 

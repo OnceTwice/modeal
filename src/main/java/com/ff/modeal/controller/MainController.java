@@ -9,16 +9,18 @@ public class MainController {
 	@RequestMapping("") // 메인 연결입니다.
 	public String hello() {
 //		return "main/main";
-		return "main/bootstrap";
+		return "main/main_boot";
 	}
 
 	@RequestMapping("/login")
 	public String login() {
-		return "main/loginform";
+		return "main/loginform_boot";
+//		return "main/loginform";
 	}
 
 	@RequestMapping("/loginsuccess")
 	public String loginSuccess() {
-		return "main/loginsuccess";
+		return "main/success_boot";
+//		return "main/loginsuccess";
 	}
 }

@@ -1,15 +1,19 @@
 package com.ff.modeal.controller;
 
-import java.util.*;
+import java.util.Map;
 
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.stereotype.*;
-import org.springframework.ui.*;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.ff.modeal.service.*;
-import com.ff.modeal.vo.*;
+import com.ff.modeal.security.Admin;
+import com.ff.modeal.service.NoticeService;
+import com.ff.modeal.vo.NoticeVo;
 
 @Controller
 @RequestMapping("/notice")
@@ -18,7 +22,7 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 
-	// @Admin
+	@Admin
 	@RequestMapping("")
 	public String list(@RequestParam(value = "kwd", required = true, defaultValue = "") String keyword,
 			@RequestParam(value = "categoryNo", required = true, defaultValue = "4") int categoryNo,
@@ -29,17 +33,19 @@ public class NoticeController {
 
 		model.addAttribute("map", map);
 
-		return "notice/index1";
+		return "notice/index_boot";
+		// return "notice/index1";
 	}
 
-	// @Admin
+	@Admin
 	@RequestMapping("/write") // index.jsp 삭제 버튼 default값=GET방식,
 								// RequestMapping에서의 default값=Get방식
 	public String write() {
-		return "notice/write";
+		return "notice/write_boot";
+		// return "notice/write";
 	}
 
-	// @Admin
+	@Admin
 	@RequestMapping(value = "/write", method = RequestMethod.POST) // write.jsp에서
 																	// form태그
 																	// method값=POST
@@ -49,7 +55,7 @@ public class NoticeController {
 		return "redirect:/notice";
 	}
 
-	// @Admin
+	@Admin
 	@RequestMapping("/delete")
 	public String delete(@ModelAttribute NoticeVo vo) {
 		noticeService.deleteMessage(vo);
@@ -62,20 +68,22 @@ public class NoticeController {
 		NoticeVo noticeVo = noticeService.getMessage(no);
 		model.addAttribute("noticeVo", noticeVo); // view.jsp에 보내주는 변수 noticeVo
 
-		return "notice/view";
+		return "notice/view_boot";
+		// return "notice/view";
 	}
 
-	// @Admin
+	@Admin
 	@RequestMapping("/modify")
 	public String modify(@RequestParam(value = "no", required = true) Long no, Model model) {
 		NoticeVo noticeVo = noticeService.getMessage(no); // 데이터를 가지고 옴
 		model.addAttribute("noticeVo", noticeVo); // modify.jsp에 보내주는 변수
 													// noticeVo
 
-		return "notice/modify";
+		return "notice/modify_boot";
+		// return "notice/modify";
 	}
 
-	// @Admin
+	@Admin
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String modify(@ModelAttribute NoticeVo vo) {
 		noticeService.updateMessage(vo);
