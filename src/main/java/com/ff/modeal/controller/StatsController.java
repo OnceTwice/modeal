@@ -25,12 +25,11 @@ public class StatsController {
 		model.addAttribute("genderlist",genderlist);
 		model.addAttribute("agelist",agelist);
 		
-		int man = statsService.getCountMan();
-		int woman = statsService.getCountWoman();
-
-		model.addAttribute("man", man);
-		model.addAttribute("woman", woman);
-		
+//		int man = statsService.getCountMan();
+//		int woman = statsService.getCountWoman();
+//		model.addAttribute("man", man);
+//		model.addAttribute("woman", woman);
+	
 		return "stats/statsMain";
 	}
 }
