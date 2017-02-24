@@ -43,14 +43,16 @@
 						</tr>
 						<tr>
 							<td class="label">제목</td>		<!-- class:css, name:parameter값 넘김 -->
-							<td><input type="text" name="title"></td>
+							<td><input type="text" name="title" size="68"></td>
 						</tr>
 						<tr>
 							<td class="label">내용</td>
-							<td><textarea name="content"></textarea></td>
+							<td><textarea name="content" rows="5" cols="70"></textarea></td>
 						</tr>
 					</table>
-
+					
+					<br>
+					
 					<div class="bottom">
 						<input type="file" name="file">
 						<a href="${pageContext.request.contextPath }/notice">Calcel</a>

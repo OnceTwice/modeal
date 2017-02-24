@@ -8,8 +8,8 @@ public class MainController {
 
 	@RequestMapping("") // 메인 연결입니다.
 	public String hello() {
-		return "main/main";
-		
+//		return "main/main";
+		return "main/bootstrap";
 	}
 
 	@RequestMapping("/login")

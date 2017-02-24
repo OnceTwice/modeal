@@ -48,11 +48,11 @@ ul.my_ul li a:hover, ul.my_ul li a:focus {
 }
 
 .table th.middle{
-	width:100px;
+	width:150px;
 }
 
 .table th.long{
-	width:250px;
+	width:300px;
 }
 
 /* 커서 모양 변경 */
