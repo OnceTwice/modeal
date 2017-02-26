@@ -85,8 +85,8 @@
 				<li><a href="${pageContext.request.contextPath}/help">
 				<i class="fa fa-edit fa-fw"></i>고객센터</a></li>
 				
-				<li><a href="${pageContext.request.contextPath}/stats">
-				<i class="fa fa-wrench fa-fw"></i>통계</a></li>
+				<%-- <li><a href="${pageContext.request.contextPath}/stats">
+				<i class="fa fa-wrench fa-fw"></i>통계</a></li> --%>
 			</ul>
 		</div>
 		<!-- /.sidebar-collapse -->
