@@ -30,10 +30,10 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th align="center">번 호</th>
-								<th align="center">제 목</th>
-								<th align="center">작성일</th>
-								<th align="center">글쓴이</th>
+								<th class="short">번 호</th>
+								<th class="long">제 목</th>
+								<th class="middle">작성일</th>
+								<th class="middle">글쓴이</th>
 							</tr>
 						</thead>
 
@@ -42,10 +42,10 @@
 							<tbody
 								onclick="location.href='${pageContext.request.contextPath }/help/view?no=${vo.no }'">
 								<tr>
-									<td align="center" width="100">${vo.no}</td>
-									<td align="center" width="400">${vo.title }</td>
-									<td align="center" width="100">${vo.regDate}</td>
-									<td align="center" width="100">${vo.id }</td>
+									<td>${vo.no}</td>
+									<td>${vo.title }</td>
+									<td>${vo.regDate}</td>
+									<td>${vo.id }</td>
 								</tr>
 							</tbody>
 						</c:forEach>

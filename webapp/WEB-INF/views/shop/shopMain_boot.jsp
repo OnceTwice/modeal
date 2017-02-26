@@ -31,7 +31,7 @@
 								<th class="middle">Name</th>
 								<th class="long">Address</th>
 								<th class="middle">Contact</th>
-								<th class="shor">Grade</th>
+								<th class="short">Grade</th>
 							</tr>
 						</thead>
 						<!-- DB에서 매장 리스트 가져오기!!! -->

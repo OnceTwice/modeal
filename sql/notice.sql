@@ -30,15 +30,18 @@ commit;
 -- mock data 삽입(categoryno삽입 후 notice 삽입/순서역전시 무결성제약조건발생)
 insert
 into categoryno
-values(categoryno_seq.nextval, 'Total Notify');
+(category) 
+values('Total Notify');
 
 insert
 into categoryno
-values(categoryno_seq.nextval, 'User Notify');
+(category) 
+values('User Notify');
 
 insert
 into categoryno
-values(categoryno_seq.nextval, 'Shop Notify');
+(category) 
+values('Shop Notify');
 
 insert
 into notice
