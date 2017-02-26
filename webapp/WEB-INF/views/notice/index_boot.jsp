@@ -1,11 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>공지사항</title>
+<title>공지사항</title>
 </head>
 <body>
 	<div id="wrapper">
@@ -21,34 +22,41 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th class="short">	No		</th>
-							<th class="middle">	Category</th>
-							<th class="long">	Title	</th>
-							<th class="middle">	Date	</th>
-							<th class="short">	Del		</th>
+							<th class="short">No</th>
+							<th class="middle">Category</th>
+							<th class="long">Title</th>
+							<th class="middle">Date</th>
+							<th class="short">Del</th>
 						</tr>
 					</thead>
 
 					<c:forEach items="${map.list }" var="vo" varStatus="status">
-						<tr>
-							<td>${map.totalCount - (map.currentPage - 1)*map.listSize - status.index }</td>
-							<td>${vo.category }</td>
-							<td><a href="${pageContext.request.contextPath }/notice/view?no=${vo.no}">${vo.title }</a></td>
-							<td>${vo.regDate }</td>
-							<td><a class="del" href="${pageContext.request.contextPath }/notice/delete?no=${vo.no}">삭제</a></td>
-						</tr>
+						<tbody
+							onclick="location.href='${pageContext.request.contextPath }/notice/view?no=${vo.no}'">
+							<tr class="my_cursor">
+								<td>${map.totalCount - (map.currentPage - 1)*map.listSize - status.index }</td>
+								<td>${vo.category }</td>
+								<td>${vo.title }</td>
+								<td>${vo.regDate }</td>
+								<td><a class="del"
+									href="${pageContext.request.contextPath }/notice/delete?no=${vo.no}">삭제</a></td>
+							</tr>
+						</tbody>
 					</c:forEach>
 				</table>
 
-				<a id="write" href="${pageContext.request.contextPath }/notice/write">글쓰기</a>
+				<a id="write"
+					href="${pageContext.request.contextPath }/notice/write">글쓰기</a>
 
 				<div class="pager">
 					<ul>
 						<c:if test="${map.prevPage > 0 }">
-							<li><a href="${pageContext.request.contextPath }/notice?categoryNo=${map.categoryNo }&searchNo=${map.searchNo }&kwd=${map.keyword }&p=${map.prevPage }">◀</a></li>
+							<li><a
+								href="${pageContext.request.contextPath }/notice?categoryNo=${map.categoryNo }&searchNo=${map.searchNo }&kwd=${map.keyword }&p=${map.prevPage }">◀</a></li>
 						</c:if>
 
-						<c:forEach begin="${map.beginPage }" end="${map.beginPage + map.listSize - 1 }" var="page">
+						<c:forEach begin="${map.beginPage }"
+							end="${map.beginPage + map.listSize - 1 }" var="page">
 							<c:choose>
 								<c:when test="${map.endPage < page }">
 									<li>${page }</li>
@@ -57,25 +65,28 @@
 									<li class="selected">${page }</li>
 								</c:when>
 								<c:otherwise>
-									<li><a href="${pageContext.request.contextPath }/notice?categoryNo=${map.categoryNo }&searchNo=${map.searchNo }&kwd=${map.keyword }&p=${page }">${page }</a></li>
+									<li><a
+										href="${pageContext.request.contextPath }/notice?categoryNo=${map.categoryNo }&searchNo=${map.searchNo }&kwd=${map.keyword }&p=${page }">${page }</a></li>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 
 						<c:if test="${map.nextPage > 0 }">
-							<li><a href="${pageContext.request.contextPath }/notice?categoryNo=${map.categoryNo }&searchNo=${map.searchNo }&kwd=${map.keyword }&p=${map.nextPage }">▶</a></li>
+							<li><a
+								href="${pageContext.request.contextPath }/notice?categoryNo=${map.categoryNo }&searchNo=${map.searchNo }&kwd=${map.keyword }&p=${map.nextPage }">▶</a></li>
 						</c:if>
 					</ul>
 				</div>
 
-		<!-- 
+				<!-- 
 			<c:forEach items="${map.list }" var="vo" varStatus="status">
 				${vo }
 			</c:forEach>
 		 -->
 
 				<div class="dropdown">
-					<form action="${pageContext.request.contextPath }/notice" class="navbar-search">
+					<form action="${pageContext.request.contextPath }/notice"
+						class="navbar-search">
 						<select name="categoryNo" class="search-query">
 							<option value="4">All</option>
 							<option value="1">Total Notify</option>
