@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ff.modeal.security.Admin;
 import com.ff.modeal.service.StatsService;
 
 @Controller
@@ -17,6 +18,7 @@ public class StatsController {
 	@Autowired
 	private StatsService statsService;
 	
+	@Admin
 	@RequestMapping("")
 	public String statsIndex(Model model){
 		List<Map<String, Object>> genderlist = statsService.getgenderCount();
@@ -30,6 +32,6 @@ public class StatsController {
 //		model.addAttribute("man", man);
 //		model.addAttribute("woman", woman);
 	
-		return "stats/statsMain";
+		return "stats/statsMain_boot";
 	}
 }

@@ -34,7 +34,7 @@
 			<div class="col-md-4 col-md-offset-4">
 				<div class="login-panel panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">Please Sign In</h3>
+						<h3 class="panel-title">로그인</h3>
 					</div>
 					<div class="panel-body">
 						<form role="form" name="loginform" method="post" action="${pageContext.request.contextPath }/loginresult">
@@ -51,7 +51,7 @@
 									<p>로그인이 실패 했습니다.</p>
 								</c:if>
 								<!-- Change this to a button or input when using this as a form -->
-								<input type="submit" class="btn btn-lg btn-success btn-block">
+								<input type="submit" class="btn btn-lg btn-success btn-block" value="로그인">
 							</fieldset>
 						</form>
 					</div>

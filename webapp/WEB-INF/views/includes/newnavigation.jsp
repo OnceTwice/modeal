@@ -24,6 +24,9 @@
 <link
 	href="${pageContext.request.contextPath}/assets/css/bootstrap/font-awesome.min.css"
 	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/assets/css/bootstrap/custom.css"
+	rel="stylesheet">
 
 <nav class="navbar navbar-default navbar-static-top" role="navigation"
 	style="margin-bottom: 0">
@@ -70,22 +73,20 @@
 	<div class="navbar-default sidebar" role="navigation">
 		<div class="sidebar-nav navbar-collapse">
 			<ul class="nav" id="side-menu">
-				<li><a href="${pageContext.request.contextPath }/notice"><i
-						class="fa fa-dashboard fa-fw"></i>공지사항</a></li>
-				<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>사용자
-						리스트</a>
-				<li><a href="tables.html"><i class="fa fa-table fa-fw"></i>매장리스트</a></li>
-				<li><a href="forms.html"><i class="fa fa-edit fa-fw"></i>고객센터</a></li>
-				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>통계<span
-						class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li><a href="panels-wells.html">Panels and Wells</a></li>
-						<li><a href="buttons.html">Buttons</a></li>
-						<li><a href="notifications.html">Notifications</a></li>
-						<li><a href="typography.html">Typography</a></li>
-						<li><a href="icons.html"> Icons</a></li>
-						<li><a href="grid.html">Grid</a></li>
-					</ul> <!-- /.nav-second-level --></li>
+				<li><a href="${pageContext.request.contextPath }/notice">
+				<i class="fa fa-dashboard fa-fw"></i>공지사항</a></li>
+				
+				<li><a href="${pageContext.request.contextPath}/user">
+				<i class="fa fa-bar-chart-o fa-fw"></i>사용자리스트</a>
+				
+				<li><a href="${pageContext.request.contextPath}/shop">
+				<i class="fa fa-table fa-fw"></i>매장리스트</a></li>
+				
+				<li><a href="${pageContext.request.contextPath}/help">
+				<i class="fa fa-edit fa-fw"></i>고객센터</a></li>
+				
+				<li><a href="${pageContext.request.contextPath}/stats">
+				<i class="fa fa-wrench fa-fw"></i>통계</a></li>
 			</ul>
 		</div>
 		<!-- /.sidebar-collapse -->

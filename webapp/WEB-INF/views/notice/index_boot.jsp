@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>공지사항 페이지</title>
+<title>공지사항</title>
 </head>
 <body>
 	<div id="wrapper">
@@ -83,19 +83,21 @@
 			</c:forEach>
 			 -->
 
-				<div class="search">
-					<form action="${pageContext.request.contextPath }/notice">
-						<select name="categoryNo">
+				<div class="dropdown">
+					<form action="${pageContext.request.contextPath }/notice"
+					class="navbar-search">
+						<select name="categoryNo"
+						class="search-query">
 							<option value="4">All</option>
 							<option value="1">Total Notify</option>
 							<option value="2">User Notify</option>
 							<option value="3">Shop Notify</option>
-						</select> <select name="searchNo">
+						</select> <select name="searchNo"
+						class="search-query">
 							<option value="1">All</option>
 							<option value="2">Title</option>
 							<option value="3">Content</option>
-						</select> <input type="text" name="kwd" value="${map.keyword }"> <input
-							type="submit" value="찾기">
+						</select> <input type="text" name="kwd" value="${map.keyword }">
 					</form>
 				</div>
 

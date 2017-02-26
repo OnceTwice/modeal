@@ -1,0 +1,131 @@
+@CHARSET "UTF-8";
+
+/* 페이징용 css */
+ul.my_ul {  
+    text-align:center;  
+}  
+ul.my_ul li {  
+    display:inline;  
+    vertical-align:middle;  
+}  
+ul.my_ul li a {  
+    display:-moz-inline-stack;  /*FF2*/  
+    display:inline-block;  
+    vertical-align:top;  
+    padding:4px;  
+    margin-right:3px;  
+    width:15px !important;  
+    color:#000;  
+    font:bold 12px tahoma;  
+    text-align:center;  
+    text-decoration:none;  
+    width /**/:26px;    /*IE 5.5*/  
+}  
+ul.my_ul li a.now {  
+    color:#fff;  
+    background-color:#f40;  
+    border:1px solid #f40;  
+}  
+ul.my_ul li a:hover, ul.my_ul li a:focus {  
+    color:#fff;  
+    border:1px solid #f40;  
+    background-color:#f40;  
+}
+
+/* ============================= */
+
+#content {
+	background-color: #fff;
+}
+
+#content .pic img { 
+	width: 100px;
+	height: auto;
+}
+
+.table th.short{
+	width:50px;
+}
+
+.table th.middle{
+	width:150px;
+}
+
+.table th.long{
+	width:300px;
+}
+
+/* 커서 모양 변경 */
+.my_cursor{
+    cursor:pointer;
+}
+
+/* ============================= */
+
+.table{
+	width:100%;max-width:100%;margin-bottom:20px;
+    table-layout:fixed;
+}
+
+.table td,.table th{
+	background-color:#fff!important;
+	padding:8px;
+    word-wrap:break-word;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    table-layout:fixed;
+}
+
+.table>tbody>tr>td{
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+    word-wrap:break-word;
+}
+
+.my_table td {
+	width:400px;
+}
+
+#shop_image {
+	width:400px;
+	height: auto;
+}
+
+.form {
+	color: #585858;
+	font-weight: bold; 
+}
+
+.form2 {
+	color:#000;
+	font-size: 1.5em;
+}
+
+b.form2 {
+	margin-left: 10px;
+}
+
+div .avg {
+	text-align: center;
+	margin:20px;
+}
+
+/* 검색창 css인데 부트스트랩만 추가하면 바로 되는건데 ㅠㅠ 부트스트랩을 가져오면 다른것이 깨지므로... 수동으로 가져오는중 */
+.navbar-search .search-query {
+    padding: 4px 14px;
+    margin: 10px 5px;
+    font-family: NanumGothic, 나눔고딕, "Malgun Gothic", "맑은 고딕", sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 1;
+}
+
+.dropdown{
+	text-align:center;
+}
+/* ============================= */

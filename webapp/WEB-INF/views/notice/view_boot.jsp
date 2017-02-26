@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>공지사항 글보기 페이지</title>
+<title>공지사항</title>
 </head>
 <body>
 	<div id="wrapper">

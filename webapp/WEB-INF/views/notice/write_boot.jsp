@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>공지사항 글쓰기 페이지</title>
+<title>공지사항</title>
 </head>
 <body>
 	<div id="wrapper">

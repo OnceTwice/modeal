@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ff.modeal.security.Admin;
 import com.ff.modeal.service.CommentService;
 import com.ff.modeal.service.UserService;
 
@@ -21,7 +22,7 @@ public class UserController {
 	@Autowired
 	private CommentService commentService;
 	
-	//@Admin
+	@Admin
 	@RequestMapping("")
 	public String userIndex(
 			@RequestParam(value="kwd", required=true, defaultValue="") String keyword,
@@ -41,10 +42,10 @@ public class UserController {
 		Long usercount=userService.userSum();
 		model.addAttribute("usercount",usercount);
 		
-		return "user/userMain";
+		return "user/userMain_boot";
 	}
 	
-	//@Admin
+	@Admin
 	@RequestMapping("/view")
 	public String usereach(
 			@RequestParam(value="no",required=true) Long no,
@@ -58,7 +59,7 @@ public class UserController {
 		List<Map<String,Object>> list= commentService.getCommentsByID(no);
 		model.addAttribute("list",list);
 		
-		return "user/each";
+		return "user/each_boot";
 	}
 	
 }

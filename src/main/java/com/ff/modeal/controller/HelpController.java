@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ff.modeal.security.Admin;
 import com.ff.modeal.service.HelpService;
 
 @Controller
@@ -17,7 +18,7 @@ public class HelpController {
 	@Autowired
 	private HelpService helpService;
 
-//	@Admin // 로그인해야 게시판 보이게 설정한 것
+	@Admin // 로그인해야 게시판 보이게 설정한 것
 	@RequestMapping("")	
 	public String helpIndex(
 			@RequestParam(value = "searchCondition", required = true, defaultValue = "1") int searchCondition,
@@ -33,13 +34,13 @@ public class HelpController {
 		
 		model.addAttribute("map", map);
 		
-		return "help/helpMain";
+		return "help/helpMain_boot";
 	}
 
-//	@Admin
+	@Admin
 	@RequestMapping("/view")
 	public String helpView(@RequestParam(value = "no", required = true, defaultValue = "") Long no, Model model) {
 		model.addAttribute("view", helpService.helpView(no));
-		return "help/helpView";
+		return "help/helpView_boot";
 	}
 }
