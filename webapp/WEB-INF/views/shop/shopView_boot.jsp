@@ -19,8 +19,7 @@
 				<br>
 				<table class="table table-striped my_table">
 					<tr>
-						<td rowspan='6'><img src="${pageContext.request.contextPath }/shop/images/${view[0].picture }"
-							id="shop_image" alt="이미지엑박" /></td>
+						<td rowspan='6'><img src="${view[0].picture }" id="shop_image" alt="이미지엑박" style="padding-right: 20px;"/></td>
 						<td class="form">매장명</td>
 					</tr>
 					<tr>

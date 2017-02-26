@@ -2813,7 +2813,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 input[type=file] {
-	display: block
+	/*display: block;*/
 }
 
 input[type=range] {
@@ -5270,7 +5270,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	font-size: 75%;
 	font-weight: 700;
 	line-height: 1;
-	color: #fff;
+	color: #000;
 	text-align: center;
 	white-space: nowrap;
 	vertical-align: baseline;
