@@ -14,7 +14,7 @@
 		<choose>
 			<when test="itemNo == null">
 				<![CDATA[
-					delete from bookmark where shopNo = #{shopNo } and usersNo = #{userNo }
+					delete from bookmark where shopNo = #{shopNo } and usersNo = #{userNo } and `itemNo` is null
 				]]>
 			</when>
 			<otherwise>
@@ -30,12 +30,14 @@
 		<choose>
 			<when test="itemNo == null">
 				<![CDATA[
-					select no from bookmark where usersNo = #{userNo } and shopNo = #{shopNo }
+					select b.no from bookmark b left outer join shop s on b.`shopNo` = s.no
+					where b.usersNo = #{userNo } and b.shopNo = #{shopNo } and b.`itemNo` is null
 				]]>
 			</when>
 			<otherwise>
 				<![CDATA[
-					select no from bookmark where usersNo = #{userNo } and itemNo = #{itemNo } and shopNo = #{shopNo }
+					select b.no from bookmark b left outer join item i on b.`itemNo` = i.no 
+					where b.usersNo = #{userNo } and b.itemNo = #{itemNo } and b.shopNo = #{shopNo }
 				]]>
 			</otherwise>
 		</choose>
