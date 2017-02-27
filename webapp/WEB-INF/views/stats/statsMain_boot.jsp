@@ -98,7 +98,7 @@
 			}
 			
 			var options = {
-				title : '가입자 통계'
+				title : '각 통계'
 			};
 			
 			new google.visualization.PieChart(document.getElementById('my_chart1')).draw(data3, options);

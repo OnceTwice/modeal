@@ -52,15 +52,15 @@
 		function drawChart() {
 			var data = google.visualization.arrayToDataTable([]);
 			data.addColumn('string', 'Gender');
-			data.addColumn('number', 'Count');
+			data.addColumn('number', 'count');
 			
 			var data2 = google.visualization.arrayToDataTable([]);
 			data2.addColumn('string', 'Age');
-			data2.addColumn('number', 'Count');
+			data2.addColumn('number', 'count');
 			
 			var data3 = google.visualization.arrayToDataTable([]);
 			data3.addColumn('string', 'Location');
-			data3.addColumn('number', 'Count');
+			data3.addColumn('number', 'count');
 			
 			if (true) {
 				data.addRows((genderlistcnt.length));
@@ -97,7 +97,7 @@
 			}
 			
 			var options = {
-				title : '가입자 통계'
+				title : ''
 			};
 			
 			new google.visualization.PieChart(document.getElementById('my_chart1')).draw(data3, options);
@@ -121,8 +121,11 @@
 			<div class="row">
 				<br>
 				<!-- /.row -->
+				<h2 style="margin-left: 150px">남녀 통계</h2>
 				<div id="my_chart2" style="width: 500px; height: 300px"></div>
+				<h2 style="margin-left: 150px">지역별 통계</h2>
 				<div id="my_chart1" style="width: 500px; height: 300px"></div>
+				<h2 style="margin-left: 150px">연령별 통계</h2>
 				<div id="my_chart3" style="width: 500px; height: 300px"></div>
 			</div>
 		</div>
