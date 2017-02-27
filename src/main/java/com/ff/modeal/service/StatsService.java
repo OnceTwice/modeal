@@ -23,12 +23,10 @@ public class StatsService {
 		List<Map<String, Object>> list = statsDao.getAgeCount();
 		return list;
 	}
-	
-	public int getCountMan() {
-		return statsDao.selectMan();
+	public List<Map<String, Object>> getLocationCount(){
+		List<Map<String, Object>> list = statsDao.getLocationCount();
+		return list;
 	}
 	
-	public int getCountWoman() {
-		return statsDao.selectWoman();
-	}
+
 }

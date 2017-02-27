@@ -4,6 +4,14 @@
 <mapper namespace="user">
 
 	<!-- 가입자 통계 -->
+	<select id="getCountLocation" resultType="map">
+		<![CDATA[
+			select location, count(*) as count 
+			from (select left(location, locate(' ', location)) as location from users) s 
+			group by location
+		]]>
+	</select>
+
 	<select id="getCountGender" resultType="map">
 		<![CDATA[
 			select gender, count(*) as count

@@ -20,12 +20,9 @@ public class StatsDao {
 	public List<Map<String, Object>> getAgeCount() {
 		return sqlSession.selectList("user.getAgeCount");
 	}
+	public List<Map<String, Object>> getLocationCount() {
+		return sqlSession.selectList("user.getCountLocation");
+	}
 
-	public int selectMan() {
-		return sqlSession.selectOne("user.getCountMan");
-	}
-	
-	public int selectWoman() {
-		return sqlSession.selectOne("user.getCountWoman");
-	}
+
 }

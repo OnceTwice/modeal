@@ -24,6 +24,16 @@
 			genderlistcnt.push("${vo.count }");
 		</c:forEach>
 		
+		var locationlist = new Array();
+		<c:forEach items="${locationlist }" var="vo">
+			genderlistcnt.push("${vo.location }");
+		</c:forEach>
+		
+		var locationlistcnt = new Array();
+		<c:forEach items="${locationlist }" var="vo">
+			genderlistcnt.push("${vo.count }");
+		</c:forEach>
+		
 		//나이별
 		var agelist = new Array();
 		<c:forEach items="${agelist }" var="vo">
@@ -43,15 +53,20 @@
 		function drawChart() {
 			var data = google.visualization.arrayToDataTable([]);
 			data.addColumn('string', 'Gender');
-			data.addColumn('number', 'Percent');
+			data.addColumn('number', 'Count');
 			
 			var data2 = google.visualization.arrayToDataTable([]);
 			data2.addColumn('string', 'Age');
-			data2.addColumn('number', 'Percent');
+			data2.addColumn('number', 'Count');
+			
+			var data3 = google.visualization.arrayToDataTable([]);
+			data3.addColumn('string', 'Location');
+			data3.addColumn('number', 'Count');
 			
 			if (true) {
 				data.addRows((genderlistcnt.length));
 				data2.addRows((agelist.length));
+				data3.addRows((locationlistcnt.length));
 				for (i = 0; i < genderlistcnt.length; i++) {
 					for (j = 0; j <= 1; j++) {
 						if (j == 0) {
@@ -71,13 +86,22 @@
 						}
 					}
 				}
+				for (i = 0; i < locationlistcnt.length; i++) {
+					for (j = 0; j <= 1; j++) {
+						if (j == 0) {
+							data3.setCell(i, 0, locationlist[i]);
+						} else {
+							data3.setCell(i, 1, parseInt(locationlistcnt[i]));
+						}
+					}
+				}
 			}
 			
 			var options = {
 				title : '가입자 통계'
 			};
 			
-			new google.visualization.PieChart(document.getElementById('my_chart1')).draw(data, options);
+			new google.visualization.PieChart(document.getElementById('my_chart1')).draw(data3, options);
 			new google.visualization.BarChart(document.getElementById('my_chart2')).draw(data, options);
 			new google.visualization.LineChart(document.getElementById('my_chart3')).draw(data2, options);
 		}
