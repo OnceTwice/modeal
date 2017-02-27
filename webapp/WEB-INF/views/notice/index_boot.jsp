@@ -14,11 +14,9 @@
 			<c:import url="/WEB-INF/views/includes/newnavigation.jsp" />
 		</div>
 		<div id="page-wrapper">
-			<!-- /.row -->
 			<div class="row">
 				<h2>공지사항</h2>
 				<br>
-
 				<table class="table">
 					<thead>
 						<tr>
@@ -103,6 +101,5 @@
 			</div>
 		</div>
 	</div>
-	<!-- /.row -->
 </body>
 </html>

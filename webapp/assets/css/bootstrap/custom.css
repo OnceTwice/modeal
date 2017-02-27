@@ -166,3 +166,7 @@ div.pager  ul li a:hover {
 	text-decoration: none;
 	color: #f00
 }
+
+#my_title {
+	font-size: 30px;
+}

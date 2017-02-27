@@ -38,10 +38,10 @@
 		</button>
 		<c:choose>
 			<c:when test="${empty adminUser }">
-				<a class="navbar-brand" href="${pageContext.request.contextPath }">MoDeal</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath }" id="my_title">Modeal</a>
 			</c:when>
 			<c:otherwise>
-				<a class="navbar-brand" href="${pageContext.request.contextPath }/loginsuccess">MoDeal</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath }/loginsuccess" id="my_title">Modeal</a>
 			</c:otherwise>
 		</c:choose>
 	</div>
@@ -74,16 +74,16 @@
 		<div class="sidebar-nav navbar-collapse">
 			<ul class="nav" id="side-menu">
 				<li><a href="${pageContext.request.contextPath }/notice">
-				<i class="fa fa-dashboard fa-fw"></i>공지사항</a></li>
+				<i class="fa fa-dashboard fa-fw"></i> 공지사항</a></li>
 				
 				<li><a href="${pageContext.request.contextPath}/user">
-				<i class="fa fa-bar-chart-o fa-fw"></i>사용자리스트</a>
+				<i class="fa fa-bar-chart-o fa-fw"></i> 사용자리스트</a>
 				
 				<li><a href="${pageContext.request.contextPath}/shop">
-				<i class="fa fa-table fa-fw"></i>매장리스트</a></li>
+				<i class="fa fa-table fa-fw"></i> 매장리스트</a></li>
 				
 				<li><a href="${pageContext.request.contextPath}/help">
-				<i class="fa fa-edit fa-fw"></i>고객센터</a></li>
+				<i class="fa fa-edit fa-fw"></i> 고객센터</a></li>
 				
 				<%-- <li><a href="${pageContext.request.contextPath}/stats">
 				<i class="fa fa-wrench fa-fw"></i>통계</a></li> --%>
