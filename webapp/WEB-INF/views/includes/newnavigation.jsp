@@ -38,10 +38,10 @@
 		</button>
 		<c:choose>
 			<c:when test="${empty adminUser }">
-				<a class="navbar-brand" href="${pageContext.request.contextPath }">Mobility Deal</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath }">MoDeal</a>
 			</c:when>
 			<c:otherwise>
-				<a class="navbar-brand" href="${pageContext.request.contextPath }/loginsuccess">Mobility Deal</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath }/loginsuccess">MoDeal</a>
 			</c:otherwise>
 		</c:choose>
 	</div>

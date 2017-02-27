@@ -24,11 +24,11 @@
 							<tr>
 								<td class="label">유형</td>
 								<td>
-									<div class="dropdown">
+									<div class="drop" style="margin-bottom:10px;">
 										<select name="categoryNo">
-											<option value="1">Total Notify</option>
-											<option value="2">User Notify</option>
-											<option value="3">Shop Notify</option>
+											<option value="1">전체 공지</option>
+											<option value="2">사용자 공지</option>
+											<option value="3">매장 공지</option>
 										</select>
 									</div>
 								</td>
@@ -36,7 +36,7 @@
 							<tr>
 								<td class="label">제목</td>
 								<!-- class:css, name:parameter값 넘김 -->
-								<td><input type="text" name="title" size="68"></td>
+								<td style="padding-bottom: 10px;"><input type="text" name="title" size="68"></td>
 							</tr>
 							<tr>
 								<td class="label">내용</td>
@@ -47,9 +47,9 @@
 						<br>
 
 						<div class="bottom" style="margin-left: 33px;">
-							<input type="file" name="file" style="margin-right: 150px;">
-							<a href="${pageContext.request.contextPath }/notice">Calcel</a>
-							<input type="submit" value="Submit">
+							<input type="file" name="file" style="margin-right: 160px;">
+							<a href="${pageContext.request.contextPath }/notice">취소</a>
+							<input type="submit" value="등록">
 						</div>
 					</form>
 					
