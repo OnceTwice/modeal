@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ff.modeal.security.Admin;
 import com.ff.modeal.service.StatsService;
 
 @Controller
@@ -30,6 +31,7 @@ public class MainController {
 		// return "main/loginform";
 	}
 
+	@Admin
 	@RequestMapping("/loginsuccess")
 	public String loginSuccess(Model model) {
 		List<Map<String, Object>> genderlist = statsService.getgenderCount();
