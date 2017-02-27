@@ -42,11 +42,11 @@
 		function drawChart() {
 			var data = google.visualization.arrayToDataTable([]);
 			data.addColumn('string', 'Gender');
-			data.addColumn('number', 'Percent');
+			data.addColumn('number', 'Count');
 			
 			var data2 = google.visualization.arrayToDataTable([]);
 			data2.addColumn('string', 'Age');
-			data2.addColumn('number', 'Percent');
+			data2.addColumn('number', 'Count');
 			
 			if (true) {
 				data.addRows((genderlistcnt.length));

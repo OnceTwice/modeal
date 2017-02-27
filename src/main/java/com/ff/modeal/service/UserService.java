@@ -12,8 +12,8 @@ import com.ff.modeal.vo.UserVo;
 
 @Service
 public class UserService {
-	private static final int USER_PAGE=2; // 한페이지 유저수
-	private static final int COUNT_PAGE=3; // 한번에 보여줄 페이지수
+	private static final int USER_PAGE=5; // 한페이지 유저수
+	private static final int COUNT_PAGE=5; // 한번에 보여줄 페이지수
 
 	@Autowired
 	private UserDao userDao;
