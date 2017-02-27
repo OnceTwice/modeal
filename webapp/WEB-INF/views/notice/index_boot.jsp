@@ -22,11 +22,11 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th class="short">No</th>
-							<th class="middle">Category</th>
-							<th class="long">Title</th>
-							<th class="middle">Date</th>
-							<th class="short">Del</th>
+							<th class="short">번호</th>
+							<th class="middle">카테고리</th>
+							<th class="long">제목</th>
+							<th class="middle">작성일</th>
+							<th class="short">삭제</th>
 						</tr>
 					</thead>
 

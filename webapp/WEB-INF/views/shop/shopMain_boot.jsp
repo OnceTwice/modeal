@@ -27,11 +27,11 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th class="short">#</th>
-								<th class="middle">Name</th>
-								<th class="long">Address</th>
-								<th class="middle">Contact</th>
-								<th class="short">Grade</th>
+								<th class="short">번호</th>
+								<th class="middle">이름</th>
+								<th class="long">주소</th>
+								<th class="middle">전화번호</th>
+								<th class="short">평점</th>
 							</tr>
 						</thead>
 						<!-- DB에서 매장 리스트 가져오기!!! -->

@@ -55,10 +55,10 @@
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th class="short">#</th>
-							<th class="short">ID</th>
-							<th class="short">Grade</th>
-							<th class="long">Content</th>
+							<th class="short">번호</th>
+							<th class="short">아이디</th>
+							<th class="short">평점</th>
+							<th class="long">댓글</th>
 						</tr>
 					</thead>
 					<!-- DB에서 매장 리스트 가져오기!!! -->
