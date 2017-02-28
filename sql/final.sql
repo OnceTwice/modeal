@@ -1,3 +1,5 @@
+commit;
+
 /* 웹 */
 insert into categoryno values(1, 'Total Notify');
 insert into categoryno values(2, 'User Notify');
