@@ -1,4 +1,4 @@
-insert INTO users (id, password, gender, location, birth, `1`, `shopNo`) VALUES
+insert INTO users (id, password, gender, location, birth, `managerIdentified`, `shopNo`) VALUES
  ('a71721211@test', 'test', 'man', '서울시 강남구', '1988.02.11', 1, shopno),
  ('a71721212@test', 'test', 'man', '인천시 서구', '2001.4.5', 1, shopno),
  ('a71721213@test', 'test', 'woman', '경기  부천구', '2001.4.5', 1, shopno),

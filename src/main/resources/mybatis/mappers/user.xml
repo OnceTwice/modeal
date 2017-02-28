@@ -74,7 +74,7 @@
 				</otherwise>
 			</choose> 
 		<![CDATA[
-			 ROWNUM<=${page }*${user_page } and ROWNUM>(${page}-1)*${user_page } 
+			 ROWNUM<=${page }*${user_page } and ROWNUM>(${page}-1)*${user_page } limit 0, ${user_page }
 		]]>
 	</select>
 
